@@ -1,0 +1,13 @@
+# Written by Copier. Do not edit by hand; `copier update` reads it.
+_commit: v1.0
+_src_path: gh:Iliya-Valizadeh/ds-project-standard
+author_name: Iliya Valizadeh
+copyright_year: 2026
+github_user: Iliya-Valizadeh
+has_dataset: true
+has_model: false
+one_line: A tested pipeline for NYC Lyft and Uber trip data, and a study of what congestion
+    pricing changed.
+package_name: nyc_rideshare_congestion
+project_name: nyc-rideshare-congestion
+python_version: '3.11'
