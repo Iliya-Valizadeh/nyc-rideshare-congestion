@@ -71,6 +71,7 @@ The full list is in [docs/whats_weak.md](docs/whats_weak.md).
 | `docs/` | Evaluation plan, decisions, glossary and the four kinds of docs |
 | `Makefile` | One command for each step: setup, lint, test, eval, demo |
 | `reports/` | Generated results, including metrics.json |
+| `sql/` | Warehouse DDL (`schema/`) and, later, the SQL transforms |
 | `src/` | The package code |
 | `tests/` | Unit and data tests |
 | `tools/` | Checks for claims, readability, AI-writing signs and links |
