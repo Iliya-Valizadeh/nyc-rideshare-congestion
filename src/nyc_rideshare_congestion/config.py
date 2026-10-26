@@ -22,6 +22,13 @@ FIRST_MONTH = "2023-01"
 LAST_MONTH = "2025-03"
 PRIORITY_RANGES = (("2024-10", "2025-03"), ("2023-10", "2024-03"))
 
+# Warehouse (ADR 0003 and 0004).
+DATE_FIRST = "2023-01-01"  # dim_date range, both ends included
+DATE_LAST = "2025-12-31"
+FEE_COLUMN_FIRST_MONTH = "2025-01"  # cbd_congestion_fee may be missing before this month
+MAX_TRIP_SECONDS = 6 * 60 * 60  # rule IMPOSSIBLE_DURATION: longer trips are clock errors
+LOAD_DISK_FACTOR = 3  # free space a load needs, as a multiple of the raw file size
+
 # Limits.
 DISK_HEADROOM = 0.2  # free space must be the file size plus this share
 HASH_CHUNK_BYTES = 1024 * 1024  # SHA-256 reads the file in 1 MiB chunks
@@ -33,11 +40,16 @@ DUCKDB_THREADS = 2
 EXIT_OK = 0
 EXIT_FAILED = 1
 EXIT_BAD_ARGS = 2
+EXIT_SCHEMA = 2
 EXIT_NEEDS_BACKFILL = 3
 EXIT_DISK = 4
 
 PACKAGE_ROOT = Path(__file__).resolve().parent
-SQL_DIR = PACKAGE_ROOT.parent.parent / "sql"
+REPO_ROOT = PACKAGE_ROOT.parent.parent
+SQL_DIR = REPO_ROOT / "sql"
+SOURCE_MANIFEST = REPO_ROOT / "reports" / "source_manifest.json"
+EVAL_PLAN = REPO_ROOT / "docs" / "eval_plan.md"
+ZONE_LOOKUP_FILE = "taxi_zone_lookup.csv"
 
 
 def months(first: str, last: str) -> list[str]:
