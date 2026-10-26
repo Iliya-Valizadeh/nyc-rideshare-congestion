@@ -36,7 +36,7 @@
       "sha256": "cb066a3fe0770e44dde67cfc43e8b964b7b3ca7f2c90dc35d2d57cb7e41629b8",
       "size_bytes": 473816636,
       "last_modified": "2023-03-20T20:46:51Z",
-      "status": "downloaded"
+      "status": "loaded"
     },
     {
       "month": "2023-02",
@@ -44,7 +44,7 @@
       "sha256": "5a9f32bda414abcb0f04f2286ca8af5670ac9e535fdd86f2aa3840b71d62fdc2",
       "size_bytes": 458895583,
       "last_modified": "2023-05-01T15:32:56Z",
-      "status": "downloaded"
+      "status": "loaded"
     },
     {
       "month": "2023-03",
@@ -52,7 +52,7 @@
       "sha256": "57e607736d4460050e823acb1af82f9a23ed36382b131217fa56597f4f7c0f5a",
       "size_bytes": 522484870,
       "last_modified": "2023-05-19T16:09:46Z",
-      "status": "downloaded"
+      "status": "loaded"
     },
     {
       "month": "2023-04",
@@ -60,7 +60,7 @@
       "sha256": "edf8bfe4435fec30bc8830750834c570f597fc129e6a9b7779366280f4bed276",
       "size_bytes": 491826475,
       "last_modified": "2023-06-23T14:05:21Z",
-      "status": "downloaded"
+      "status": "loaded"
     },
     {
       "month": "2023-05",
@@ -68,7 +68,7 @@
       "sha256": "af892a2dd4262a9197a6ba84ed53ce8b27e0746106b67e8fe8f0b4ca7eabd2f3",
       "size_bytes": 513108369,
       "last_modified": "2023-07-26T14:48:04Z",
-      "status": "downloaded"
+      "status": "loaded"
     },
     {
       "month": "2023-06",
@@ -76,7 +76,7 @@
       "sha256": "cb78866e5a685db8733e2be8210d3f9498cef7e2aaa01086e88b363dfa825855",
       "size_bytes": 498799838,
       "last_modified": "2023-08-22T13:23:37Z",
-      "status": "downloaded"
+      "status": "loaded"
     },
     {
       "month": "2023-07",
@@ -108,7 +108,7 @@
       "sha256": "fd577706331f37f6470945af6c268b27af036cf51eaa5689bc84481a1e0579f0",
       "size_bytes": 485826227,
       "last_modified": "2023-12-18T14:32:59Z",
-      "status": "downloaded"
+      "status": "loaded"
     },
     {
       "month": "2023-11",
@@ -116,7 +116,7 @@
       "sha256": "a48486cfb760c0839a8f7b507f3b89d5ac5fc5433c67233dcb6a89c91ea08e1c",
       "size_bytes": 464926008,
       "last_modified": "2024-01-18T15:04:46Z",
-      "status": "downloaded"
+      "status": "loaded"
     },
     {
       "month": "2023-12",
@@ -124,7 +124,7 @@
       "sha256": "ff23e07001de2ec2d2e44f82d748c3a2ec88efdc5df7532248248cca59cc0dd9",
       "size_bytes": 490453634,
       "last_modified": "2024-02-22T14:55:08Z",
-      "status": "downloaded"
+      "status": "loaded"
     },
     {
       "month": "2024-01",
@@ -132,7 +132,7 @@
       "sha256": "9897de352aa52cea36b70348cc6721b8d4494327ce39c85f0dba83d86ecaa098",
       "size_bytes": 472757547,
       "last_modified": "2024-03-21T15:35:44Z",
-      "status": "downloaded"
+      "status": "loaded"
     },
     {
       "month": "2024-02",
@@ -140,7 +140,7 @@
       "sha256": "54bafa7bcf3f06e7833fcbccf7ef158eb793a72ee1c4bb8bf080e56ae71a15d6",
       "size_bytes": 462475428,
       "last_modified": "2024-04-19T18:22:42Z",
-      "status": "downloaded"
+      "status": "loaded"
     },
     {
       "month": "2024-03",
@@ -148,7 +148,7 @@
       "sha256": "ff25b93f890f889637963b749d0839ec5a15f075d23ea5297b3312ed9a10d6d9",
       "size_bytes": 507940560,
       "last_modified": "2024-05-22T19:27:43Z",
-      "status": "downloaded"
+      "status": "loaded"
     },
     {
       "month": "2024-04",
@@ -204,7 +204,7 @@
       "sha256": "8ee625798a6543148c3a3e33df5e2cf44acb17af904dbfff925d1cd4f077afb5",
       "size_bytes": 485102359,
       "last_modified": "2024-12-18T21:21:21Z",
-      "status": "downloaded"
+      "status": "loaded"
     },
     {
       "month": "2024-11",
@@ -212,7 +212,7 @@
       "sha256": "cc3547280a9ff6edb4eaa467a3aa0ea2a372fca746e3e733d1ea3152d56daed3",
       "size_bytes": 480228052,
       "last_modified": "2025-01-17T20:03:41Z",
-      "status": "downloaded"
+      "status": "loaded"
     },
     {
       "month": "2024-12",
@@ -220,7 +220,7 @@
       "sha256": "dcf0885722bc76ab7b5f22a23b784513caf7e7c2b23381ed854610c436c48887",
       "size_bytes": 507534115,
       "last_modified": "2025-02-21T21:29:11Z",
-      "status": "downloaded"
+      "status": "loaded"
     },
     {
       "month": "2025-01",
@@ -228,7 +228,7 @@
       "sha256": "fcdef276f4e9887f2beab30590165cdea74caef50a1313d71fa01ff6afacca3a",
       "size_bytes": 491076642,
       "last_modified": "2025-04-23T16:30:36Z",
-      "status": "downloaded"
+      "status": "loaded"
     },
     {
       "month": "2025-02",
@@ -236,7 +236,7 @@
       "sha256": "2077477d4d841b8ec40a3839b629f08f45f6802ca016adc1e01d6d8cffd2cf23",
       "size_bytes": 461632254,
       "last_modified": "2025-04-23T16:15:47Z",
-      "status": "downloaded"
+      "status": "loaded"
     },
     {
       "month": "2025-03",
@@ -244,7 +244,7 @@
       "sha256": "671399467732b00653307525421bfc6004e6a45be1fadd5e4b8fa3d11da22043",
       "size_bytes": 501783767,
       "last_modified": "2025-05-21T15:28:05Z",
-      "status": "downloaded"
+      "status": "loaded"
     }
   ],
   "reference_files": [
