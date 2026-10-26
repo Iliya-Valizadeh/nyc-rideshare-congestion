@@ -21,3 +21,7 @@ CREATE TABLE IF NOT EXISTS load_log (
     package_version     VARCHAR,
     UNIQUE (file_name, sha256)
 );
+
+-- Added by T06 (ADR 0006): warehouse file size right after the month's load. The ALTER
+-- keeps warehouses made before T06 in step with the CREATE above.
+ALTER TABLE load_log ADD COLUMN IF NOT EXISTS warehouse_bytes BIGINT;

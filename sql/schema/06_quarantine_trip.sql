@@ -1,0 +1,37 @@
+-- Uber and Lyft rows that failed a row rule, with the first failing rule (ADR 0004).
+-- The source columns keep the values as cast in staging, so a reviewer can see them.
+CREATE TABLE IF NOT EXISTS quarantine_trip (
+    load_id              INTEGER NOT NULL,
+    src_row              BIGINT NOT NULL,
+    source_month         VARCHAR NOT NULL,
+    reason_code          VARCHAR NOT NULL CHECK (reason_code IN (
+        'NULL_REQUIRED', 'PICKUP_OUTSIDE_MONTH', 'UNKNOWN_ZONE', 'NEGATIVE_FARE',
+        'NEGATIVE_DISTANCE', 'IMPOSSIBLE_DURATION', 'DUPLICATE_TRIP')),
+    reason_detail        VARCHAR,
+    hvfhs_license_num    VARCHAR,
+    dispatching_base_num VARCHAR,
+    originating_base_num VARCHAR,
+    request_datetime     TIMESTAMP,
+    on_scene_datetime    TIMESTAMP,
+    pickup_datetime      TIMESTAMP,
+    dropoff_datetime     TIMESTAMP,
+    PULocationID         INTEGER,
+    DOLocationID         INTEGER,
+    trip_miles           DOUBLE,
+    trip_time            BIGINT,
+    base_passenger_fare  DOUBLE,
+    tolls                DOUBLE,
+    bcf                  DOUBLE,
+    sales_tax            DOUBLE,
+    congestion_surcharge DOUBLE,
+    airport_fee          DOUBLE,
+    tips                 DOUBLE,
+    driver_pay           DOUBLE,
+    shared_request_flag  VARCHAR,
+    shared_match_flag    VARCHAR,
+    access_a_ride_flag   VARCHAR,
+    wav_request_flag     VARCHAR,
+    wav_match_flag       VARCHAR,
+    cbd_congestion_fee   DOUBLE,
+    PRIMARY KEY (load_id, src_row)
+);
