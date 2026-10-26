@@ -23,31 +23,22 @@ from typing import Any
 import pyarrow as pa
 import pyarrow.parquet as pq
 
-TRIP_URL = "https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_{month}.parquet"
-ZONE_LOOKUP_URL = "https://d37ci6vzurychx.cloudfront.net/misc/taxi_zone_lookup.csv"
-ZONE_SHAPES_URL = "https://d37ci6vzurychx.cloudfront.net/misc/taxi_zones.zip"
-CBD_ZONES_URL = "https://data.ny.gov/resource/yfdc-w5jh.json?$select=taxi_zone&$order=taxi_zone"
-FIRST_MONTH = "2023-01"
-LAST_MONTH = "2025-03"
-HEADROOM = 0.2
+from nyc_rideshare_congestion.config import (
+    CBD_ZONES_URL,
+    FIRST_MONTH,
+    LAST_MONTH,
+    TRIP_URL,
+    ZONE_LOOKUP_URL,
+    ZONE_SHAPES_URL,
+    months,
+)
+from nyc_rideshare_congestion.config import DISK_HEADROOM as HEADROOM
+from nyc_rideshare_congestion.config import HTTP_TIMEOUT_S as TIMEOUT_S
+
 GB = 10**9
-TIMEOUT_S = 60
 
 HeadFn = Callable[[str], dict[str, Any]]
 TailFn = Callable[[str, int], bytes]
-
-
-def months(first: str, last: str) -> list[str]:
-    """Return every month from first to last, both included, as YYYY-MM."""
-    year, month = (int(x) for x in first.split("-"))
-    end = tuple(int(x) for x in last.split("-"))
-    if (year, month) > end:
-        raise ValueError(f"first month {first} is after last month {last}")
-    out = []
-    while (year, month) <= end:
-        out.append(f"{year:04d}-{month:02d}")
-        year, month = (year + 1, 1) if month == 12 else (year, month + 1)
-    return out
 
 
 def http_head(url: str) -> dict[str, Any]:  # pragma: no cover - network

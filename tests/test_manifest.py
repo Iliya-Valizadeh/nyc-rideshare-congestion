@@ -9,6 +9,7 @@ import pyarrow as pa
 import pyarrow.parquet as pq
 import pytest
 
+from nyc_rideshare_congestion import config
 from nyc_rideshare_congestion.sources import manifest
 
 
@@ -35,13 +36,13 @@ def _fakes(files: dict[str, bytes]) -> tuple[manifest.HeadFn, manifest.TailFn]:
 
 
 def test_months_spans_year_end() -> None:
-    assert manifest.months("2024-11", "2025-02") == ["2024-11", "2024-12", "2025-01", "2025-02"]
-    assert len(manifest.months(manifest.FIRST_MONTH, manifest.LAST_MONTH)) == 27
+    assert config.months("2024-11", "2025-02") == ["2024-11", "2024-12", "2025-01", "2025-02"]
+    assert len(config.months(config.FIRST_MONTH, config.LAST_MONTH)) == 27
 
 
 def test_months_rejects_reversed_range() -> None:
     with pytest.raises(ValueError):
-        manifest.months("2025-02", "2025-01")
+        config.months("2025-02", "2025-01")
 
 
 def test_footer_schema_reads_columns_only() -> None:
@@ -59,7 +60,7 @@ def test_footer_schema_rejects_non_parquet() -> None:
 
 def test_build_manifest_groups_schemas_and_checks_disk() -> None:
     month_list = ["2024-12", "2025-01"]
-    urls = [manifest.TRIP_URL.format(month=m) for m in month_list]
+    urls = [config.TRIP_URL.format(month=m) for m in month_list]
     head, tail = _fakes({urls[0]: OLD, urls[1]: NEW})
     total = len(OLD) + len(NEW)
     rows = [{"taxi_zone": "12"}, {"taxi_zone": "4"}]
