@@ -84,7 +84,7 @@
       "sha256": "76a5e0b404a4ec0c2e70b2cf3f482fe64b117dc83602dcc4b31036e099347e55",
       "size_bytes": 492310857,
       "last_modified": "2023-09-21T22:40:27Z",
-      "status": "downloaded"
+      "status": "loaded"
     },
     {
       "month": "2023-08",
@@ -92,7 +92,7 @@
       "sha256": "1f657d06e9465217005104c594578100ab1b5c846f353efd87372f991709d6fd",
       "size_bytes": 450263712,
       "last_modified": "2023-11-02T13:56:54Z",
-      "status": "downloaded"
+      "status": "loaded"
     },
     {
       "month": "2023-09",
@@ -100,7 +100,7 @@
       "sha256": "3f3fb7b6f62bf1a7ed07bfd1af7a23be0f798d101f27b77331e9a52b4d4a10f4",
       "size_bytes": 478067839,
       "last_modified": "2023-11-17T14:55:56Z",
-      "status": "downloaded"
+      "status": "loaded"
     },
     {
       "month": "2023-10",
@@ -156,7 +156,7 @@
       "sha256": "1493f3edd0486bf6c3f949cb5a66ec49e9d04f7ad6e94f85626f16aa6fec7260",
       "size_bytes": 476115643,
       "last_modified": "2024-06-20T20:30:13Z",
-      "status": "downloaded"
+      "status": "loaded"
     },
     {
       "month": "2024-05",
@@ -164,7 +164,7 @@
       "sha256": "152db11cbc95a796fea0b9cb26184b3c4cfad181fa9d7488d4c61f06c521b4b5",
       "size_bytes": 498575918,
       "last_modified": "2024-07-18T18:35:19Z",
-      "status": "downloaded"
+      "status": "loaded"
     },
     {
       "month": "2024-06",
@@ -172,7 +172,7 @@
       "sha256": "4772ee1ab01e639a5db74169b49049f74f0f46a0c925fd3b67f9f068221f6373",
       "size_bytes": 484417715,
       "last_modified": "2024-08-20T14:01:56Z",
-      "status": "downloaded"
+      "status": "loaded"
     },
     {
       "month": "2024-07",
@@ -180,7 +180,7 @@
       "sha256": "3a511a8df72441d72b32f6ce9829e29f5d61666e37f1b40b8d352cc5830c81e1",
       "size_bytes": 468437522,
       "last_modified": "2024-09-18T13:53:34Z",
-      "status": "downloaded"
+      "status": "loaded"
     },
     {
       "month": "2024-08",
@@ -188,7 +188,7 @@
       "sha256": "99fd2913d2c8935e4c1d166f229290a90971b6564c490a8ba2a257de9e08fae2",
       "size_bytes": 465991646,
       "last_modified": "2024-10-23T18:45:26Z",
-      "status": "downloaded"
+      "status": "loaded"
     },
     {
       "month": "2024-09",
@@ -196,7 +196,7 @@
       "sha256": "d2d26d608a775555128a2b435d375f5d25d3d8125b688c57fc60d5a0fb5a1d3b",
       "size_bytes": 466470118,
       "last_modified": "2024-11-20T21:37:39Z",
-      "status": "downloaded"
+      "status": "loaded"
     },
     {
       "month": "2024-10",

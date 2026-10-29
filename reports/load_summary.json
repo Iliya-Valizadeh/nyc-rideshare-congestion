@@ -29,18 +29,8 @@
     "2025-02",
     "2025-03"
   ],
-  "months_loaded": 18,
-  "months_not_loaded": [
-    "2023-07",
-    "2023-08",
-    "2023-09",
-    "2024-04",
-    "2024-05",
-    "2024-06",
-    "2024-07",
-    "2024-08",
-    "2024-09"
-  ],
+  "months_loaded": 27,
+  "months_not_loaded": [],
   "reason_codes": [
     {
       "order": 1,
@@ -79,21 +69,21 @@
     }
   ],
   "totals": {
-    "rows_in_file": 356855154,
+    "rows_in_file": 532242474,
     "rows_other_platform": 0,
-    "rows_kept": 356747284,
-    "rows_quarantined": 107870,
+    "rows_kept": 532128361,
+    "rows_quarantined": 114113,
     "rows_fee_part_null": 0,
-    "fact_rows": 161198689,
-    "quarantine_share": 0.000302,
+    "fact_rows": 242369412,
+    "quarantine_share": 0.000214,
     "quarantined_by_reason": {
       "NULL_REQUIRED": 0,
       "PICKUP_OUTSIDE_MONTH": 0,
       "UNKNOWN_ZONE": 0,
-      "NEGATIVE_FARE": 84667,
+      "NEGATIVE_FARE": 90092,
       "NEGATIVE_DISTANCE": 0,
-      "IMPOSSIBLE_DURATION": 19211,
-      "DUPLICATE_TRIP": 3992
+      "IMPOSSIBLE_DURATION": 19982,
+      "DUPLICATE_TRIP": 4039
     }
   },
   "months": [
@@ -230,6 +220,72 @@
       "warehouse_bytes_after_load": 9208344576
     },
     {
+      "month": "2023-07",
+      "file_name": "fhvhv_tripdata_2023-07.parquet",
+      "sha256": "76a5e0b404a4ec0c2e70b2cf3f482fe64b117dc83602dcc4b31036e099347e55",
+      "rows_in_file": 19132131,
+      "rows_other_platform": 0,
+      "rows_kept": 19131596,
+      "rows_quarantined": 535,
+      "rows_fee_part_null": 0,
+      "fact_rows": 9078428,
+      "quarantine_share": 2.8e-05,
+      "quarantined_by_reason": {
+        "NULL_REQUIRED": 0,
+        "PICKUP_OUTSIDE_MONTH": 0,
+        "UNKNOWN_ZONE": 0,
+        "NEGATIVE_FARE": 396,
+        "NEGATIVE_DISTANCE": 0,
+        "IMPOSSIBLE_DURATION": 139,
+        "DUPLICATE_TRIP": 0
+      },
+      "warehouse_bytes_after_load": 9651630080
+    },
+    {
+      "month": "2023-08",
+      "file_name": "fhvhv_tripdata_2023-08.parquet",
+      "sha256": "1f657d06e9465217005104c594578100ab1b5c846f353efd87372f991709d6fd",
+      "rows_in_file": 18322150,
+      "rows_other_platform": 0,
+      "rows_kept": 18319951,
+      "rows_quarantined": 2199,
+      "rows_fee_part_null": 0,
+      "fact_rows": 8916525,
+      "quarantine_share": 0.00012,
+      "quarantined_by_reason": {
+        "NULL_REQUIRED": 0,
+        "PICKUP_OUTSIDE_MONTH": 0,
+        "UNKNOWN_ZONE": 0,
+        "NEGATIVE_FARE": 2011,
+        "NEGATIVE_DISTANCE": 0,
+        "IMPOSSIBLE_DURATION": 141,
+        "DUPLICATE_TRIP": 47
+      },
+      "warehouse_bytes_after_load": 9999233024
+    },
+    {
+      "month": "2023-09",
+      "file_name": "fhvhv_tripdata_2023-09.parquet",
+      "sha256": "3f3fb7b6f62bf1a7ed07bfd1af7a23be0f798d101f27b77331e9a52b4d4a10f4",
+      "rows_in_file": 19851123,
+      "rows_other_platform": 0,
+      "rows_kept": 19850317,
+      "rows_quarantined": 806,
+      "rows_fee_part_null": 0,
+      "fact_rows": 9012337,
+      "quarantine_share": 4.1e-05,
+      "quarantined_by_reason": {
+        "NULL_REQUIRED": 0,
+        "PICKUP_OUTSIDE_MONTH": 0,
+        "UNKNOWN_ZONE": 0,
+        "NEGATIVE_FARE": 632,
+        "NEGATIVE_DISTANCE": 0,
+        "IMPOSSIBLE_DURATION": 174,
+        "DUPLICATE_TRIP": 0
+      },
+      "warehouse_bytes_after_load": 10543443968
+    },
+    {
       "month": "2023-10",
       "file_name": "fhvhv_tripdata_2023-10.parquet",
       "sha256": "fd577706331f37f6470945af6c268b27af036cf51eaa5689bc84481a1e0579f0",
@@ -360,6 +416,138 @@
         "DUPLICATE_TRIP": 0
       },
       "warehouse_bytes_after_load": 8863625216
+    },
+    {
+      "month": "2024-04",
+      "file_name": "fhvhv_tripdata_2024-04.parquet",
+      "sha256": "1493f3edd0486bf6c3f949cb5a66ec49e9d04f7ad6e94f85626f16aa6fec7260",
+      "rows_in_file": 19733038,
+      "rows_other_platform": 0,
+      "rows_kept": 19732300,
+      "rows_quarantined": 738,
+      "rows_fee_part_null": 0,
+      "fact_rows": 8893911,
+      "quarantine_share": 3.7e-05,
+      "quarantined_by_reason": {
+        "NULL_REQUIRED": 0,
+        "PICKUP_OUTSIDE_MONTH": 0,
+        "UNKNOWN_ZONE": 0,
+        "NEGATIVE_FARE": 673,
+        "NEGATIVE_DISTANCE": 0,
+        "IMPOSSIBLE_DURATION": 65,
+        "DUPLICATE_TRIP": 0
+      },
+      "warehouse_bytes_after_load": 10935873536
+    },
+    {
+      "month": "2024-05",
+      "file_name": "fhvhv_tripdata_2024-05.parquet",
+      "sha256": "152db11cbc95a796fea0b9cb26184b3c4cfad181fa9d7488d4c61f06c521b4b5",
+      "rows_in_file": 20704538,
+      "rows_other_platform": 0,
+      "rows_kept": 20704208,
+      "rows_quarantined": 330,
+      "rows_fee_part_null": 0,
+      "fact_rows": 9295690,
+      "quarantine_share": 1.6e-05,
+      "quarantined_by_reason": {
+        "NULL_REQUIRED": 0,
+        "PICKUP_OUTSIDE_MONTH": 0,
+        "UNKNOWN_ZONE": 0,
+        "NEGATIVE_FARE": 266,
+        "NEGATIVE_DISTANCE": 0,
+        "IMPOSSIBLE_DURATION": 64,
+        "DUPLICATE_TRIP": 0
+      },
+      "warehouse_bytes_after_load": 11444170752
+    },
+    {
+      "month": "2024-06",
+      "file_name": "fhvhv_tripdata_2024-06.parquet",
+      "sha256": "4772ee1ab01e639a5db74169b49049f74f0f46a0c925fd3b67f9f068221f6373",
+      "rows_in_file": 20123226,
+      "rows_other_platform": 0,
+      "rows_kept": 20122959,
+      "rows_quarantined": 267,
+      "rows_fee_part_null": 0,
+      "fact_rows": 9109971,
+      "quarantine_share": 1.3e-05,
+      "quarantined_by_reason": {
+        "NULL_REQUIRED": 0,
+        "PICKUP_OUTSIDE_MONTH": 0,
+        "UNKNOWN_ZONE": 0,
+        "NEGATIVE_FARE": 199,
+        "NEGATIVE_DISTANCE": 0,
+        "IMPOSSIBLE_DURATION": 68,
+        "DUPLICATE_TRIP": 0
+      },
+      "warehouse_bytes_after_load": 11868057600
+    },
+    {
+      "month": "2024-07",
+      "file_name": "fhvhv_tripdata_2024-07.parquet",
+      "sha256": "3a511a8df72441d72b32f6ce9829e29f5d61666e37f1b40b8d352cc5830c81e1",
+      "rows_in_file": 19182934,
+      "rows_other_platform": 0,
+      "rows_kept": 19182448,
+      "rows_quarantined": 486,
+      "rows_fee_part_null": 0,
+      "fact_rows": 9009795,
+      "quarantine_share": 2.5e-05,
+      "quarantined_by_reason": {
+        "NULL_REQUIRED": 0,
+        "PICKUP_OUTSIDE_MONTH": 0,
+        "UNKNOWN_ZONE": 0,
+        "NEGATIVE_FARE": 437,
+        "NEGATIVE_DISTANCE": 0,
+        "IMPOSSIBLE_DURATION": 49,
+        "DUPLICATE_TRIP": 0
+      },
+      "warehouse_bytes_after_load": 12235059200
+    },
+    {
+      "month": "2024-08",
+      "file_name": "fhvhv_tripdata_2024-08.parquet",
+      "sha256": "99fd2913d2c8935e4c1d166f229290a90971b6564c490a8ba2a257de9e08fae2",
+      "rows_in_file": 19128392,
+      "rows_other_platform": 0,
+      "rows_kept": 19128014,
+      "rows_quarantined": 378,
+      "rows_fee_part_null": 0,
+      "fact_rows": 9058461,
+      "quarantine_share": 2e-05,
+      "quarantined_by_reason": {
+        "NULL_REQUIRED": 0,
+        "PICKUP_OUTSIDE_MONTH": 0,
+        "UNKNOWN_ZONE": 0,
+        "NEGATIVE_FARE": 334,
+        "NEGATIVE_DISTANCE": 0,
+        "IMPOSSIBLE_DURATION": 44,
+        "DUPLICATE_TRIP": 0
+      },
+      "warehouse_bytes_after_load": 12669693952
+    },
+    {
+      "month": "2024-09",
+      "file_name": "fhvhv_tripdata_2024-09.parquet",
+      "sha256": "d2d26d608a775555128a2b435d375f5d25d3d8125b688c57fc60d5a0fb5a1d3b",
+      "rows_in_file": 19209788,
+      "rows_other_platform": 0,
+      "rows_kept": 19209284,
+      "rows_quarantined": 504,
+      "rows_fee_part_null": 0,
+      "fact_rows": 8795605,
+      "quarantine_share": 2.6e-05,
+      "quarantined_by_reason": {
+        "NULL_REQUIRED": 0,
+        "PICKUP_OUTSIDE_MONTH": 0,
+        "UNKNOWN_ZONE": 0,
+        "NEGATIVE_FARE": 477,
+        "NEGATIVE_DISTANCE": 0,
+        "IMPOSSIBLE_DURATION": 27,
+        "DUPLICATE_TRIP": 0
+      },
+      "warehouse_bytes_after_load": 13094367232
     },
     {
       "month": "2024-10",
