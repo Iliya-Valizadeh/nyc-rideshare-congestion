@@ -22,7 +22,7 @@ eval:
 	$(RUN) python -m $(PKG).evaluate
 
 demo:
-	$(RUN) python -m $(PKG).demo
+	$(RUN) nrc demo
 
 check-docs:
 	$(RUN) python tools/ai_signs_check.py $(DOCS)

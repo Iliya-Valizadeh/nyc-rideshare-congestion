@@ -13,3 +13,8 @@ build/
 *.egg-info/
 .ipynb_checkpoints/
 .env
+
+# Data (never committed)
+data/raw/
+data/warehouse/
+data/tmp/
