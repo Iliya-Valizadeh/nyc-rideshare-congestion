@@ -29,6 +29,16 @@ FEE_COLUMN_FIRST_MONTH = "2025-01"  # cbd_congestion_fee may be missing before t
 MAX_TRIP_SECONDS = 6 * 60 * 60  # rule IMPOSSIBLE_DURATION: longer trips are clock errors
 LOAD_DISK_FACTOR = 3  # free space a load needs, as a multiple of the raw file size
 
+# The check command (ADR 0004 and 0007).
+ROWS_KEPT_BAND = (0.5, 1.5)  # each month's rows_kept, as a share of the median month
+MTIME_TOLERANCE_S = 2.0  # raw file modified time vs the logged Last-Modified
+
+# Index timing (ADR 0007).
+TIMING_RUNS = 5  # timed runs per query, after one untimed warm-up run
+TIMING_SLICE_MONTHS = 3  # months copied for the slice timing, newest first
+TIMING_SCRATCH_DB = "index_timing.duckdb"  # scratch file in data/tmp/, removed after
+INDEX_TIMING_REPORT = "index_timing.json"
+
 # Limits.
 DISK_HEADROOM = 0.2  # free space must be the file size plus this share
 HASH_CHUNK_BYTES = 1024 * 1024  # SHA-256 reads the file in 1 MiB chunks

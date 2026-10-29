@@ -131,6 +131,41 @@ def month_rows(month: str, n: int = 200, seed: int = 0) -> list[Row]:
     return rows
 
 
+def full_month_rows(month: str, extra: int = 0, seed: int = 0) -> list[Row]:
+    """Valid rows only: one trip per day for each platform, so every day is covered,
+    plus `extra` random valid trips. No bad rows, copies or other platforms."""
+    rng = random.Random(f"full-{seed}-{month}")
+    start = month_start(month)
+    days = ((start + timedelta(days=32)).replace(day=1) - start).days
+    rows = []
+    for day in range(days):
+        for k, license_num in enumerate(("HV0003", "HV0005")):
+            pickup = start + timedelta(days=day, hours=rng.randint(0, 23), minutes=k)
+            rows.append(
+                trip(
+                    month,
+                    hvfhs_license_num=license_num,
+                    pickup_datetime=pickup,
+                    dropoff_datetime=pickup + timedelta(seconds=600),
+                    PULocationID=rng.randint(1, ZONE_COUNT),
+                    DOLocationID=rng.randint(1, ZONE_COUNT),
+                )
+            )
+    for i in range(extra):
+        pickup = start + timedelta(days=rng.randint(0, days - 1), hours=rng.randint(0, 23))
+        rows.append(
+            trip(
+                month,
+                hvfhs_license_num=rng.choice(("HV0003", "HV0005")),
+                pickup_datetime=pickup + timedelta(seconds=i),
+                dropoff_datetime=pickup + timedelta(seconds=i + 600),
+                PULocationID=rng.randint(1, ZONE_COUNT),
+                DOLocationID=rng.randint(1, ZONE_COUNT),
+            )
+        )
+    return rows
+
+
 def write_month(
     path: Path,
     rows: list[Row],
