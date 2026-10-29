@@ -9,3 +9,8 @@ git tag.
 ### Added
 
 - Project skeleton generated from `ds-project-standard`.
+- Download, validation, quarantine and star-schema load for the TLC trip files, with
+  the `nrc` command line.
+- SQL transforms, the `nrc check` command and the index timing report.
+- `nrc demo`, run by `make demo`: the whole pipeline on fake months, offline.
+- README for the pipeline half, with the row-count table and both diagrams.

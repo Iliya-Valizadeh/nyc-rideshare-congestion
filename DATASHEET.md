@@ -4,8 +4,8 @@ Short form of the datasheet from Gebru et al., "Datasheets for Datasets"
 (https://arxiv.org/abs/1803.09010). Every number here needs a row in
 [CLAIMS.md](CLAIMS.md).
 
-Status: partly filled in T02, from source metadata only. No data has been downloaded or
-loaded yet. Sections marked TODO wait for later tasks.
+Status: the pipeline sections are filled in. All 27 months are downloaded and loaded.
+The study sections wait for the Part 2 analysis.
 
 ## Motivation
 
@@ -26,7 +26,14 @@ and Uber trips into the congestion zone.
   `cbd_congestion_fee`, the per-trip congestion charge.
 - The column types differ slightly between months. See
   [ADR 0001](docs/decisions/0001-data-sources.md).
-- TODO (T04, T07): the warehouse grain, the tables and the row counts.
+- The warehouse is a star schema in one DuckDB file. The fact table,
+  `fact_trip_hourly`, holds one row per pickup date, pickup hour, platform, pickup zone
+  and drop-off zone, with trip counts and sums of miles, time and fares. Its
+  dimensions are `dim_date`, `dim_zone` and `dim_platform`. `load_log` holds one row
+  per file and `quarantine_trip` holds every rejected row
+  ([ADR 0003](docs/decisions/0003-data-model.md)).
+- Row counts for every step are in the README table "Where every trip row went", taken
+  from `reports/load_summary.json`. Counts for each month are in the same file.
 
 ## Collection
 
@@ -43,8 +50,16 @@ and Uber trips into the congestion zone.
 
 ## Preprocessing
 
-TODO (T04 to T07): validation rules, the quarantine table with reason codes, and the
-scripts that do them.
+- `nrc load` checks each row against seven rules in a fixed order (empty required
+  column, pickup outside the file month, unknown zone, negative fare, negative distance,
+  impossible duration, exact duplicate). A failing row goes to `quarantine_trip` with
+  the code of the first rule it breaks. The code is in
+  `src/nyc_rideshare_congestion/pipeline/rules.py` and the rules are in
+  [ADR 0004](docs/decisions/0004-loads-and-quality.md).
+- Rows from license numbers other than `HV0003` and `HV0005` are counted and left out.
+- Kept rows are summed to the fact grain. A month loads in one transaction.
+- `nrc check` tests freshness, that the counts add up, and that every fact key exists in
+  its dimension.
 
 ## Uses
 
