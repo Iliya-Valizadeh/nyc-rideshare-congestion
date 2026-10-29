@@ -22,7 +22,7 @@ eval:
 	$(RUN) python -m $(PKG).evaluate
 
 demo:
-	$(RUN) python -m $(PKG).demo
+	$(RUN) nrc demo
 
 check-docs:
 	$(RUN) python tools/writing_style_check.py $(DOCS)

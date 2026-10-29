@@ -1,0 +1,620 @@
+{
+  "generated_at": "2026-10-21T05:46:18Z",
+  "first_month": "2023-01",
+  "last_month": "2025-03",
+  "file_count": 27,
+  "total_bytes": 13051319334,
+  "total_gb": 13.05,
+  "disk": {
+    "headroom": 0.2,
+    "need_gb": 15.66,
+    "free_gb": 278.24,
+    "ok": true
+  },
+  "zone_lookup_url": "https://d37ci6vzurychx.cloudfront.net/misc/taxi_zone_lookup.csv",
+  "zone_shapes_url": "https://d37ci6vzurychx.cloudfront.net/misc/taxi_zones.zip",
+  "cbd_zones": {
+    "url": "https://data.ny.gov/resource/yfdc-w5jh.json?$select=taxi_zone&$order=taxi_zone",
+    "count": 38,
+    "ids": [
+      4,
+      12,
+      13,
+      45,
+      48,
+      50,
+      68,
+      79,
+      87,
+      88,
+      90,
+      100,
+      107,
+      113,
+      114,
+      125,
+      137,
+      144,
+      148,
+      158,
+      161,
+      162,
+      163,
+      164,
+      170,
+      186,
+      209,
+      211,
+      224,
+      229,
+      230,
+      231,
+      232,
+      233,
+      234,
+      246,
+      249,
+      261
+    ]
+  },
+  "schemas": [
+    {
+      "schema_id": 0,
+      "months": [
+        "2023-01"
+      ],
+      "columns": [
+        [
+          "hvfhs_license_num",
+          "string"
+        ],
+        [
+          "dispatching_base_num",
+          "string"
+        ],
+        [
+          "originating_base_num",
+          "string"
+        ],
+        [
+          "request_datetime",
+          "timestamp[us]"
+        ],
+        [
+          "on_scene_datetime",
+          "timestamp[us]"
+        ],
+        [
+          "pickup_datetime",
+          "timestamp[us]"
+        ],
+        [
+          "dropoff_datetime",
+          "timestamp[us]"
+        ],
+        [
+          "PULocationID",
+          "int64"
+        ],
+        [
+          "DOLocationID",
+          "int64"
+        ],
+        [
+          "trip_miles",
+          "double"
+        ],
+        [
+          "trip_time",
+          "int64"
+        ],
+        [
+          "base_passenger_fare",
+          "double"
+        ],
+        [
+          "tolls",
+          "double"
+        ],
+        [
+          "bcf",
+          "double"
+        ],
+        [
+          "sales_tax",
+          "double"
+        ],
+        [
+          "congestion_surcharge",
+          "double"
+        ],
+        [
+          "airport_fee",
+          "double"
+        ],
+        [
+          "tips",
+          "double"
+        ],
+        [
+          "driver_pay",
+          "double"
+        ],
+        [
+          "shared_request_flag",
+          "string"
+        ],
+        [
+          "shared_match_flag",
+          "string"
+        ],
+        [
+          "access_a_ride_flag",
+          "string"
+        ],
+        [
+          "wav_request_flag",
+          "string"
+        ],
+        [
+          "wav_match_flag",
+          "string"
+        ]
+      ]
+    },
+    {
+      "schema_id": 1,
+      "months": [
+        "2023-02",
+        "2023-03",
+        "2023-04",
+        "2023-05",
+        "2023-06",
+        "2023-07",
+        "2023-08",
+        "2023-09",
+        "2023-10",
+        "2023-11",
+        "2023-12",
+        "2024-01",
+        "2024-02",
+        "2024-03",
+        "2024-04",
+        "2024-05",
+        "2024-06",
+        "2024-07",
+        "2024-08",
+        "2024-09",
+        "2024-10",
+        "2024-11",
+        "2024-12"
+      ],
+      "columns": [
+        [
+          "hvfhs_license_num",
+          "large_string"
+        ],
+        [
+          "dispatching_base_num",
+          "large_string"
+        ],
+        [
+          "originating_base_num",
+          "large_string"
+        ],
+        [
+          "request_datetime",
+          "timestamp[us]"
+        ],
+        [
+          "on_scene_datetime",
+          "timestamp[us]"
+        ],
+        [
+          "pickup_datetime",
+          "timestamp[us]"
+        ],
+        [
+          "dropoff_datetime",
+          "timestamp[us]"
+        ],
+        [
+          "PULocationID",
+          "int32"
+        ],
+        [
+          "DOLocationID",
+          "int32"
+        ],
+        [
+          "trip_miles",
+          "double"
+        ],
+        [
+          "trip_time",
+          "int64"
+        ],
+        [
+          "base_passenger_fare",
+          "double"
+        ],
+        [
+          "tolls",
+          "double"
+        ],
+        [
+          "bcf",
+          "double"
+        ],
+        [
+          "sales_tax",
+          "double"
+        ],
+        [
+          "congestion_surcharge",
+          "double"
+        ],
+        [
+          "airport_fee",
+          "double"
+        ],
+        [
+          "tips",
+          "double"
+        ],
+        [
+          "driver_pay",
+          "double"
+        ],
+        [
+          "shared_request_flag",
+          "large_string"
+        ],
+        [
+          "shared_match_flag",
+          "large_string"
+        ],
+        [
+          "access_a_ride_flag",
+          "large_string"
+        ],
+        [
+          "wav_request_flag",
+          "large_string"
+        ],
+        [
+          "wav_match_flag",
+          "large_string"
+        ]
+      ]
+    },
+    {
+      "schema_id": 2,
+      "months": [
+        "2025-01",
+        "2025-02",
+        "2025-03"
+      ],
+      "columns": [
+        [
+          "hvfhs_license_num",
+          "large_string"
+        ],
+        [
+          "dispatching_base_num",
+          "large_string"
+        ],
+        [
+          "originating_base_num",
+          "large_string"
+        ],
+        [
+          "request_datetime",
+          "timestamp[us]"
+        ],
+        [
+          "on_scene_datetime",
+          "timestamp[us]"
+        ],
+        [
+          "pickup_datetime",
+          "timestamp[us]"
+        ],
+        [
+          "dropoff_datetime",
+          "timestamp[us]"
+        ],
+        [
+          "PULocationID",
+          "int32"
+        ],
+        [
+          "DOLocationID",
+          "int32"
+        ],
+        [
+          "trip_miles",
+          "double"
+        ],
+        [
+          "trip_time",
+          "int64"
+        ],
+        [
+          "base_passenger_fare",
+          "double"
+        ],
+        [
+          "tolls",
+          "double"
+        ],
+        [
+          "bcf",
+          "double"
+        ],
+        [
+          "sales_tax",
+          "double"
+        ],
+        [
+          "congestion_surcharge",
+          "double"
+        ],
+        [
+          "airport_fee",
+          "double"
+        ],
+        [
+          "tips",
+          "double"
+        ],
+        [
+          "driver_pay",
+          "double"
+        ],
+        [
+          "shared_request_flag",
+          "large_string"
+        ],
+        [
+          "shared_match_flag",
+          "large_string"
+        ],
+        [
+          "access_a_ride_flag",
+          "large_string"
+        ],
+        [
+          "wav_request_flag",
+          "large_string"
+        ],
+        [
+          "wav_match_flag",
+          "large_string"
+        ],
+        [
+          "cbd_congestion_fee",
+          "double"
+        ]
+      ]
+    }
+  ],
+  "files": [
+    {
+      "month": "2023-01",
+      "url": "https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_2023-01.parquet",
+      "status": 200,
+      "size_bytes": 473816636,
+      "last_modified": "Mon, 20 Mar 2023 20:46:51 GMT",
+      "schema_id": 0
+    },
+    {
+      "month": "2023-02",
+      "url": "https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_2023-02.parquet",
+      "status": 200,
+      "size_bytes": 458895583,
+      "last_modified": "Mon, 01 May 2023 15:32:56 GMT",
+      "schema_id": 1
+    },
+    {
+      "month": "2023-03",
+      "url": "https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_2023-03.parquet",
+      "status": 200,
+      "size_bytes": 522484870,
+      "last_modified": "Fri, 19 May 2023 16:09:46 GMT",
+      "schema_id": 1
+    },
+    {
+      "month": "2023-04",
+      "url": "https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_2023-04.parquet",
+      "status": 200,
+      "size_bytes": 491826475,
+      "last_modified": "Fri, 23 Jun 2023 14:05:21 GMT",
+      "schema_id": 1
+    },
+    {
+      "month": "2023-05",
+      "url": "https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_2023-05.parquet",
+      "status": 200,
+      "size_bytes": 513108369,
+      "last_modified": "Wed, 26 Jul 2023 14:48:04 GMT",
+      "schema_id": 1
+    },
+    {
+      "month": "2023-06",
+      "url": "https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_2023-06.parquet",
+      "status": 200,
+      "size_bytes": 498799838,
+      "last_modified": "Tue, 22 Aug 2023 13:23:37 GMT",
+      "schema_id": 1
+    },
+    {
+      "month": "2023-07",
+      "url": "https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_2023-07.parquet",
+      "status": 200,
+      "size_bytes": 492310857,
+      "last_modified": "Thu, 21 Sep 2023 22:40:27 GMT",
+      "schema_id": 1
+    },
+    {
+      "month": "2023-08",
+      "url": "https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_2023-08.parquet",
+      "status": 200,
+      "size_bytes": 450263712,
+      "last_modified": "Thu, 02 Nov 2023 13:56:54 GMT",
+      "schema_id": 1
+    },
+    {
+      "month": "2023-09",
+      "url": "https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_2023-09.parquet",
+      "status": 200,
+      "size_bytes": 478067839,
+      "last_modified": "Fri, 17 Nov 2023 14:55:56 GMT",
+      "schema_id": 1
+    },
+    {
+      "month": "2023-10",
+      "url": "https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_2023-10.parquet",
+      "status": 200,
+      "size_bytes": 485826227,
+      "last_modified": "Mon, 18 Dec 2023 14:32:59 GMT",
+      "schema_id": 1
+    },
+    {
+      "month": "2023-11",
+      "url": "https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_2023-11.parquet",
+      "status": 200,
+      "size_bytes": 464926008,
+      "last_modified": "Thu, 18 Jan 2024 15:04:46 GMT",
+      "schema_id": 1
+    },
+    {
+      "month": "2023-12",
+      "url": "https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_2023-12.parquet",
+      "status": 200,
+      "size_bytes": 490453634,
+      "last_modified": "Thu, 22 Feb 2024 14:55:08 GMT",
+      "schema_id": 1
+    },
+    {
+      "month": "2024-01",
+      "url": "https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_2024-01.parquet",
+      "status": 200,
+      "size_bytes": 472757547,
+      "last_modified": "Thu, 21 Mar 2024 15:35:44 GMT",
+      "schema_id": 1
+    },
+    {
+      "month": "2024-02",
+      "url": "https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_2024-02.parquet",
+      "status": 200,
+      "size_bytes": 462475428,
+      "last_modified": "Fri, 19 Apr 2024 18:22:42 GMT",
+      "schema_id": 1
+    },
+    {
+      "month": "2024-03",
+      "url": "https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_2024-03.parquet",
+      "status": 200,
+      "size_bytes": 507940560,
+      "last_modified": "Wed, 22 May 2024 19:27:43 GMT",
+      "schema_id": 1
+    },
+    {
+      "month": "2024-04",
+      "url": "https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_2024-04.parquet",
+      "status": 200,
+      "size_bytes": 476115643,
+      "last_modified": "Thu, 20 Jun 2024 20:30:13 GMT",
+      "schema_id": 1
+    },
+    {
+      "month": "2024-05",
+      "url": "https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_2024-05.parquet",
+      "status": 200,
+      "size_bytes": 498575918,
+      "last_modified": "Thu, 18 Jul 2024 18:35:19 GMT",
+      "schema_id": 1
+    },
+    {
+      "month": "2024-06",
+      "url": "https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_2024-06.parquet",
+      "status": 200,
+      "size_bytes": 484417715,
+      "last_modified": "Tue, 20 Aug 2024 14:01:56 GMT",
+      "schema_id": 1
+    },
+    {
+      "month": "2024-07",
+      "url": "https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_2024-07.parquet",
+      "status": 200,
+      "size_bytes": 468437522,
+      "last_modified": "Wed, 18 Sep 2024 13:53:34 GMT",
+      "schema_id": 1
+    },
+    {
+      "month": "2024-08",
+      "url": "https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_2024-08.parquet",
+      "status": 200,
+      "size_bytes": 465991646,
+      "last_modified": "Wed, 23 Oct 2024 18:45:26 GMT",
+      "schema_id": 1
+    },
+    {
+      "month": "2024-09",
+      "url": "https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_2024-09.parquet",
+      "status": 200,
+      "size_bytes": 466470118,
+      "last_modified": "Wed, 20 Nov 2024 21:37:39 GMT",
+      "schema_id": 1
+    },
+    {
+      "month": "2024-10",
+      "url": "https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_2024-10.parquet",
+      "status": 200,
+      "size_bytes": 485102359,
+      "last_modified": "Wed, 18 Dec 2024 21:21:21 GMT",
+      "schema_id": 1
+    },
+    {
+      "month": "2024-11",
+      "url": "https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_2024-11.parquet",
+      "status": 200,
+      "size_bytes": 480228052,
+      "last_modified": "Fri, 17 Jan 2025 20:03:41 GMT",
+      "schema_id": 1
+    },
+    {
+      "month": "2024-12",
+      "url": "https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_2024-12.parquet",
+      "status": 200,
+      "size_bytes": 507534115,
+      "last_modified": "Fri, 21 Feb 2025 21:29:11 GMT",
+      "schema_id": 1
+    },
+    {
+      "month": "2025-01",
+      "url": "https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_2025-01.parquet",
+      "status": 200,
+      "size_bytes": 491076642,
+      "last_modified": "Wed, 23 Apr 2025 16:30:36 GMT",
+      "schema_id": 2
+    },
+    {
+      "month": "2025-02",
+      "url": "https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_2025-02.parquet",
+      "status": 200,
+      "size_bytes": 461632254,
+      "last_modified": "Wed, 23 Apr 2025 16:15:47 GMT",
+      "schema_id": 2
+    },
+    {
+      "month": "2025-03",
+      "url": "https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_2025-03.parquet",
+      "status": 200,
+      "size_bytes": 501783767,
+      "last_modified": "Wed, 21 May 2025 15:28:05 GMT",
+      "schema_id": 2
+    }
+  ]
+}

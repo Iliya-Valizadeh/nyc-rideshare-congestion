@@ -23,9 +23,19 @@ make setup
 make demo
 ```
 
-TODO: say what the reader should see when the demo finishes.
+The demo writes a fake zone list and two fake months of trips into a temporary folder.
+The rows are made up, with a fixed seed. They are not real trips. Then it runs the real
+pipeline commands on them, in this order:
 
-Until you replace the template example, the demo makes a small synthetic dataset. It
-fits a [baseline](glossary.md#baseline) and a linear model. Then it prints the
-[mean absolute error](glossary.md#mean-absolute-error) of each one on the test rows,
-with a [confidence interval](glossary.md#confidence-interval).
+1. `nrc init` creates the warehouse tables and fills the dimensions.
+2. `nrc load --all` loads both months. Each month prints how many rows it kept and how
+   many it quarantined, for each reason code.
+3. `nrc load --all` runs again. Both months print `skip`, and no rows are added.
+4. `nrc check` passes on the two loaded months.
+5. `nrc check` runs again, one month past the data. It prints `FAIL` lines and exits
+   with code 1. The demo expects this failure.
+6. `nrc transform` builds the three report tables, and the demo prints their first
+   rows.
+
+The last line you should see is `demo finished: every step did what it should`. The
+demo then deletes its temporary folder, so it leaves nothing in the repo.
