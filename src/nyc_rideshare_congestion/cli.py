@@ -1,4 +1,4 @@
-"""The `nrc` command line (ADR 0004 and 0007). The demo command comes in a later task."""
+"""The `nrc` command line (ADR 0004 and 0007)."""
 
 from __future__ import annotations
 
@@ -64,6 +64,7 @@ def build_parser() -> argparse.ArgumentParser:
 
     sub.add_parser("transform", help="build the tf_* tables from sql/transforms/")
     sub.add_parser("time-index", help="time the drop-off zone query before and after its index")
+    sub.add_parser("demo", help="run the whole pipeline offline on fake data in a temp folder")
     return parser
 
 
@@ -180,6 +181,10 @@ def main(
     free_fn: tlc.DiskFreeFn = tlc.disk_free,
 ) -> int:
     args = build_parser().parse_args(argv)
+    if args.command == "demo":
+        from nyc_rideshare_congestion import demo  # demo calls back into main()
+
+        return demo.main()
     paths = config.Paths(args.root or Path.cwd())
     con = db.connect(paths.db, paths.tmp)
     try:

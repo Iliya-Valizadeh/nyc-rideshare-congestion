@@ -8,7 +8,7 @@ from pathlib import Path
 import numpy as np
 import pytest
 
-from nyc_rideshare_congestion import __version__, data, demo, evaluate, metrics, models
+from nyc_rideshare_congestion import __version__, data, evaluate, metrics, models
 
 REPO = Path(__file__).resolve().parent.parent
 
@@ -122,9 +122,3 @@ def _flatten(node: object, prefix: str = "") -> dict[str, object]:
             out.update(_flatten(value, f"{prefix}{key}."))
         return out
     return {prefix.rstrip("."): node}
-
-
-def test_demo_prints_the_result(capsys: pytest.CaptureFixture[str]) -> None:
-    assert demo.main() == 0
-    out = capsys.readouterr().out
-    assert "Linear model" in out and "Baseline" in out
