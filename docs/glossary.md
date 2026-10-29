@@ -68,3 +68,8 @@ just outside a fee area, which makes the comparison less clean.
 
 A difference-in-differences minus the same estimate from a year with no change, which
 removes a seasonal gap between the two groups.
+
+## Idempotent
+
+A step you can run twice with the same result as running it once, so a stopped run
+can simply be started again.
