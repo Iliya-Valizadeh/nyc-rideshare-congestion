@@ -291,7 +291,7 @@ Ranked by how much each could change what the data says. The full list is in
 | `sql/` | Warehouse DDL (`schema/`), the load inserts (`load/`), the SQL transforms (`transforms/`) and the timed index (`index/`) |
 | `src/` | The package code |
 | `tests/` | Unit and data tests |
-| `tools/` | Checks for claims, readability, AI-writing signs and links |
+| `tools/` | Checks for claims, readability, writing style and links |
 <!-- repo-map:end -->
 
 ## License
