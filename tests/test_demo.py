@@ -26,7 +26,12 @@ def test_demo_writes_nothing_outside_its_folder(
     monkeypatch.chdir(tmp_path)
     assert cli.main(["demo"]) == config.EXIT_OK
     assert list(tmp_path.iterdir()) == []
-    assert "Fake data only" in capsys.readouterr().out
+    out = capsys.readouterr().out
+    assert out.startswith("DEMO ON A SMALL SYNTHETIC SAMPLE: two made-up months")
+    assert "finishes in seconds" in out
+    real = "The numbers in the README come from the real TLC files, loaded with"
+    assert out.count(real) == 2 and "`nrc load --all`" in out
+    assert out.rstrip().endswith("`nrc download --all` and `nrc load --all`.")
 
 
 def test_demo_stops_when_a_step_goes_wrong(

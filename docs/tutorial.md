@@ -23,6 +23,11 @@ make setup
 make demo
 ```
 
+The demo runs on a small synthetic sample and finishes in seconds. Its first line says
+so in capital letters: `DEMO ON A SMALL SYNTHETIC SAMPLE`. The numbers in the README do
+not come from the demo. They come from the real TLC files, loaded with
+`nrc download --all` and `nrc load --all`.
+
 The demo writes a fake zone list and two fake months of trips into a temporary folder.
 The rows are made up, with a fixed seed. They are not real trips. Then it runs the real
 pipeline commands on them, in this order:
@@ -37,5 +42,7 @@ pipeline commands on them, in this order:
 6. `nrc transform` builds the three report tables, and the demo prints their first
    rows.
 
-The last line you should see is `demo finished: every step did what it should`. The
-demo then deletes its temporary folder, so it leaves nothing in the repo.
+Near the end you should see `demo finished: every step did what it should`. The demo
+then deletes its temporary folder, so it leaves nothing in the repo. Its last two lines
+repeat that the sample is synthetic and that the README numbers come from the real
+files.

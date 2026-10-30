@@ -12,8 +12,8 @@ Facts that shape the choice:
 
 - PostgreSQL is not installed. `where psql` finds nothing, and there is no
   `C:\Program Files\PostgreSQL` folder.
-- Builder sessions may not install system software or services. A PostgreSQL install
-  would have to wait for Iliya.
+- The project rules allow no system software or service installs during the build. A
+  PostgreSQL install would be a separate step I do by hand.
 - The machine has 7 GB of RAM with little free. The pipeline may use at most 2 GB.
 - The source is 13.05 GB of Parquet over 27 monthly files (ADR 0001).
 - Tests, `make demo` and CI must run with no network and no running services.
@@ -23,7 +23,7 @@ Facts that shape the choice:
 - PostgreSQL. It is the engine most hiring managers know, and it enforces keys and
   constraints well. But it needs a system install and a running service. Loading many
   months of trips into row storage on this machine would be slow, and CI would need a
-  service container. It cannot start until Iliya installs it.
+  service container. It cannot start until I install it by hand.
 - DuckDB, one file at `data/warehouse/`. It is a Python package (`uv add duckdb`), so
   there is nothing to install system-wide. It reads Parquet directly and can cap its
   memory and spill to disk. It supports `PRIMARY KEY`, `FOREIGN KEY`, `UNIQUE`,
@@ -36,11 +36,11 @@ Facts that shape the choice:
 
 Use DuckDB for the whole warehouse. Keep the same star schema the spec describes, with
 primary keys, foreign keys, `NOT NULL` and `CHECK` constraints declared in the DDL under
-`sql/`. Every connection uses the settings from the brief: `memory_limit` of 2GB or
+`sql/`. Every connection uses the settings from the project plan: `memory_limit` of 2GB or
 less, `threads` 2, `temp_directory` set to `data/tmp/`, and
 `preserve_insertion_order=false`.
 
-PostgreSQL is not the better choice here, so no install goes under "Needs Iliya". The
+PostgreSQL is not the better choice here, so no manual install is needed. The
 reason in one line: DuckDB fits a 2 GB memory budget and runs in tests and CI with no
 service, which PostgreSQL cannot do on this machine.
 

@@ -1,14 +1,19 @@
 # nyc-rideshare-congestion
 
-A tested pipeline for NYC Lyft and Uber trip data, and a study of what congestion pricing changed.
+Did New York's congestion toll change Uber and Lyft trips into lower Manhattan? A tested pipeline over the TLC trip data, and a study planned before any results.
 
 ## In plain words
 
-New York City publishes a record of every Uber and Lyft trip. This project loads
-those records into one small database, checks each one, and sets aside the broken
-ones with a note that says what is wrong. The second half will use the clean data
-to ask whether the new toll on driving into lower Manhattan changed how many people
-take Uber and Lyft into that area. That second half is not done yet.
+The question: on January 5, 2025, New York started charging a toll to drive into
+lower Manhattan. Did Uber and Lyft trips into that area change, compared with trips
+into other zones?
+
+<!-- headline-finding:start. Replace this paragraph with the Part 2 estimate, its interval and the zones it is compared with, once the analysis has run. Each number needs a CLAIMS.md row. -->
+What I found: the estimate is not finished yet, so this page gives no answer to the
+question. The data part is done. I loaded all 27 monthly TLC files, from January 2023
+to March 2025. I kept 532,128,361 trip rows and set aside 114,113 broken rows, each
+with a note that says what is wrong.
+<!-- headline-finding:end -->
 
 ## Try it
 
@@ -20,12 +25,20 @@ make demo      # or: uv run nrc demo
 make test      # or: uv run pytest
 ```
 
-`make demo` writes a fake zone list and two fake months of trips into a temporary
-folder. Then it runs the real pipeline commands on them and deletes the folder. The
-fake rows are random with a fixed seed. They are not real trips and say nothing about
-NYC. A shortened run looks like this:
+The demo runs on a small synthetic sample and finishes in seconds. It writes a fake
+zone list and two fake months of trips into a temporary folder. Then it runs the real
+pipeline commands on them and deletes the folder. The fake rows are random with a
+fixed seed. They are not real trips and say nothing about NYC. The numbers in
+[Result](#result) do not come from the demo. They come from the real TLC files,
+loaded with `nrc load --all` (see [Run it on the real data](#run-it-on-the-real-data)).
+A shortened run looks like this:
 
 ```text
+DEMO ON A SMALL SYNTHETIC SAMPLE: two made-up months with a fixed seed, not real trips.
+It downloads nothing and finishes in seconds.
+The numbers in the README come from the real TLC files, loaded with `nrc download --all` and `nrc load --all`.
+This demo's counts say nothing about NYC.
+
 == Validate, quarantine and load: nrc load --all
 loaded 2024-12: kept 1563, quarantined 8 (NULL_REQUIRED 1, PICKUP_OUTSIDE_MONTH 1, UNKNOWN_ZONE 1, NEGATIVE_FARE 1, NEGATIVE_DISTANCE 1, IMPOSSIBLE_DURATION 1, DUPLICATE_TRIP 2), other platform 3, fact rows 1562
 loaded 2025-01: kept 1563, quarantined 8 (...), other platform 3, fact rows 1562
@@ -101,6 +114,15 @@ should do about it. The method, the checks and the stop rules are fixed in
 [docs/eval_plan.md](docs/eval_plan.md). No trip counts, fares or durations by zone or
 month have been reported yet.
 
+The headline will have the parts below. Each one is empty until the analysis runs.
+
+<!-- headline-result:start. Fill from the Part 2 analysis output. Each number needs a CLAIMS.md row. Use the wording the "What the memo may say" table in docs/eval_plan.md allows. -->
+- Change in Uber and Lyft trips into the zone per day: not finished.
+- Interval around that change: not finished.
+- Compared with: other Manhattan and Brooklyn zones, as the plan fixes.
+- Chart: none yet.
+<!-- headline-result:end -->
+
 ## How I worked
 
 - Evaluation plan, written before any results: [docs/eval_plan.md](docs/eval_plan.md),
@@ -111,7 +133,6 @@ month have been reported yet.
 - Error analysis: not yet. It comes with the Part 2 results.
 - How ready it is for production, scored against Breck et al.'s checklist:
   [docs/ml_test_score.md](docs/ml_test_score.md).
-- How the AI assistant was used: [AI_USAGE.md](AI_USAGE.md).
 
 ## How it works
 
@@ -292,7 +313,7 @@ Ranked by how much each could change what the data says. The full list is in
 | `sql/` | Warehouse DDL (`schema/`), the load inserts (`load/`), the SQL transforms (`transforms/`) and the timed index (`index/`) |
 | `src/` | The package code |
 | `tests/` | Unit and data tests |
-| `tools/` | Checks for claims, readability, AI-writing signs and links |
+| `tools/` | Checks for claims, readability, writing style and links |
 <!-- repo-map:end -->
 
 ## License

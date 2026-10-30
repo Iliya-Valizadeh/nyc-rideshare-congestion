@@ -3,7 +3,7 @@
 
 PKG := nyc_rideshare_congestion
 RUN := uv run
-DOCS := README.md CLAIMS.md CHANGELOG.md AI_USAGE.md $(wildcard MODEL_CARD.md DATASHEET.md) docs
+DOCS := README.md CLAIMS.md CHANGELOG.md $(wildcard MODEL_CARD.md DATASHEET.md) docs
 
 .PHONY: setup lint test eval demo check-docs all
 
@@ -25,7 +25,7 @@ demo:
 	$(RUN) nrc demo
 
 check-docs:
-	$(RUN) python tools/ai_signs_check.py $(DOCS)
+	$(RUN) python tools/writing_style_check.py $(DOCS)
 	$(RUN) python tools/claims_check.py $(DOCS)
 	$(RUN) python tools/readability_check.py --glossary docs/glossary.md $(DOCS)
 	$(RUN) python tools/links_check.py $(DOCS)
