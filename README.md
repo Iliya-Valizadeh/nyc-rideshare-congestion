@@ -111,7 +111,6 @@ month have been reported yet.
 - Error analysis: not yet. It comes with the Part 2 results.
 - How ready it is for production, scored against Breck et al.'s checklist:
   [docs/ml_test_score.md](docs/ml_test_score.md).
-- How the AI assistant was used: [AI_USAGE.md](AI_USAGE.md).
 
 ## How it works
 
