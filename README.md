@@ -20,12 +20,20 @@ make demo      # or: uv run nrc demo
 make test      # or: uv run pytest
 ```
 
-`make demo` writes a fake zone list and two fake months of trips into a temporary
-folder. Then it runs the real pipeline commands on them and deletes the folder. The
-fake rows are random with a fixed seed. They are not real trips and say nothing about
-NYC. A shortened run looks like this:
+The demo runs on a small synthetic sample and finishes in seconds. It writes a fake
+zone list and two fake months of trips into a temporary folder. Then it runs the real
+pipeline commands on them and deletes the folder. The fake rows are random with a
+fixed seed. They are not real trips and say nothing about NYC. The numbers in
+[Result](#result) do not come from the demo. They come from the real TLC files,
+loaded with `nrc load --all` (see [Run it on the real data](#run-it-on-the-real-data)).
+A shortened run looks like this:
 
 ```text
+DEMO ON A SMALL SYNTHETIC SAMPLE: two made-up months with a fixed seed, not real trips.
+It downloads nothing and finishes in seconds.
+The numbers in the README come from the real TLC files, loaded with `nrc download --all` and `nrc load --all`.
+This demo's counts say nothing about NYC.
+
 == Validate, quarantine and load: nrc load --all
 loaded 2024-12: kept 1563, quarantined 8 (NULL_REQUIRED 1, PICKUP_OUTSIDE_MONTH 1, UNKNOWN_ZONE 1, NEGATIVE_FARE 1, NEGATIVE_DISTANCE 1, IMPOSSIBLE_DURATION 1, DUPLICATE_TRIP 2), other platform 3, fact rows 1562
 loaded 2025-01: kept 1563, quarantined 8 (...), other platform 3, fact rows 1562
