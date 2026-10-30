@@ -24,7 +24,7 @@ Parquet footer, which holds the schema. Its output is
 | What | URL | Checked |
 |---|---|---|
 | Trip files, one per month | `https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_YYYY-MM.parquet` | HEAD request per file |
-| Download page | <https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page> | Read by the researcher agent |
+| Download page | <https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page> | Read |
 | Taxi zone lookup | `https://d37ci6vzurychx.cloudfront.net/misc/taxi_zone_lookup.csv` | HEAD request, and fetched once to check boroughs |
 | Taxi zone shapes | `https://d37ci6vzurychx.cloudfront.net/misc/taxi_zones.zip` | HEAD request |
 | Data dictionary | <https://www.nyc.gov/assets/tlc/downloads/pdf/data_dictionary_trip_records_hvfhs.pdf> | Read in full (version dated March 18, 2025) | <!-- not-a-claim -->

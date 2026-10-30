@@ -10,7 +10,7 @@ row, a freshness and row-count check that fails loudly, and tests for malformed 
 missing column, duplicate events and a re-run. The study plan (`docs/eval_plan.md`)
 adds pipeline checks that must pass before any analysis. ADR 0003 sets the tables.
 
-Limits from the brief: 2 GB of memory for the pipeline, a 10-minute limit per command,
+Limits from the project plan: 2 GB of memory for the pipeline, a 10-minute limit per command,
 no network in tests or the demo, and no scheduled jobs.
 
 ## Options
