@@ -100,10 +100,23 @@ def run(root: Path) -> int:
     return config.EXIT_OK
 
 
+SAMPLE_NOTE = (
+    "DEMO ON A SMALL SYNTHETIC SAMPLE: two made-up months with a fixed seed, not real "
+    "trips.\nIt downloads nothing and finishes in seconds."
+)
+REAL_NOTE = (
+    "The numbers in the README come from the real TLC files, loaded with "
+    "`nrc download --all` and `nrc load --all`.\nThis demo's counts say nothing about NYC."
+)
+
+
 def main() -> int:
-    print("Fake data only: made-up rows with a fixed seed, not real trips.")
+    print(SAMPLE_NOTE)
+    print(REAL_NOTE)
     with tempfile.TemporaryDirectory(prefix="nrc-demo-", ignore_cleanup_errors=True) as tmp:
-        return run(Path(tmp))
+        code = run(Path(tmp))
+    print(f"\n{SAMPLE_NOTE.splitlines()[0]}\n{REAL_NOTE.splitlines()[0]}")
+    return code
 
 
 if __name__ == "__main__":

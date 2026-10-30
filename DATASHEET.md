@@ -9,8 +9,8 @@ The study sections wait for the Part 2 analysis.
 
 ## Motivation
 
-The dataset is a local warehouse of Lyft and Uber trips in New York City. Iliya
-Valizadeh builds it for a portfolio project. It has two aims: show a tested data
+The dataset is a local warehouse of Lyft and Uber trips in New York City. I built
+it for a portfolio project. It has two aims: show a tested data
 pipeline, and study whether congestion pricing (started January 5, 2025) changed Lyft
 and Uber trips into the congestion zone.
 
@@ -37,9 +37,10 @@ and Uber trips into the congestion zone.
 
 ## Collection
 
-- The data comes from the TLC monthly Parquet files at
-  `https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_YYYY-MM.parquet`, and
-  the TLC taxi zone lookup and shapes.
+- The data comes from the TLC monthly Parquet files listed on the
+  [TLC trip record data page](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page),
+  and the TLC taxi zone lookup and shapes. Each monthly file's address follows the
+  pattern `https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_YYYY-MM.parquet`.
 - The months are January 2023 to March 2025: 27 files, 13.05 GB in total, from HEAD
   requests recorded in `reports/source_manifest.json`.
 - The list of taxi zones inside the congestion zone (38 zones) comes from the MTA
