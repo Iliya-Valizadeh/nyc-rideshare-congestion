@@ -126,7 +126,7 @@ The headline will have the parts below. Each one is empty until the analysis run
 ## How I worked
 
 - Evaluation plan, written before any results: [docs/eval_plan.md](docs/eval_plan.md),
-  added in commit `31ee0673187120ee997b6a4843c0a599855e109a`. Any later change to the
+  added in commit `c5922fd14e2cb0f6f38eccf1c0ee79415dfbcb11`. Any later change to the
   plan needs its own decision record named `NNNN-deviation-*.md`.
 - Decision records: [docs/decisions/](docs/decisions/). They cover the data sources,
   the choice of DuckDB, the data model, the load and quality rules, and the index test.
