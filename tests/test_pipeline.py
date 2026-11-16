@@ -93,26 +93,25 @@ def test_bootstrap_rejects_bad_settings(n_resamples: int, level: float) -> None:
         metrics.bootstrap_mae(y, y, n_resamples, level, seed=0)
 
 
-def test_evaluation_writes_metrics_and_chart(tmp_path: Path) -> None:
-    assert evaluate.main(["--reports-dir", str(tmp_path)]) == 0
-    written = json.loads((tmp_path / evaluate.METRICS_FILE).read_text(encoding="utf-8"))
-    assert (tmp_path / evaluate.CHART_FILE).stat().st_size > 0
-    assert written["model"]["value"] < written["baseline"]["value"]
-    for key in ("baseline", "model", "mae_gap"):
-        assert written[key]["ci_low"] <= written[key]["value"] <= written[key]["ci_high"]
-
-
-def test_committed_metrics_match_a_fresh_run() -> None:
-    """reports/metrics.json must be what the code makes. Run `make eval` if this fails."""
+def test_committed_metrics_match_the_committed_reports() -> None:
+    """reports/metrics.json must be what `make eval` builds from the analysis reports."""
     committed = json.loads((REPO / "reports" / "metrics.json").read_text(encoding="utf-8"))
-    fresh, _ = evaluate.run_evaluation()
+    fresh = evaluate._round(evaluate.build_metrics(REPO / "reports"))
     flat_committed, flat_fresh = _flatten(committed), _flatten(fresh)
     assert flat_committed.keys() == flat_fresh.keys()
     for key, value in flat_fresh.items():
-        if isinstance(value, float):
-            assert flat_committed[key] == pytest.approx(value, abs=10**-evaluate.DECIMALS), key
-        else:
-            assert flat_committed[key] == value, key
+        assert flat_committed[key] == value, key
+
+
+def test_metrics_hold_no_numbers_when_a_stop_rule_fails(tmp_path: Path) -> None:
+    stops = {"result": "fail", "failed_rules": ["platform_days"]}
+    est = {"verdict": {"table_rows": ["stop_rule_fails"]}}
+    (tmp_path / "stop_rules.json").write_text(json.dumps(stops), encoding="utf-8")
+    (tmp_path / "estimate.json").write_text(json.dumps(est), encoding="utf-8")
+    assert evaluate.main(["--reports-dir", str(tmp_path)]) == 0
+    written = json.loads((tmp_path / evaluate.METRICS_FILE).read_text(encoding="utf-8"))
+    assert written["failed_rules"] == ["platform_days"]
+    assert "main" not in written
 
 
 def _flatten(node: object, prefix: str = "") -> dict[str, object]:
