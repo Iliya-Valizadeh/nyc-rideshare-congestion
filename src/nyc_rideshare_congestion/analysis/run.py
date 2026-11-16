@@ -151,7 +151,11 @@ def run_estimate(
     fees = estimate.fee_shares(con, p)
     out = estimate.run_estimate(cube, p, weights, pre, slopes, plc, fees)
     b = p["bootstrap"]
-    out["bootstrap"] = {"rounds": int(b["rounds"]), "seed": int(b["seed"])}
+    out["bootstrap"] = {
+        "rounds": int(b["rounds"]),
+        "seed": int(b["seed"]),
+        "interval_level": float(b["interval_level"]),
+    }
     write_json(out, paths.reports / "estimate.json")
     figures.plot_event_study(out["event_study"], img_dir / FIGURES["headline"])
     return out

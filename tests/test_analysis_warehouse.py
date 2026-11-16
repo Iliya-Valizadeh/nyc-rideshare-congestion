@@ -248,7 +248,7 @@ def test_commands_run_end_to_end(
     out = json.loads((paths.reports / "estimate.json").read_text(encoding="utf-8"))
     assert out["fees_after_start"]["treated"]["fee_share"] == 1.0
     assert out["fees_after_start"]["control"]["fee_share"] == 0.0
-    assert out["bootstrap"] == {"rounds": 2000, "seed": 20250105}
+    assert out["bootstrap"] == {"rounds": 2000, "seed": 20250105, "interval_level": 0.95}
     for name in run.FIGURES.values():
         assert (paths.root / "docs" / "img" / name).stat().st_size > 0
 
