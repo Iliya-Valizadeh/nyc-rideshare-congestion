@@ -1,0 +1,113 @@
+{
+  "rules": {
+    "months_loaded": {
+      "months": 27,
+      "not_loaded_once": [],
+      "result": "pass"
+    },
+    "quarantine_share": {
+      "limit": 0.02,
+      "max_share": 0.000757,
+      "max_month": "2023-02",
+      "months_over": [],
+      "result": "pass"
+    },
+    "quarantine_gap": {
+      "limit": 0.005,
+      "max_gap": 0.000137,
+      "max_month": "2023-11",
+      "months_over": [],
+      "by_month": [
+        {
+          "month": "2023-10",
+          "treated": 0.000173,
+          "control": 0.000154,
+          "gap": 1.9e-05
+        },
+        {
+          "month": "2023-11",
+          "treated": 0.000442,
+          "control": 0.00058,
+          "gap": 0.000137
+        },
+        {
+          "month": "2023-12",
+          "treated": 2.2e-05,
+          "control": 2.2e-05,
+          "gap": 0.0
+        },
+        {
+          "month": "2024-01",
+          "treated": 1.1e-05,
+          "control": 1.2e-05,
+          "gap": 1e-06
+        },
+        {
+          "month": "2024-02",
+          "treated": 0.000288,
+          "control": 0.000369,
+          "gap": 8.1e-05
+        },
+        {
+          "month": "2024-03",
+          "treated": 3.6e-05,
+          "control": 3.5e-05,
+          "gap": 1e-06
+        },
+        {
+          "month": "2024-10",
+          "treated": 0.000109,
+          "control": 4.3e-05,
+          "gap": 6.6e-05
+        },
+        {
+          "month": "2024-11",
+          "treated": 0.000578,
+          "control": 0.000661,
+          "gap": 8.3e-05
+        },
+        {
+          "month": "2024-12",
+          "treated": 7.7e-05,
+          "control": 0.000105,
+          "gap": 2.8e-05
+        },
+        {
+          "month": "2025-01",
+          "treated": 0.000114,
+          "control": 0.00012,
+          "gap": 5e-06
+        },
+        {
+          "month": "2025-02",
+          "treated": 4e-05,
+          "control": 2.1e-05,
+          "gap": 1.9e-05
+        },
+        {
+          "month": "2025-03",
+          "treated": 2.1e-05,
+          "control": 1.5e-05,
+          "gap": 6e-06
+        }
+      ],
+      "result": "pass"
+    },
+    "unknown_dropoff_change": {
+      "limit": 0.01,
+      "before": 0.043794,
+      "after": 0.041991,
+      "change": 0.001803,
+      "result": "pass"
+    },
+    "platform_days": {
+      "days": 357,
+      "min_trips": 1,
+      "short_platform_days": [],
+      "result": "pass"
+    }
+  },
+  "failed_rules": [],
+  "pipeline_check_failures": [],
+  "result": "pass"
+}

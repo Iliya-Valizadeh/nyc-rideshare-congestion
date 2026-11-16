@@ -1,0 +1,216 @@
+{
+  "unit": "drop-off zone x day x platform",
+  "zones": {
+    "treated": 38,
+    "control_manhattan": 22,
+    "control_brooklyn": 61,
+    "buffer": 6,
+    "island": 3,
+    "buffer_rebuilt_from_shapes": [
+      43,
+      140,
+      141,
+      142,
+      143,
+      237
+    ]
+  },
+  "months": 27,
+  "cells": 198682,
+  "trips_by_group": {
+    "control": 153477448,
+    "treated": 44311903
+  },
+  "all_months_match_fact": true,
+  "by_month": [
+    {
+      "month": "2023-01",
+      "cells": 7502,
+      "panel_trips": 6901029,
+      "fact_trips": 6901029,
+      "equal": true
+    },
+    {
+      "month": "2023-02",
+      "cells": 6776,
+      "panel_trips": 6657773,
+      "fact_trips": 6657773,
+      "equal": true
+    },
+    {
+      "month": "2023-03",
+      "cells": 7502,
+      "panel_trips": 7594793,
+      "fact_trips": 7594793,
+      "equal": true
+    },
+    {
+      "month": "2023-04",
+      "cells": 7260,
+      "panel_trips": 7087531,
+      "fact_trips": 7087531,
+      "equal": true
+    },
+    {
+      "month": "2023-05",
+      "cells": 7502,
+      "panel_trips": 7359223,
+      "fact_trips": 7359223,
+      "equal": true
+    },
+    {
+      "month": "2023-06",
+      "cells": 7260,
+      "panel_trips": 7175365,
+      "fact_trips": 7175365,
+      "equal": true
+    },
+    {
+      "month": "2023-07",
+      "cells": 7502,
+      "panel_trips": 7011582,
+      "fact_trips": 7011582,
+      "equal": true
+    },
+    {
+      "month": "2023-08",
+      "cells": 7502,
+      "panel_trips": 6758623,
+      "fact_trips": 6758623,
+      "equal": true
+    },
+    {
+      "month": "2023-09",
+      "cells": 7260,
+      "panel_trips": 7302033,
+      "fact_trips": 7302033,
+      "equal": true
+    },
+    {
+      "month": "2023-10",
+      "cells": 7502,
+      "panel_trips": 7427104,
+      "fact_trips": 7427104,
+      "equal": true
+    },
+    {
+      "month": "2023-11",
+      "cells": 7260,
+      "panel_trips": 7096991,
+      "fact_trips": 7096991,
+      "equal": true
+    },
+    {
+      "month": "2023-12",
+      "cells": 7502,
+      "panel_trips": 7542395,
+      "fact_trips": 7542395,
+      "equal": true
+    },
+    {
+      "month": "2024-01",
+      "cells": 7502,
+      "panel_trips": 7390095,
+      "fact_trips": 7390095,
+      "equal": true
+    },
+    {
+      "month": "2024-02",
+      "cells": 7018,
+      "panel_trips": 7254293,
+      "fact_trips": 7254293,
+      "equal": true
+    },
+    {
+      "month": "2024-03",
+      "cells": 7502,
+      "panel_trips": 8029873,
+      "fact_trips": 8029873,
+      "equal": true
+    },
+    {
+      "month": "2024-04",
+      "cells": 7260,
+      "panel_trips": 7356065,
+      "fact_trips": 7356065,
+      "equal": true
+    },
+    {
+      "month": "2024-05",
+      "cells": 7502,
+      "panel_trips": 7702640,
+      "fact_trips": 7702640,
+      "equal": true
+    },
+    {
+      "month": "2024-06",
+      "cells": 7260,
+      "panel_trips": 7548315,
+      "fact_trips": 7548315,
+      "equal": true
+    },
+    {
+      "month": "2024-07",
+      "cells": 7502,
+      "panel_trips": 7085811,
+      "fact_trips": 7085811,
+      "equal": true
+    },
+    {
+      "month": "2024-08",
+      "cells": 7502,
+      "panel_trips": 7111849,
+      "fact_trips": 7111849,
+      "equal": true
+    },
+    {
+      "month": "2024-09",
+      "cells": 7260,
+      "panel_trips": 7120186,
+      "fact_trips": 7120186,
+      "equal": true
+    },
+    {
+      "month": "2024-10",
+      "cells": 7502,
+      "panel_trips": 7374706,
+      "fact_trips": 7374706,
+      "equal": true
+    },
+    {
+      "month": "2024-11",
+      "cells": 7260,
+      "panel_trips": 7427011,
+      "fact_trips": 7427011,
+      "equal": true
+    },
+    {
+      "month": "2024-12",
+      "cells": 7502,
+      "panel_trips": 7801452,
+      "fact_trips": 7801452,
+      "equal": true
+    },
+    {
+      "month": "2025-01",
+      "cells": 7502,
+      "panel_trips": 7732335,
+      "fact_trips": 7732335,
+      "equal": true
+    },
+    {
+      "month": "2025-02",
+      "cells": 6776,
+      "panel_trips": 7256945,
+      "fact_trips": 7256945,
+      "equal": true
+    },
+    {
+      "month": "2025-03",
+      "cells": 7502,
+      "panel_trips": 7683333,
+      "fact_trips": 7683333,
+      "equal": true
+    }
+  ]
+}
