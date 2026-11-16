@@ -23,6 +23,16 @@ one line by hand, add the comment `<!-- not-a-claim -->` to it.
 | Rows quarantined as NEGATIVE_FARE | 90,092 | `reports/load_summary.json#totals.quarantined_by_reason.NEGATIVE_FARE` | `uv run nrc summary` |
 | Rows quarantined as IMPOSSIBLE_DURATION | 19,982 | `reports/load_summary.json#totals.quarantined_by_reason.IMPOSSIBLE_DURATION` | `uv run nrc summary` |
 | Rows quarantined as DUPLICATE_TRIP | 4,039 | `reports/load_summary.json#totals.quarantined_by_reason.DUPLICATE_TRIP` | `uv run nrc summary` |
+| Plain estimate: change in trips into the zone against comparison zones, wider 95% interval | 7.8% lower (10.3% to 4.6% lower) | `reports/metrics.json#main` | `uv run nrc estimate`, then `make eval` |
+| Check one year earlier: same comparison with no toll, wider interval | 7.9% lower (10.6% to 4.6% lower) | `reports/metrics.json#placebo_check` | `uv run nrc estimate`, then `make eval` |
+| [Triple difference](docs/glossary.md#triple-difference), log points, wider interval | 0.0007 (0.0476 lower to 0.0431 higher) | `reports/metrics.json#triple_difference` | `uv run nrc estimate`, then `make eval` |
+| Pre-trend drift over three months and the plan's line, log points | 0.0139, line 0.015 | `reports/metrics.json#pretrend_check` | `uv run nrc estimate`, then `make eval` |
+| Drift-adjusted plain estimate | 6.6% lower | `reports/metrics.json#drift_adjusted` | `uv run nrc estimate`, then `make eval` |
+| Share of treated trips with the toll after the start, mean toll, share of comparison trips with the toll | 98.3%, $1.47, 0.6% | `reports/metrics.json#fees_after_start` | `uv run nrc estimate`, then `make eval` |
+| Comparison zones: other Manhattan zones and Brooklyn zones | 22 and 61 | `reports/metrics.json#zones` | `uv run nrc estimate`, then `make eval` |
+| Days kept before and after the start | 79 and 84 | `reports/metrics.json#days_kept` | `uv run nrc estimate`, then `make eval` |
+| [Bootstrap](docs/glossary.md#bootstrap) rounds, seed and interval level | 2,000, seed 20250105, 95% | `reports/metrics.json#bootstrap` | `uv run nrc estimate`, then `make eval` |
+| [Smallest effect of interest](docs/glossary.md#smallest-effect-of-interest) from the plan | 3% | `reports/metrics.json#verdict` | `uv run nrc estimate`, then `make eval` |
 
 Example row, for the format only:
 `| Test AUC | 0.58 (0.55 to 0.61) | reports/metrics.json#auc | make eval |`

@@ -1,29 +1,228 @@
 {
-  "about": "Template demo on synthetic data. Replace with your real evaluation.",
-  "seed": 7,
-  "n_train": 800,
-  "n_test": 200,
-  "metric": "mean_absolute_error",
-  "interval": {
-    "method": "percentile_bootstrap",
-    "resamples": 2000,
-    "level": 0.95
+  "about": "Part 2: did congestion pricing change Uber and Lyft trips into the zone? Built by `make eval` from the reports that `nrc prechecks` and `nrc estimate` write.",
+  "primary_outcome": "trips_per_day_both_platforms",
+  "comparison": "drop-offs in other Manhattan zones and all Brooklyn zones",
+  "stop_rules": "pass",
+  "verdict": {
+    "table_rows": [
+      "leaves_out_zero_placebo_fails"
+    ],
+    "interval_used": [
+      -0.103035,
+      -0.046098
+    ],
+    "interval_leaves_out_zero": true,
+    "pretrend_check": "pass",
+    "placebo_check": "fail",
+    "smallest_effect_of_interest": 0.03
   },
-  "baseline": {
-    "name": "train_mean",
-    "value": 2.1975,
-    "ci_low": 1.945,
-    "ci_high": 2.4458
+  "zones": {
+    "treated": 38,
+    "control_manhattan": 22,
+    "control_brooklyn": 61
   },
-  "model": {
-    "name": "linear_least_squares",
-    "value": 0.7864,
-    "ci_low": 0.7031,
-    "ci_high": 0.872
+  "days_kept": {
+    "before": 79,
+    "after": 84
   },
-  "mae_gap": {
-    "value": 1.4111,
-    "ci_low": 1.1475,
-    "ci_high": 1.6621
+  "main": {
+    "effect": -0.078386,
+    "interval_zone": [
+      -0.09033,
+      -0.066608
+    ],
+    "interval_week": [
+      -0.103035,
+      -0.046098
+    ],
+    "interval_leaves_out_zero": true,
+    "trips_per_day": {
+      "treated_before": 55799.012658,
+      "treated_after": 52954.869048,
+      "control_before": 194354.734177,
+      "control_after": 200136.095238
+    }
+  },
+  "pretrend_check": {
+    "result": "pass",
+    "drift_log_points": -0.013865,
+    "drift_interval_zone": [
+      -0.016514,
+      -0.011325
+    ],
+    "drift_interval_week": [
+      -0.018224,
+      -0.008982
+    ],
+    "line": 0.015
+  },
+  "placebo_check": {
+    "result": "fail",
+    "effect": -0.079001,
+    "interval_zone": [
+      -0.091582,
+      -0.065226
+    ],
+    "interval_week": [
+      -0.105682,
+      -0.045537
+    ],
+    "interval_leaves_out_zero": true,
+    "line": 0.03
+  },
+  "triple_difference": {
+    "effect": 0.000668,
+    "interval_zone": [
+      -0.011819,
+      0.013875
+    ],
+    "interval_week": [
+      -0.047584,
+      0.043059
+    ],
+    "interval_leaves_out_zero": false,
+    "as_percent": 0.000668
+  },
+  "drift_adjusted": {
+    "effect": -0.065519,
+    "interval_zone": [
+      -0.078413,
+      -0.052742
+    ],
+    "interval_week": null,
+    "interval_leaves_out_zero": true
+  },
+  "holidays_kept": {
+    "effect": -0.056015,
+    "interval_zone": [
+      -0.068766,
+      -0.043656
+    ],
+    "interval_week": [
+      -0.095075,
+      -0.007343
+    ],
+    "interval_leaves_out_zero": true
+  },
+  "fees_after_start": {
+    "treated_fee_share": 0.982772,
+    "treated_mean_fee_dollars": 1.474159,
+    "control_fee_share": 0.005938,
+    "flags": {
+      "treated_fee_share_low": false,
+      "control_fee_share_high": false
+    }
+  },
+  "secondary": {
+    "trips_per_day_uber": {
+      "unit": "trips per day",
+      "effect": -0.104127,
+      "interval_zone": [
+        -0.117281,
+        -0.090728
+      ],
+      "interval_week": [
+        -0.126928,
+        -0.075352
+      ],
+      "interval_leaves_out_zero": true,
+      "pretrend_check": "fail",
+      "placebo_check": "fail"
+    },
+    "trips_per_day_lyft": {
+      "unit": "trips per day",
+      "effect": -0.017061,
+      "interval_zone": [
+        -0.033105,
+        3.2e-05
+      ],
+      "interval_week": [
+        -0.063961,
+        0.038342
+      ],
+      "interval_leaves_out_zero": false,
+      "pretrend_check": "fail",
+      "placebo_check": "fail"
+    },
+    "base_fare_per_trip": {
+      "unit": "dollars",
+      "effect": -1.655367,
+      "interval_zone": [
+        -2.247347,
+        -1.125754
+      ],
+      "interval_week": [
+        -2.945512,
+        -0.392828
+      ],
+      "interval_leaves_out_zero": true,
+      "pretrend_check": "fail",
+      "placebo_check": "fail"
+    },
+    "rider_price_per_trip": {
+      "unit": "dollars",
+      "effect": -0.427992,
+      "interval_zone": [
+        -1.086842,
+        0.161402
+      ],
+      "interval_week": [
+        -1.883618,
+        1.017306
+      ],
+      "interval_leaves_out_zero": false,
+      "pretrend_check": "fail",
+      "placebo_check": "fail"
+    },
+    "minutes_per_trip": {
+      "unit": "minutes",
+      "effect": -3.061003,
+      "interval_zone": [
+        -3.649261,
+        -2.559556
+      ],
+      "interval_week": [
+        -4.059886,
+        -2.170344
+      ],
+      "interval_leaves_out_zero": true,
+      "pretrend_check": "fail",
+      "placebo_check": "fail"
+    },
+    "minutes_per_mile": {
+      "unit": "minutes",
+      "effect": -0.448307,
+      "interval_zone": [
+        -0.526548,
+        -0.376476
+      ],
+      "interval_week": [
+        -0.547161,
+        -0.356291
+      ],
+      "interval_leaves_out_zero": true,
+      "pretrend_check": "pass",
+      "placebo_check": "fail"
+    },
+    "lyft_share": {
+      "unit": "percentage points",
+      "effect": 1.974469,
+      "interval_zone": [
+        1.565613,
+        2.353846
+      ],
+      "interval_week": [
+        1.071592,
+        2.872127
+      ],
+      "interval_leaves_out_zero": true,
+      "pretrend_check": "fail",
+      "placebo_check": "fail"
+    }
+  },
+  "bootstrap": {
+    "rounds": 2000,
+    "seed": 20250105,
+    "interval_level": 0.95
   }
 }

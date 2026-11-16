@@ -1,12 +1,10 @@
-"""Evaluation for `make eval`. It writes reports/metrics.json and the headline chart.
+"""Headline numbers for `make eval`: reports/metrics.json, built from the analysis reports.
 
-The template ships a small worked example so every new repo runs end to end on day
-one. It makes synthetic data, fits a mean baseline and a linear model, and reports
-each one's mean absolute error with a 95% bootstrap interval. It also reports the gap
-between them with a paired bootstrap interval.
-
-Replace this with the evaluation in docs/eval_plan.md. Every number the docs quote
-must come from the file this script writes.
+The analysis runs on the full warehouse: `nrc panel`, `nrc prechecks`, then
+`nrc estimate`. Those commands write reports/stop_rules.json, pretrend.json,
+placebo.json and estimate.json. This step reads them and collects the numbers the
+README quotes. It needs no warehouse, so a test can check that the committed
+metrics.json matches the committed reports.
 """
 
 from __future__ import annotations
@@ -16,88 +14,121 @@ import json
 from pathlib import Path
 from typing import Any
 
-from .data import make_dataset, train_test_split
-from .metrics import Estimate, bootstrap_mae, bootstrap_mae_gap
-from .models import LinearModel, MeanBaseline
-
-SEED = 7
-N_ROWS = 1000
-TEST_FRACTION = 0.2
-N_RESAMPLES = 2000
-LEVEL = 0.95
-DECIMALS = 4
-
 METRICS_FILE = "metrics.json"
-CHART_FILE = "figures/mae_by_model.png"
+PRIMARY = "trips_per_day_both_platforms"
+DECIMALS = 6
 
 
-def _rounded(est: Estimate) -> dict[str, float]:
+def _read(reports_dir: Path, name: str) -> dict[str, Any]:
+    data: dict[str, Any] = json.loads((reports_dir / name).read_text(encoding="utf-8"))
+    return data
+
+
+def _interval(row: dict[str, Any]) -> dict[str, Any]:
     return {
-        "value": round(est.value, DECIMALS),
-        "ci_low": round(est.ci_low, DECIMALS),
-        "ci_high": round(est.ci_high, DECIMALS),
+        "effect": row["effect"],
+        "interval_zone": row["interval_zone"],
+        "interval_week": row.get("interval_week"),
+        "interval_leaves_out_zero": row["interval_leaves_out_zero"],
     }
 
 
-def run_evaluation() -> tuple[dict[str, Any], dict[str, Estimate]]:
-    """Run the whole evaluation. Returns the metrics dict and the raw estimates."""
-    x, y = make_dataset(N_ROWS, seed=SEED)
-    split = train_test_split(x, y, TEST_FRACTION, seed=SEED + 1)
-
-    baseline = MeanBaseline().fit(split.x_train, split.y_train)
-    model = LinearModel().fit(split.x_train, split.y_train)
-    pred_base = baseline.predict(split.x_test)
-    pred_model = model.predict(split.x_test)
-
-    boot_seed = SEED + 2
-    estimates = {
-        "baseline": bootstrap_mae(split.y_test, pred_base, N_RESAMPLES, LEVEL, boot_seed),
-        "model": bootstrap_mae(split.y_test, pred_model, N_RESAMPLES, LEVEL, boot_seed),
-        "mae_gap": bootstrap_mae_gap(
-            split.y_test, pred_base, pred_model, N_RESAMPLES, LEVEL, boot_seed
+def build_metrics(reports_dir: Path) -> dict[str, Any]:
+    """Collect the headline from the analysis reports. A failed stop rule gives no numbers."""
+    stops = _read(reports_dir, "stop_rules.json")
+    est = _read(reports_dir, "estimate.json")
+    out: dict[str, Any] = {
+        "about": (
+            "Part 2: did congestion pricing change Uber and Lyft trips into the zone? "
+            "Built by `make eval` from the reports that `nrc prechecks` and `nrc estimate` write."
         ),
+        "primary_outcome": PRIMARY,
+        "comparison": "drop-offs in other Manhattan zones and all Brooklyn zones",
+        "stop_rules": stops["result"],
+        "verdict": est["verdict"],
     }
-    metrics: dict[str, Any] = {
-        "about": "Template demo on synthetic data. Replace with your real evaluation.",
-        "seed": SEED,
-        "n_train": len(split.y_train),
-        "n_test": len(split.y_test),
-        "metric": "mean_absolute_error",
-        "interval": {"method": "percentile_bootstrap", "resamples": N_RESAMPLES, "level": LEVEL},
-        "baseline": {"name": MeanBaseline.name, **_rounded(estimates["baseline"])},
-        "model": {"name": LinearModel.name, **_rounded(estimates["model"])},
-        "mae_gap": _rounded(estimates["mae_gap"]),
+    if stops["result"] != "pass" or "main" not in est:
+        out["failed_rules"] = stops.get("failed_rules", [])
+        return out
+
+    pre = _read(reports_dir, "pretrend.json")
+    plc = _read(reports_dir, "placebo.json")
+    panel = _read(reports_dir, "panel_summary.json")
+    main = est["main"]["outcomes"][PRIMARY]
+    fees = est["fees_after_start"]
+    out |= {
+        "zones": {
+            k: panel["zones"][k] for k in ("treated", "control_manhattan", "control_brooklyn")
+        },
+        "days_kept": est["main"]["days_kept"],
+        "main": {
+            **_interval(main),
+            "trips_per_day": {
+                k: main[k]
+                for k in ("treated_before", "treated_after", "control_before", "control_after")
+            },
+        },
+        "pretrend_check": {
+            "result": pre["outcomes"][PRIMARY]["result"],
+            "drift_log_points": pre["outcomes"][PRIMARY]["drift"],
+            "drift_interval_zone": pre["outcomes"][PRIMARY]["drift_interval_zone"],
+            "drift_interval_week": pre["outcomes"][PRIMARY]["drift_interval_week"],
+            "line": pre["outcomes"][PRIMARY]["size_line"],
+        },
+        "placebo_check": {
+            "result": plc["main"]["outcomes"][PRIMARY]["result"],
+            **_interval(plc["main"]["outcomes"][PRIMARY]),
+            "line": plc["main"]["outcomes"][PRIMARY]["size_line"],
+        },
+        "triple_difference": _interval(est["triple_difference"][PRIMARY])
+        | {"as_percent": est["triple_difference"][PRIMARY]["as_percent"]},
+        "drift_adjusted": _interval(est["drift_adjusted"][PRIMARY]),
+        "holidays_kept": _interval(est["holidays_kept"]["outcomes"][PRIMARY]),
+        "fees_after_start": {
+            "treated_fee_share": fees["treated"]["fee_share"],
+            "treated_mean_fee_dollars": fees["treated"]["mean_fee_dollars"],
+            "control_fee_share": fees["control"]["fee_share"],
+            "flags": {k: v["raised"] for k, v in fees["flags"].items()},
+        },
+        "secondary": {
+            name: {
+                "unit": row["unit"],
+                **_interval(row),
+                "pretrend_check": pre["outcomes"][name]["result"],
+                "placebo_check": plc["main"]["outcomes"][name]["result"],
+            }
+            for name, row in est["main"]["outcomes"].items()
+            if name != PRIMARY
+        },
+        "bootstrap": est["bootstrap"],
     }
-    return metrics, estimates
+    return out
 
 
-def write_reports(reports_dir: Path) -> dict[str, Any]:
-    """Run the evaluation and write metrics.json and the chart under `reports_dir`."""
-    from .plots import MUTED, SERIES_1, plot_mae
+def _round(value: Any) -> Any:
+    if isinstance(value, float):
+        return round(value, DECIMALS)
+    if isinstance(value, dict):
+        return {k: _round(v) for k, v in value.items()}
+    if isinstance(value, list):
+        return [_round(v) for v in value]
+    return value
 
-    metrics, est = run_evaluation()
-    reports_dir.mkdir(parents=True, exist_ok=True)
+
+def write_metrics(reports_dir: Path) -> dict[str, Any]:
+    metrics = _round(build_metrics(reports_dir))
     text = json.dumps(metrics, indent=2) + "\n"
     # Always LF, so a run on Windows writes the same bytes as a run on Linux.
     (reports_dir / METRICS_FILE).write_text(text, encoding="utf-8", newline="\n")
-    plot_mae(
-        [
-            ("Baseline: training mean", est["baseline"], MUTED),
-            ("Linear model", est["model"], SERIES_1),
-        ],
-        n_test=metrics["n_test"],
-        path=reports_dir / CHART_FILE,
-    )
-    return metrics
+    return dict(metrics)
 
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--reports-dir", type=Path, default=Path("reports"))
     args = parser.parse_args(argv)
-    metrics = write_reports(args.reports_dir)
-    print(f"Wrote {args.reports_dir / METRICS_FILE} and {args.reports_dir / CHART_FILE}")
-    print(f"Model MAE {metrics['model']['value']}, baseline MAE {metrics['baseline']['value']}")
+    metrics = write_metrics(args.reports_dir)
+    print(f"Wrote {args.reports_dir / METRICS_FILE}: {metrics['verdict']['table_rows']}")
     return 0
 
 

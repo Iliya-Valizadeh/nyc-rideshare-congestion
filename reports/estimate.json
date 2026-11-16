@@ -1,0 +1,951 @@
+{
+  "primary_outcome": "trips_per_day_both_platforms",
+  "verdict": {
+    "table_rows": [
+      "leaves_out_zero_placebo_fails"
+    ],
+    "interval_used": [
+      -0.103035,
+      -0.046098
+    ],
+    "interval_leaves_out_zero": true,
+    "pretrend_check": "pass",
+    "placebo_check": "fail",
+    "smallest_effect_of_interest": 0.03
+  },
+  "main": {
+    "before": [
+      "2024-10-01",
+      "2024-12-23"
+    ],
+    "after": [
+      "2025-01-05",
+      "2025-03-31"
+    ],
+    "days_kept": {
+      "before": 79,
+      "after": 84
+    },
+    "week_blocks": {
+      "before": 13,
+      "after": 14
+    },
+    "outcomes": {
+      "trips_per_day_both_platforms": {
+        "kind": "ratio",
+        "unit": "trips per day",
+        "primary": true,
+        "treated_before": 55799.012658,
+        "treated_after": 52954.869048,
+        "control_before": 194354.734177,
+        "control_after": 200136.095238,
+        "effect": -0.078386,
+        "interval_zone": [
+          -0.09033,
+          -0.066608
+        ],
+        "interval_week": [
+          -0.103035,
+          -0.046098
+        ],
+        "interval_leaves_out_zero": true,
+        "effect_log": -0.081629
+      },
+      "trips_per_day_uber": {
+        "kind": "ratio",
+        "unit": "trips per day",
+        "primary": false,
+        "treated_before": 41174.797468,
+        "treated_after": 36917.952381,
+        "control_before": 145399.101266,
+        "control_after": 145519.511905,
+        "effect": -0.104127,
+        "interval_zone": [
+          -0.117281,
+          -0.090728
+        ],
+        "interval_week": [
+          -0.126928,
+          -0.075352
+        ],
+        "interval_leaves_out_zero": true,
+        "effect_log": -0.109956
+      },
+      "trips_per_day_lyft": {
+        "kind": "ratio",
+        "unit": "trips per day",
+        "primary": false,
+        "treated_before": 14624.21519,
+        "treated_after": 16036.916667,
+        "control_before": 48955.632911,
+        "control_after": 54616.583333,
+        "effect": -0.017061,
+        "interval_zone": [
+          -0.033105,
+          3.2e-05
+        ],
+        "interval_week": [
+          -0.063961,
+          0.038342
+        ],
+        "interval_leaves_out_zero": false,
+        "effect_log": -0.017208
+      },
+      "base_fare_per_trip": {
+        "kind": "level",
+        "unit": "dollars",
+        "primary": false,
+        "treated_before": 38.884483,
+        "treated_after": 36.990314,
+        "control_before": 18.911524,
+        "control_after": 18.672722,
+        "effect": -1.655367,
+        "interval_zone": [
+          -2.247347,
+          -1.125754
+        ],
+        "interval_week": [
+          -2.945512,
+          -0.392828
+        ],
+        "interval_leaves_out_zero": true
+      },
+      "rider_price_per_trip": {
+        "kind": "level",
+        "unit": "dollars",
+        "primary": false,
+        "treated_before": 48.60305,
+        "treated_after": 47.86667,
+        "control_before": 21.556947,
+        "control_after": 21.248559,
+        "effect": -0.427992,
+        "interval_zone": [
+          -1.086842,
+          0.161402
+        ],
+        "interval_week": [
+          -1.883618,
+          1.017306
+        ],
+        "interval_leaves_out_zero": false
+      },
+      "minutes_per_trip": {
+        "kind": "level",
+        "unit": "minutes",
+        "primary": false,
+        "treated_before": 30.6834,
+        "treated_after": 26.87391,
+        "control_before": 16.663633,
+        "control_after": 15.915146,
+        "effect": -3.061003,
+        "interval_zone": [
+          -3.649261,
+          -2.559556
+        ],
+        "interval_week": [
+          -4.059886,
+          -2.170344
+        ],
+        "interval_leaves_out_zero": true
+      },
+      "minutes_per_mile": {
+        "kind": "level",
+        "unit": "minutes",
+        "primary": false,
+        "treated_before": 4.361529,
+        "treated_after": 3.797493,
+        "control_before": 4.907615,
+        "control_after": 4.791886,
+        "effect": -0.448307,
+        "interval_zone": [
+          -0.526548,
+          -0.376476
+        ],
+        "interval_week": [
+          -0.547161,
+          -0.356291
+        ],
+        "interval_leaves_out_zero": true
+      },
+      "lyft_share": {
+        "kind": "level",
+        "unit": "percentage points",
+        "primary": false,
+        "treated_before": 26.208735,
+        "treated_after": 30.284121,
+        "control_before": 25.188804,
+        "control_after": 27.289722,
+        "effect": 1.974469,
+        "interval_zone": [
+          1.565613,
+          2.353846
+        ],
+        "interval_week": [
+          1.071592,
+          2.872127
+        ],
+        "interval_leaves_out_zero": true
+      }
+    }
+  },
+  "holidays_kept": {
+    "before": [
+      "2024-10-01",
+      "2024-12-31"
+    ],
+    "after": [
+      "2025-01-05",
+      "2025-03-31"
+    ],
+    "days_kept": {
+      "before": 92,
+      "after": 86
+    },
+    "week_blocks": {
+      "before": 14,
+      "after": 14
+    },
+    "outcomes": {
+      "trips_per_day_both_platforms": {
+        "kind": "ratio",
+        "unit": "trips per day",
+        "primary": true,
+        "treated_before": 53767.228261,
+        "treated_after": 52821.837209,
+        "control_before": 191919.391304,
+        "control_after": 199732.860465,
+        "effect": -0.056015,
+        "interval_zone": [
+          -0.068766,
+          -0.043656
+        ],
+        "interval_week": [
+          -0.095075,
+          -0.007343
+        ],
+        "interval_leaves_out_zero": true,
+        "effect_log": -0.057645
+      },
+      "trips_per_day_uber": {
+        "kind": "ratio",
+        "unit": "trips per day",
+        "primary": false,
+        "treated_before": 39558.76087,
+        "treated_after": 36854.639535,
+        "control_before": 143338.228261,
+        "control_after": 145341.662791,
+        "effect": -0.081199,
+        "interval_zone": [
+          -0.095264,
+          -0.067757
+        ],
+        "interval_week": [
+          -0.11894,
+          -0.034736
+        ],
+        "interval_leaves_out_zero": true,
+        "effect_log": -0.084686
+      },
+      "trips_per_day_lyft": {
+        "kind": "ratio",
+        "unit": "trips per day",
+        "primary": false,
+        "treated_before": 14208.467391,
+        "treated_after": 15967.197674,
+        "control_before": 48581.163043,
+        "control_after": 54391.197674,
+        "effect": 0.003739,
+        "interval_zone": [
+          -0.012756,
+          0.02167
+        ],
+        "interval_week": [
+          -0.053617,
+          0.066399
+        ],
+        "interval_leaves_out_zero": false,
+        "effect_log": 0.003732
+      },
+      "base_fare_per_trip": {
+        "kind": "level",
+        "unit": "dollars",
+        "primary": false,
+        "treated_before": 38.787034,
+        "treated_after": 36.956118,
+        "control_before": 18.909379,
+        "control_after": 18.646374,
+        "effect": -1.567912,
+        "interval_zone": [
+          -2.17489,
+          -1.037052
+        ],
+        "interval_week": [
+          -2.703699,
+          -0.395618
+        ],
+        "interval_leaves_out_zero": true
+      },
+      "rider_price_per_trip": {
+        "kind": "level",
+        "unit": "dollars",
+        "primary": false,
+        "treated_before": 48.48306,
+        "treated_after": 47.839453,
+        "control_before": 21.550791,
+        "control_after": 21.221499,
+        "effect": -0.314316,
+        "interval_zone": [
+          -0.987937,
+          0.271445
+        ],
+        "interval_week": [
+          -1.606047,
+          1.017168
+        ],
+        "interval_leaves_out_zero": false
+      },
+      "minutes_per_trip": {
+        "kind": "level",
+        "unit": "minutes",
+        "primary": false,
+        "treated_before": 30.346777,
+        "treated_after": 26.825849,
+        "control_before": 16.550344,
+        "control_after": 15.892931,
+        "effect": -2.863515,
+        "interval_zone": [
+          -3.482375,
+          -2.338335
+        ],
+        "interval_week": [
+          -3.821787,
+          -2.003965
+        ],
+        "interval_leaves_out_zero": true
+      },
+      "minutes_per_mile": {
+        "kind": "level",
+        "unit": "minutes",
+        "primary": false,
+        "treated_before": 4.288112,
+        "treated_after": 3.781373,
+        "control_before": 4.845118,
+        "control_after": 4.779126,
+        "effect": -0.440748,
+        "interval_zone": [
+          -0.520389,
+          -0.367421
+        ],
+        "interval_week": [
+          -0.540003,
+          -0.359609
+        ],
+        "interval_leaves_out_zero": true
+      },
+      "lyft_share": {
+        "kind": "level",
+        "unit": "percentage points",
+        "primary": false,
+        "treated_before": 26.425888,
+        "treated_after": 30.228403,
+        "control_before": 25.313317,
+        "control_after": 27.231973,
+        "effect": 1.883859,
+        "interval_zone": [
+          1.463718,
+          2.270858
+        ],
+        "interval_week": [
+          1.034451,
+          2.713708
+        ],
+        "interval_leaves_out_zero": true
+      }
+    }
+  },
+  "triple_difference": {
+    "trips_per_day_both_platforms": {
+      "effect": 0.000668,
+      "interval_zone": [
+        -0.011819,
+        0.013875
+      ],
+      "interval_week": [
+        -0.047584,
+        0.043059
+      ],
+      "interval_leaves_out_zero": false,
+      "scale": "log points",
+      "as_percent": 0.000668
+    },
+    "trips_per_day_uber": {
+      "effect": -0.011657,
+      "interval_zone": [
+        -0.030749,
+        0.008049
+      ],
+      "interval_week": [
+        -0.063574,
+        0.0343
+      ],
+      "interval_leaves_out_zero": false,
+      "scale": "log points",
+      "as_percent": -0.011589
+    },
+    "trips_per_day_lyft": {
+      "effect": 0.027706,
+      "interval_zone": [
+        0.006126,
+        0.04797
+      ],
+      "interval_week": [
+        -0.036998,
+        0.094742
+      ],
+      "interval_leaves_out_zero": false,
+      "scale": "log points",
+      "as_percent": 0.028093
+    },
+    "base_fare_per_trip": {
+      "effect": -0.913272,
+      "interval_zone": [
+        -1.292455,
+        -0.579329
+      ],
+      "interval_week": [
+        -2.392758,
+        0.581873
+      ],
+      "interval_leaves_out_zero": false,
+      "scale": "dollars"
+    },
+    "rider_price_per_trip": {
+      "effect": 0.487364,
+      "interval_zone": [
+        0.08209,
+        0.850741
+      ],
+      "interval_week": [
+        -1.202781,
+        2.178248
+      ],
+      "interval_leaves_out_zero": false,
+      "scale": "dollars"
+    },
+    "minutes_per_trip": {
+      "effect": -1.129349,
+      "interval_zone": [
+        -1.344525,
+        -0.939922
+      ],
+      "interval_week": [
+        -2.275644,
+        0.007207
+      ],
+      "interval_leaves_out_zero": false,
+      "scale": "minutes"
+    },
+    "minutes_per_mile": {
+      "effect": -0.229939,
+      "interval_zone": [
+        -0.260982,
+        -0.199004
+      ],
+      "interval_week": [
+        -0.349139,
+        -0.116376
+      ],
+      "interval_leaves_out_zero": true,
+      "scale": "minutes"
+    },
+    "lyft_share": {
+      "effect": 0.853203,
+      "interval_zone": [
+        0.129433,
+        1.565627
+      ],
+      "interval_week": [
+        -0.439094,
+        2.166015
+      ],
+      "interval_leaves_out_zero": false,
+      "scale": "percentage points"
+    }
+  },
+  "drift_adjusted": {
+    "trips_per_day_both_platforms": {
+      "effect": -0.065519,
+      "interval_zone": [
+        -0.078413,
+        -0.052742
+      ],
+      "interval_week": null,
+      "interval_leaves_out_zero": true,
+      "drift_removed": -0.013865
+    },
+    "trips_per_day_uber": {
+      "effect": -0.08012,
+      "interval_zone": [
+        -0.094652,
+        -0.06561
+      ],
+      "interval_week": null,
+      "interval_leaves_out_zero": true,
+      "drift_removed": -0.026444
+    },
+    "trips_per_day_lyft": {
+      "effect": -0.036247,
+      "interval_zone": [
+        -0.055105,
+        -0.017332
+      ],
+      "interval_week": null,
+      "interval_leaves_out_zero": true,
+      "drift_removed": 0.019711
+    },
+    "base_fare_per_trip": {
+      "effect": -2.287006,
+      "interval_zone": [
+        -3.000392,
+        -1.659008
+      ],
+      "interval_week": null,
+      "interval_leaves_out_zero": true,
+      "drift_removed": 0.63164
+    },
+    "rider_price_per_trip": {
+      "effect": -1.174104,
+      "interval_zone": [
+        -1.97995,
+        -0.466442
+      ],
+      "interval_week": null,
+      "interval_leaves_out_zero": true,
+      "drift_removed": 0.746112
+    },
+    "minutes_per_trip": {
+      "effect": -3.150979,
+      "interval_zone": [
+        -3.780814,
+        -2.616904
+      ],
+      "interval_week": null,
+      "interval_leaves_out_zero": true,
+      "drift_removed": 0.089976
+    },
+    "minutes_per_mile": {
+      "effect": -0.44031,
+      "interval_zone": [
+        -0.520062,
+        -0.367226
+      ],
+      "interval_week": null,
+      "interval_leaves_out_zero": true,
+      "drift_removed": -0.007997
+    },
+    "lyft_share": {
+      "effect": 1.060809,
+      "interval_zone": [
+        0.59047,
+        1.510752
+      ],
+      "interval_week": null,
+      "interval_leaves_out_zero": true,
+      "drift_removed": 0.91366
+    }
+  },
+  "fees_after_start": {
+    "window": [
+      "2025-01-05",
+      "2025-03-31"
+    ],
+    "treated": {
+      "trips": 4542678,
+      "trips_with_fee": 4464419,
+      "fee_share": 0.982772,
+      "mean_fee_dollars": 1.474159
+    },
+    "control": {
+      "trips": 17177026,
+      "trips_with_fee": 102003,
+      "fee_share": 0.005938,
+      "mean_fee_dollars": 0.008908
+    },
+    "flags": {
+      "treated_fee_share_low": {
+        "line": 0.9,
+        "value": 0.982772,
+        "raised": false
+      },
+      "control_fee_share_high": {
+        "line": 0.05,
+        "value": 0.005938,
+        "raised": false
+      }
+    }
+  },
+  "event_study": {
+    "study": {
+      "week_start": [
+        "2024-09-30",
+        "2024-10-07",
+        "2024-10-14",
+        "2024-10-21",
+        "2024-10-28",
+        "2024-11-04",
+        "2024-11-11",
+        "2024-11-18",
+        "2024-11-25",
+        "2024-12-02",
+        "2024-12-09",
+        "2024-12-16",
+        "2024-12-23",
+        "2024-12-30",
+        "2025-01-06",
+        "2025-01-13",
+        "2025-01-20",
+        "2025-01-27",
+        "2025-02-03",
+        "2025-02-10",
+        "2025-02-17",
+        "2025-02-24",
+        "2025-03-03",
+        "2025-03-10",
+        "2025-03-17",
+        "2025-03-24",
+        "2025-03-31"
+      ],
+      "in_before_window": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "days_kept": [
+        6,
+        7,
+        6,
+        7,
+        7,
+        7,
+        6,
+        7,
+        4,
+        7,
+        7,
+        7,
+        1,
+        1,
+        7,
+        7,
+        6,
+        7,
+        7,
+        7,
+        6,
+        7,
+        7,
+        7,
+        7,
+        7,
+        1
+      ],
+      "gap": [
+        0.051163,
+        0.041693,
+        0.070565,
+        0.080637,
+        0.030119,
+        0.038947,
+        0.046317,
+        -0.008405,
+        -0.066589,
+        0.035216,
+        0.0298,
+        -0.105888,
+        -0.243576,
+        -0.116873,
+        -0.095623,
+        -0.08336,
+        -0.043769,
+        -0.051411,
+        -0.030266,
+        -0.070595,
+        -0.051166,
+        -0.069979,
+        -0.072266,
+        -0.045559,
+        -0.062213,
+        -0.064732,
+        0.001741
+      ],
+      "band_low": [
+        0.023752,
+        0.029413,
+        0.04006,
+        0.052659,
+        0.007374,
+        0.027696,
+        0.027798,
+        -0.023474,
+        -0.091362,
+        0.017372,
+        0.012649,
+        -0.134463,
+        -0.34481,
+        -0.191313,
+        -0.115086,
+        -0.099648,
+        -0.064862,
+        -0.069512,
+        -0.051907,
+        -0.089684,
+        -0.073831,
+        -0.0929,
+        -0.092369,
+        -0.062995,
+        -0.085877,
+        -0.084725,
+        -0.059142
+      ],
+      "band_high": [
+        0.078307,
+        0.053407,
+        0.10891,
+        0.111075,
+        0.05471,
+        0.050316,
+        0.065273,
+        0.007384,
+        -0.042624,
+        0.053694,
+        0.04687,
+        -0.077765,
+        -0.151782,
+        -0.047611,
+        -0.075793,
+        -0.066421,
+        -0.020084,
+        -0.032618,
+        -0.007805,
+        -0.050531,
+        -0.027167,
+        -0.047345,
+        -0.052595,
+        -0.027731,
+        -0.037545,
+        -0.044921,
+        0.056839
+      ],
+      "after_starts": "2025-01-05"
+    },
+    "one_year_earlier": {
+      "week_start": [
+        "2023-09-25",
+        "2023-10-02",
+        "2023-10-09",
+        "2023-10-16",
+        "2023-10-23",
+        "2023-10-30",
+        "2023-11-06",
+        "2023-11-13",
+        "2023-11-20",
+        "2023-11-27",
+        "2023-12-04",
+        "2023-12-11",
+        "2023-12-18",
+        "2024-01-01",
+        "2024-01-08",
+        "2024-01-15",
+        "2024-01-22",
+        "2024-01-29",
+        "2024-02-05",
+        "2024-02-12",
+        "2024-02-19",
+        "2024-02-26",
+        "2024-03-04",
+        "2024-03-11",
+        "2024-03-18",
+        "2024-03-25"
+      ],
+      "in_before_window": [
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false,
+        false
+      ],
+      "days_kept": [
+        1,
+        7,
+        6,
+        7,
+        7,
+        7,
+        6,
+        7,
+        4,
+        7,
+        7,
+        7,
+        6,
+        3,
+        7,
+        6,
+        7,
+        7,
+        7,
+        7,
+        6,
+        7,
+        7,
+        7,
+        7,
+        7
+      ],
+      "gap": [
+        -0.036637,
+        0.031657,
+        0.039191,
+        0.037915,
+        0.043627,
+        -0.004236,
+        0.059754,
+        0.035975,
+        -0.111593,
+        0.005125,
+        0.036587,
+        0.018246,
+        -0.15561,
+        -0.104457,
+        -0.067075,
+        -0.075767,
+        -0.020258,
+        -0.063875,
+        -0.017783,
+        -0.083212,
+        -0.053686,
+        -0.104873,
+        -0.092829,
+        -0.07529,
+        -0.083677,
+        -0.115517
+      ],
+      "band_low": [
+        -0.132151,
+        0.017257,
+        0.016823,
+        0.027153,
+        0.021312,
+        -0.018772,
+        0.046274,
+        0.021638,
+        -0.13666,
+        -0.009887,
+        0.016275,
+        -0.000663,
+        -0.207967,
+        -0.153187,
+        -0.086054,
+        -0.098219,
+        -0.037272,
+        -0.080197,
+        -0.034335,
+        -0.102201,
+        -0.071832,
+        -0.122608,
+        -0.10968,
+        -0.094729,
+        -0.107251,
+        -0.135381
+      ],
+      "band_high": [
+        0.042945,
+        0.047929,
+        0.07153,
+        0.048519,
+        0.065916,
+        0.011226,
+        0.074154,
+        0.05204,
+        -0.08803,
+        0.021065,
+        0.057939,
+        0.036723,
+        -0.105598,
+        -0.059951,
+        -0.048611,
+        -0.052583,
+        -0.001839,
+        -0.046879,
+        0.000722,
+        -0.063441,
+        -0.034188,
+        -0.086335,
+        -0.076703,
+        -0.055819,
+        -0.059454,
+        -0.094287
+      ],
+      "after_starts": "2024-01-05"
+    }
+  },
+  "secondary_outcomes": [
+    "trips_per_day_uber",
+    "trips_per_day_lyft",
+    "base_fare_per_trip",
+    "rider_price_per_trip",
+    "minutes_per_trip",
+    "minutes_per_mile",
+    "lyft_share"
+  ],
+  "bootstrap": {
+    "rounds": 2000,
+    "seed": 20250105,
+    "interval_level": 0.95
+  }
+}

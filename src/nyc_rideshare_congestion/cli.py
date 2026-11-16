@@ -65,6 +65,11 @@ def build_parser() -> argparse.ArgumentParser:
     sub.add_parser("transform", help="build the tf_* tables from sql/transforms/")
     sub.add_parser("time-index", help="time the drop-off zone query before and after its index")
     sub.add_parser("demo", help="run the whole pipeline offline on fake data in a temp folder")
+
+    pnl = sub.add_parser("panel", help="build the analysis panel (zone x day x platform)")
+    pnl.add_argument("--month", type=month_arg, action="append", help="only this month")
+    sub.add_parser("prechecks", help="stop rules, pre-trend check and the check a year earlier")
+    sub.add_parser("estimate", help="the main estimate, its checks and reports/estimate.json")
     return parser
 
 
@@ -203,6 +208,10 @@ def main(
             return run_transform(con)
         if args.command == "time-index":
             return run_time_index(paths, con)
+        if args.command in ("panel", "prechecks", "estimate"):
+            from nyc_rideshare_congestion.analysis import run as analysis
+
+            return analysis.main(args.command, paths, con, getattr(args, "month", None))
         client = http or tlc.UrllibHttp()
         try:
             if args.reference or args.all:

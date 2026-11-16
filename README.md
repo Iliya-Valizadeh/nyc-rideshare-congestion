@@ -9,10 +9,12 @@ lower Manhattan. Did Uber and Lyft trips into that area change, compared with tr
 into other zones?
 
 <!-- headline-finding:start. Replace this paragraph with the Part 2 estimate, its interval and the zones it is compared with, once the analysis has run. Each number needs a CLAIMS.md row. -->
-What I found: the estimate is not finished yet, so this page gives no answer to the
-question. The data part is done. I loaded all 27 monthly TLC files, from January 2023
-to March 2025. I kept 532,128,361 trip rows and set aside 114,113 broken rows, each
-with a note that says what is wrong.
+What I found: trips into the toll zone fell 7.8% more than trips into the comparison
+zones. But one year earlier, with no toll, the same comparison fell 7.9% over the same
+months. So the plain number mixes the toll with the change from fall to winter. Once
+last year's change is taken out, what is left is close to zero. That is consistent with
+no change beyond the usual season. Still, the result is not clear: the data cannot rule
+out a change of a few percent either way.
 <!-- headline-finding:end -->
 
 ## Try it
@@ -65,9 +67,8 @@ To run the pipeline on the real data instead, see [Run it on the real data](#run
 
 The project has two parts. Part 1, the pipeline, is built and has loaded all 27
 monthly files, from January 2023 to March 2025. Part 2, the congestion pricing study,
-is in progress. Its plan was written and committed before any outcome was computed,
-and it has no results yet. This README shows no outcome numbers until the analysis
-step runs.
+has its estimate and both checks. Its plan was written and committed before any
+outcome was computed. The memo on what a platform should do comes next.
 
 ### Part 1: where every trip row went
 
@@ -105,22 +106,45 @@ fares. The five columns are the table's primary key in
 [sql/schema/05_fact_trip_hourly.sql](sql/schema/05_fact_trip_hourly.sql), so the
 database refuses a second row for the same cell.
 
-### Part 2: the congestion pricing study (in progress)
+### Part 2: the congestion pricing study
 
 On January 5, 2025, New York started charging a toll to drive into the busiest part
-of Manhattan, the Central Business District. The study will ask whether Lyft and Uber trips into that zone changed,
-compared with trips elsewhere in the city. It will then say what a rideshare platform
-should do about it. The method, the checks and the stop rules are fixed in
-[docs/eval_plan.md](docs/eval_plan.md). No trip counts, fares or durations by zone or
-month have been reported yet.
-
-The headline will have the parts below. Each one is empty until the analysis runs.
+of Manhattan, the Central Business District. The study asks whether Lyft and Uber
+trips into that zone changed, compared with trips elsewhere in the city. The method,
+the checks and the stop rules are fixed in [docs/eval_plan.md](docs/eval_plan.md). The
+method is a [difference-in-differences](docs/glossary.md#difference-in-differences)
+with a [cluster bootstrap](docs/glossary.md#cluster-bootstrap) by zone: 2,000 rounds
+with the seed 20250105. Each interval below is the wider of the plan's two intervals.
+The commands are `nrc panel`, `nrc prechecks` and `nrc estimate`, then `make eval`.
 
 <!-- headline-result:start. Fill from the Part 2 analysis output. Each number needs a CLAIMS.md row. Use the wording the "What the memo may say" table in docs/eval_plan.md allows. -->
-- Change in Uber and Lyft trips into the zone per day: not finished.
-- Interval around that change: not finished.
-- Compared with: other Manhattan and Brooklyn zones, as the plan fixes.
-- Chart: none yet.
+- Plain estimate. Uber and Lyft trips per day into the zone changed 7.8% more than
+  trips into the comparison zones: 7.8% lower, with a 95% interval of 10.3% to 4.6%
+  lower. This number mixes the toll with the season, so it is not the headline.
+- Check one year earlier ([placebo test](docs/glossary.md#placebo-test)). The same
+  comparison from fall 2023 to winter 2024, with no toll, gives 7.9% lower (interval
+  10.6% to 4.6% lower). The check fails, so the plan says to lead with the next line.
+- Headline ([triple difference](docs/glossary.md#triple-difference)): this year's
+  change minus last year's, on the log scale, where a value times one hundred is close to a percent. It is 0.0007
+  log points, with an interval of 0.0476 lower to 0.0431 higher. This is consistent with
+  no change beyond the usual season. The result is not clear. The data cannot rule
+  out a change of up to the interval's ends.
+- Pre-trend check ([parallel trends](docs/glossary.md#parallel-trends)): passes. The
+  gap between the groups drifted 0.0139 log points over three months, under the plan's
+  line of 0.015. It passes by a small margin.
+- Stop rules: all pass. Flags: none. After the start, 98.3% of trips into the zone
+  paid the toll, $1.47 per trip on average. Only 0.6% of the comparison trips paid it.
+- Compared with: drop-offs in 22 other Manhattan zones and 61 Brooklyn zones, for
+  trips that start outside the toll zone. The window has 79 days before and 84 days
+  after, with holidays left out.
+- Secondary outcomes (fares, trip time, the Lyft share, each platform alone) are in
+  `reports/estimate.json`. Each one fails at least one of the two checks, so none of
+  them is a finding.
+
+![Weekly gap between trips into the toll zone and trips into the comparison zones, this winter and one year earlier](docs/img/event_study_weekly.png)
+
+The two lines move together after week 0, so the drop at the start of the year
+happened in the year with no toll as well.
 <!-- headline-result:end -->
 
 ## How I worked
@@ -130,7 +154,10 @@ The headline will have the parts below. Each one is empty until the analysis run
   plan needs its own decision record named `NNNN-deviation-*.md`.
 - Decision records: [docs/decisions/](docs/decisions/). They cover the data sources,
   the choice of DuckDB, the data model, the load and quality rules, and the index test.
-- Error analysis: not yet. It comes with the Part 2 results.
+  [ADR 0008](docs/decisions/0008-analysis-details.md) records how the analysis code
+  reads the few points the plan leaves open. It was committed before the estimate ran.
+  No deviation from the plan was needed.
+- Error analysis: not yet. It comes with the memo, the next step.
 - How ready it is for production, scored against Breck et al.'s checklist:
   [docs/ml_test_score.md](docs/ml_test_score.md).
 
@@ -253,20 +280,29 @@ uv run nrc summary            # rewrites reports/load_log.json and reports/load_
 Ranked by how much each could change what the data says. The full list is in
 [docs/whats_weak.md](docs/whats_weak.md).
 
-1. The rules catch only values that cannot be true, such as negative fares or a
+1. The check one year earlier fails. From fall to winter, trips into the zone fall
+   7.9% against the comparison zones even with no toll. The headline therefore
+   rests on the triple difference. That number assumes the season gap is the same
+   every year, and the data hold only one earlier winter to test it.
+2. The pre-trend check passes by a small margin: a drift of 0.0139 log points, against a
+   line of 0.015. The slope's interval leaves out zero, so the two groups were already
+   moving apart slowly.
+3. The interval that draws whole weeks is much wider than the one that draws zones.
+   Shocks that hit every zone on the same days, such as weather, are a large part of
+   the noise.
+4. The rules catch only values that cannot be true, such as negative fares or a
    drop-off before the pickup. Values that are possible but strange, such as a very
    long trip with a normal fare, are kept.
-2. The quarantine numbers describe the files as the TLC published them on the download
+5. The quarantine numbers describe the files as the TLC published them on the download
    dates in `reports/load_log.json`. If the TLC fixes a file later, a reload with
    `--backfill` is needed, and the numbers will change.
-3. Everything runs on one laptop in DuckDB, with a memory cap of 2 GB. On the full
+6. Everything runs on one laptop in DuckDB, with a memory cap of 2 GB. On the full
    fact table, building the timed index ran out of memory. The index was timed on a
    three-month slice instead, as [ADR 0007](docs/decisions/0007-transforms-check-and-index.md)
    records. Those timings are single-machine numbers.
-4. The tables have no foreign key clauses, because DuckDB foreign keys block the
+7. The tables have no foreign key clauses, because DuckDB foreign keys block the
    reload deletes. `nrc check` tests every fact key against its dimension instead, but the database itself does
    not stop an orphan key.
-5. Part 2 has no results yet, so nothing here says anything about congestion pricing.
 
 ## Data and terms of use
 
