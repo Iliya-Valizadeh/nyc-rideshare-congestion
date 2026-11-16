@@ -17,10 +17,10 @@ details are not spelled out:
   week interval for the drift-adjusted estimate. That estimate uses the pre-trend
   months, and those months share days with the before window.
 - The plan says the wider interval decides when the two disagree on zero. It does not
-  say which interval to test against the smallest effect of interest.
+  say which interval to test against the [smallest effect of interest](../glossary.md#smallest-effect-of-interest).
 - The stop rule on unknown drop-offs names the before and after windows. The holiday
   list is written for the estimate.
-- The event study runs "for each week from October 2024 to March 2025".
+- The [event study](../glossary.md#event-study) runs "for each week from October 2024 to March 2025".
 
 ## Options
 
@@ -38,7 +38,7 @@ details are not spelled out:
   checks fail when the interval leaves out zero. This is the strict reading.
 - The drift-adjusted estimate gets the zone interval only. Its zone draws are the same
   draws the main estimate and the pre-trend slope use, so their noise is shared.
-- The triple difference gets both intervals. Its two windows do not overlap, so one
+- The [triple difference](../glossary.md#triple-difference) gets both intervals. Its two windows do not overlap, so one
   week draw covers all four of them.
 - The test against the smallest effect of interest uses the wider of the two
   intervals. This is the cautious choice, and it matches the plan's rule on zero.
