@@ -21,6 +21,8 @@ git tag.
 
 ### Changed
 
+- The template demo modules are archived in `docs/archive/template/`, and
+  `docs/ml_test_score.md` now describes this project.
 - `make eval` now builds `reports/metrics.json` from the analysis reports, in place of
   the template example.
 - `nrc demo` now says at the start and the end that it runs a small synthetic sample in
