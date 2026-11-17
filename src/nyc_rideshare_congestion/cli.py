@@ -71,6 +71,7 @@ def build_parser() -> argparse.ArgumentParser:
     sub.add_parser("prechecks", help="stop rules, pre-trend check and the check a year earlier")
     sub.add_parser("estimate", help="the main estimate, its checks and reports/estimate.json")
     sub.add_parser("extended", help="the longer window, year over year (ADR 0009)")
+    sub.add_parser("site", help="build the static one-page site in site/ from the reports")
     return parser
 
 
@@ -192,6 +193,11 @@ def main(
 
         return demo.main()
     paths = config.Paths(args.root or Path.cwd())
+    if args.command == "site":
+        from nyc_rideshare_congestion import site  # needs no warehouse
+
+        print(f"wrote {site.build_site(paths, paths.root / 'docs' / 'img')}")
+        return config.EXIT_OK
     con = db.connect(paths.db, paths.tmp)
     try:
         db.run_schema(con)
