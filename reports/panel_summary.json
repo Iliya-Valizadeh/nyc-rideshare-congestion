@@ -15,11 +15,11 @@
       237
     ]
   },
-  "months": 27,
-  "cells": 198682,
+  "months": 45,
+  "cells": 331298,
   "trips_by_group": {
-    "control": 153477448,
-    "treated": 44311903
+    "control": 264588389,
+    "treated": 72284284
   },
   "all_months_match_fact": true,
   "by_month": [
@@ -210,6 +210,132 @@
       "cells": 7502,
       "panel_trips": 7683333,
       "fact_trips": 7683333,
+      "equal": true
+    },
+    {
+      "month": "2025-04",
+      "cells": 7260,
+      "panel_trips": 7332412,
+      "fact_trips": 7332412,
+      "equal": true
+    },
+    {
+      "month": "2025-05",
+      "cells": 7502,
+      "panel_trips": 7869181,
+      "fact_trips": 7869181,
+      "equal": true
+    },
+    {
+      "month": "2025-06",
+      "cells": 7260,
+      "panel_trips": 7422591,
+      "fact_trips": 7422591,
+      "equal": true
+    },
+    {
+      "month": "2025-07",
+      "cells": 7502,
+      "panel_trips": 7192644,
+      "fact_trips": 7192644,
+      "equal": true
+    },
+    {
+      "month": "2025-08",
+      "cells": 7502,
+      "panel_trips": 7146631,
+      "fact_trips": 7146631,
+      "equal": true
+    },
+    {
+      "month": "2025-09",
+      "cells": 7260,
+      "panel_trips": 7146865,
+      "fact_trips": 7146865,
+      "equal": true
+    },
+    {
+      "month": "2025-10",
+      "cells": 7502,
+      "panel_trips": 7884062,
+      "fact_trips": 7884062,
+      "equal": true
+    },
+    {
+      "month": "2025-11",
+      "cells": 7260,
+      "panel_trips": 7780255,
+      "fact_trips": 7780255,
+      "equal": true
+    },
+    {
+      "month": "2025-12",
+      "cells": 7502,
+      "panel_trips": 8272686,
+      "fact_trips": 8272686,
+      "equal": true
+    },
+    {
+      "month": "2026-01",
+      "cells": 7502,
+      "panel_trips": 8064180,
+      "fact_trips": 8064180,
+      "equal": true
+    },
+    {
+      "month": "2026-02",
+      "cells": 6776,
+      "panel_trips": 7614018,
+      "fact_trips": 7614018,
+      "equal": true
+    },
+    {
+      "month": "2026-03",
+      "cells": 7502,
+      "panel_trips": 8303005,
+      "fact_trips": 8303005,
+      "equal": true
+    },
+    {
+      "month": "2026-04",
+      "cells": 7260,
+      "panel_trips": 7840179,
+      "fact_trips": 7840179,
+      "equal": true
+    },
+    {
+      "month": "2026-05",
+      "cells": 7502,
+      "panel_trips": 8311400,
+      "fact_trips": 8311400,
+      "equal": true
+    },
+    {
+      "month": "2026-06",
+      "cells": 7260,
+      "panel_trips": 7773592,
+      "fact_trips": 7773592,
+      "equal": true
+    },
+    {
+      "month": "2026-07",
+      "cells": 7502,
+      "panel_trips": 7696355,
+      "fact_trips": 7696355,
+      "equal": true
+    },
+    {
+      "month": "2026-08",
+      "cells": 7502,
+      "panel_trips": 7652010,
+      "fact_trips": 7652010,
+      "equal": true
+    },
+    {
+      "month": "2026-09",
+      "cells": 7260,
+      "panel_trips": 7781256,
+      "fact_trips": 7781256,
       "equal": true
     }
   ]
