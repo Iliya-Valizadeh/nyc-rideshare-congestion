@@ -179,7 +179,10 @@ def run_spark(  # pragma: no cover
         for table, (file, _) in TABLES.items():
             text = (sql_dir / file).read_text(encoding="utf-8")
             start = time.perf_counter()
-            result = spark.sql(text).toArrow()
+            frame = spark.sql(text)
+            # toArrow is new in Spark 4; Spark 3.5 has only the private batch collector.
+            to_arrow = getattr(frame, "toArrow", None)
+            result = to_arrow() if to_arrow else pa.Table.from_batches(frame._collect_as_arrow())
             seconds[table] = time.perf_counter() - start
             pq.write_table(result, out / f"{table}.parquet")
         return seconds
@@ -254,21 +257,28 @@ def measure(cmd: list[str], env: dict[str, str] | None = None) -> dict[str, Any]
 
     Returns the JSON object the child prints on its last line of output.
     """
+    import tempfile
+
     import psutil
 
-    start = time.perf_counter()
-    proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE, env=env)
-    watched = psutil.Process(proc.pid)
-    peak = 0
-    while proc.poll() is None:
-        try:
-            tree = [watched, *watched.children(recursive=True)]
-            peak = max(peak, sum(p.memory_info().rss for p in tree if p.is_running()))
-        except psutil.Error:
-            pass
-        time.sleep(POLL_S)
-    stdout, stderr = proc.communicate()
-    wall = time.perf_counter() - start
+    # The child's output goes to files, not pipes: Spark logs enough to fill a pipe
+    # buffer, and a full pipe blocks the child while this loop waits for it to exit.
+    with tempfile.TemporaryFile() as out_f, tempfile.TemporaryFile() as err_f:
+        start = time.perf_counter()
+        proc = subprocess.Popen(cmd, stdout=out_f, stderr=err_f, env=env)
+        watched = psutil.Process(proc.pid)
+        peak = 0
+        while proc.poll() is None:
+            try:
+                tree = [watched, *watched.children(recursive=True)]
+                peak = max(peak, sum(p.memory_info().rss for p in tree if p.is_running()))
+            except psutil.Error:
+                pass
+            time.sleep(POLL_S)
+        wall = time.perf_counter() - start
+        out_f.seek(0)
+        err_f.seek(0)
+        stdout, stderr = out_f.read(), err_f.read()
     if proc.returncode != 0:
         tail = stderr.decode(errors="replace")[-2000:]
         raise RuntimeError(f"{cmd[-3]} failed with exit code {proc.returncode}: {tail}")

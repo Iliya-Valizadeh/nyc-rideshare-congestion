@@ -21,7 +21,9 @@ nrc = "nyc_rideshare_congestion.cli:main"
 [dependency-groups]
 bench = [
     "psutil>=6.0",
-    "pyspark>=4.0",
+    # Spark 4 needs the JDK module jdk.incubator.vector, which the only Java runtime on
+    # the benchmark laptop does not ship. Spark 3.5 runs on Java 21 without it.
+    "pyspark>=3.5.3,<4",
 ]
 dev = [
     "mypy>=1.10",
