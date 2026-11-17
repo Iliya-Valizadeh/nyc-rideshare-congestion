@@ -43,7 +43,7 @@ it and is labelled as an amendment.
 ## Decision
 
 The second option. Everything not named here stays as the plan sets it: the zone
-groups, which trips count, the unit, the outcomes, the two
+groups, which trips count, the unit, the outcomes, the
 [smallest effect of interest](../glossary.md#smallest-effect-of-interest), the two
 [bootstrap](../glossary.md#bootstrap) methods, the rounds, the seed and the interval level.
 
