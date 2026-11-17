@@ -127,3 +127,21 @@ result existed. The year-over-year result is reported next to it and labelled
   riders have had a year to adjust. That can push the estimate either way.
 - The plan's reports are not changed by this record. The new numbers go into their
   own report file.
+
+## Addendum, 2026-11-16, before any new month was analysed
+
+This changes one line of the decision above. It was written while the new files were
+still loading. No trip in them had been counted by zone or by month.
+
+- What changes: the week bootstrap. The decision says it "draws calendar weeks inside
+  each window". For windows one year long that is wrong.
+- Why: a draw could pick more summer weeks in one year and more winter weeks in the
+  other. The season would then come back into the comparison through the draw, and the
+  interval would be far too wide. A test on made-up data with a known effect showed
+  this.
+- New rule: each window is cut into blocks of seven days, counted from its first day
+  (January 5). The last block is shorter. One draw picks block numbers with
+  replacement. Every window of the estimate then uses the blocks with those numbers.
+  So each drawn week of 2025 is set against the same week of 2024 and of 2023.
+- The second fee year uses the same rule with its own draw.
+- Everything else in the decision stays.
