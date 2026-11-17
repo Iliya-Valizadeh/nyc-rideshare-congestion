@@ -19,12 +19,13 @@ REFERENCE_FILES = {
 # Months in the study (ADR 0001), and the download order: the study windows first,
 # then the same months a year earlier, then the rest.
 FIRST_MONTH = "2023-01"
-LAST_MONTH = "2025-03"
+LAST_MONTH = "2026-09"  # last month loaded (ADR 0009)
+PLAN_LAST_MONTH = "2025-03"  # last month of the plan's own study (docs/eval_plan.md)
 PRIORITY_RANGES = (("2024-10", "2025-03"), ("2023-10", "2024-03"))
 
 # Warehouse (ADR 0003 and 0004).
 DATE_FIRST = "2023-01-01"  # dim_date range, both ends included
-DATE_LAST = "2025-12-31"
+DATE_LAST = "2026-12-31"
 FEE_COLUMN_FIRST_MONTH = "2025-01"  # cbd_congestion_fee may be missing before this month
 MAX_TRIP_SECONDS = 6 * 60 * 60  # rule IMPOSSIBLE_DURATION: longer trips are clock errors
 LOAD_DISK_FACTOR = 3  # free space a load needs, as a multiple of the raw file size

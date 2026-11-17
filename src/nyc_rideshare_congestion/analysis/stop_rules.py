@@ -181,11 +181,20 @@ def rule_platform_days(
 
 
 def run(
-    con: duckdb.DuckDBPyConnection, p: dict[str, Any], groups: ZoneGroups, paths: config.Paths
+    con: duckdb.DuckDBPyConnection,
+    p: dict[str, Any],
+    groups: ZoneGroups,
+    paths: config.Paths,
+    months: list[str] | None = None,
 ) -> dict[str, Any]:
-    """All stop rules, then the pipeline checks the plan lists before analysis."""
+    """All stop rules, then the pipeline checks the plan lists before analysis.
+
+    `months` defaults to the months of the plan's study. The longer window (ADR 0009)
+    passes every loaded month.
+    """
     limits = p["stop_rules"]
-    months = config.months(config.FIRST_MONTH, config.LAST_MONTH)
+    if months is None:
+        months = config.months(config.FIRST_MONTH, config.PLAN_LAST_MONTH)
     rules = {
         "months_loaded": rule_months_loaded(con, months),
         "quarantine_share": rule_quarantine_share(

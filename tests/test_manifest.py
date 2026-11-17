@@ -37,7 +37,7 @@ def _fakes(files: dict[str, bytes]) -> tuple[manifest.HeadFn, manifest.TailFn]:
 
 def test_months_spans_year_end() -> None:
     assert config.months("2024-11", "2025-02") == ["2024-11", "2024-12", "2025-01", "2025-02"]
-    assert len(config.months(config.FIRST_MONTH, config.LAST_MONTH)) == 27
+    assert len(config.months(config.FIRST_MONTH, config.PLAN_LAST_MONTH)) == 27
 
 
 def test_months_rejects_reversed_range() -> None:
