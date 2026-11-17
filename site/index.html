@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Congestion pricing and rideshare trips</title>
+<style>
+:root { --bg: #fcfcfb; --ink: #0b0b0b; --ink2: #52514e; --rule: #e1e0d9; }
+@media (prefers-color-scheme: dark) {
+  :root { --bg: #151514; --ink: #f2f1ec; --ink2: #b9b8b1; --rule: #33322f; }
+  img { background: #fcfcfb; border-radius: 6px; }
+}
+body { margin: 0; background: var(--bg); color: var(--ink);
+  font: 16px/1.55 system-ui, -apple-system, "Segoe UI", sans-serif; }
+main { max-width: 760px; margin: 0 auto; padding: 32px 16px 64px; }
+h1 { font-size: 1.6rem; line-height: 1.25; margin: 0 0 8px; }
+.big { font-size: 2.4rem; font-weight: 650; margin: 24px 0 0; }
+.sub { color: var(--ink2); margin: 4px 0 24px; }
+img { width: 100%; height: auto; display: block; margin: 16px 0 4px; }
+figcaption, .note { color: var(--ink2); font-size: 0.9rem; }
+table { border-collapse: collapse; width: 100%; font-size: 0.95rem; }
+td, th { border-bottom: 1px solid var(--rule); padding: 6px 4px; text-align: left; }
+</style>
+</head>
+<body>
+<main>
+<h1>Did congestion pricing change Uber and Lyft trips into the zone?</h1>
+<p class="sub">New York started its congestion fee on January 5, 2025. This page compares
+trips into the fee zone with trips into other Manhattan and Brooklyn zones, month by
+month, through 2026-09-30.</p>
+
+<p class="big">-1.4%</p>
+<p class="sub">95% interval -2.7% to +0.2%, after taking out the change seen
+in a year with no fee.</p>
+<p>We find no change larger than 3% in either direction: the estimate is -1.4% (95% interval -2.7% to +0.2%).</p>
+
+<figure>
+<img src="img/event_study_monthly.png" alt="Monthly change from the same month a year earlier,
+with a shaded 95% interval. Points are marked by whether each year had the fee.">
+<figcaption>Each point compares a month with the same month a year earlier. In 2024
+neither year had the fee. In 2025 the fee year is set against a year without it. In
+2026 both years have the fee. The band comes from resampling zones.</figcaption>
+</figure>
+
+<figure>
+<img src="img/zone_map_change.png" alt="Map of Manhattan and Brooklyn zones colored by their
+change in trips per day from 2024 to 2025, against the control zones.">
+<figcaption>Where the change sits. This is a description: no single zone has an
+interval or a test.</figcaption>
+</figure>
+
+<h2>The numbers behind the headline</h2>
+<table>
+<tr><th>Comparison</th><th>Change</th><th>95% interval (the wider of the two)</th></tr>
+<tr><td>Year over year, 2025 against 2024</td><td>-6.7%</td><td>-7.8% to -5.6%</td></tr>
+<tr><td>The same check a year earlier, 2024 against 2023</td><td>-5.4%</td><td>-6.4% to -4.5%</td></tr>
+</table>
+<p class="note">The headline is the first row minus the second, on the log scale. It
+assumes the gap between the two groups would have moved by the same amount from 2024 to
+2025 as it did from 2023 to 2024. Only one earlier pair of years is in the data.</p>
+
+<h2>How this fits the first study</h2>
+<p>The study plan was fixed before any result. Its own window, fall 2024 against winter
+2025, gave +0.1% after the same correction (95%
+interval -4.6% to +4.4%). That result stays the primary one.
+The longer window on this page is a dated amendment, written
+before any month after March 2025 was loaded.</p>
+<p class="note">Data: NYC TLC High Volume For-Hire Vehicle trip records. Built by
+<code>nrc site</code> from the reports in the repo. Not published.</p>
+</main>
+</body>
+</html>

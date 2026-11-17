@@ -4,7 +4,7 @@ Short form of the datasheet from Gebru et al., "Datasheets for Datasets"
 (https://arxiv.org/abs/1803.09010). Every number here needs a row in
 [CLAIMS.md](CLAIMS.md).
 
-Status: the pipeline sections are filled in. All 27 months are downloaded and loaded.
+Status: the pipeline sections are filled in. All 45 months, January 2023 to September 2026, are downloaded and loaded.
 The study sections wait for the Part 2 analysis.
 
 ## Motivation
@@ -41,8 +41,9 @@ and Uber trips into the congestion zone.
   [TLC trip record data page](https://www.nyc.gov/site/tlc/about/tlc-trip-record-data.page),
   and the TLC taxi zone lookup and shapes. Each monthly file's address follows the
   pattern `https://d37ci6vzurychx.cloudfront.net/trip-data/fhvhv_tripdata_YYYY-MM.parquet`.
-- The months are January 2023 to March 2025: 27 files, 13.05 GB in total, from HEAD
-  requests recorded in `reports/source_manifest.json`.
+- The months are January 2023 to September 2026: 45 files. The first 27, to March 2025,
+  are the plan's window, with sizes from HEAD requests in `reports/source_manifest.json`.
+  The months added on 2026-11-16 (ADR 0009) have their size and hash in `reports/load_log.json`.
 - The list of taxi zones inside the congestion zone (38 zones) comes from the MTA
   dataset "MTA Central Business District Taxi Zones" (<https://data.ny.gov/d/yfdc-w5jh>).
 - Terms: the TLC page gives no license and makes no claim of accuracy. The NYC.gov

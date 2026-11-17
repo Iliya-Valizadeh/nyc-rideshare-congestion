@@ -398,7 +398,9 @@ def test_dimensions_are_filled_and_zone_changes_fail(
     assert _count(con, "SELECT count(*) FROM dim_zone WHERE service_zone IS NULL") == 1
     assert _count(con, "SELECT count(*) FROM dim_platform") == 2
     assert _count(con, "SELECT min(date_key) FROM dim_date") == 20230101
-    assert _count(con, "SELECT max(date_key) FROM dim_date") == 20251231
+    assert _count(con, "SELECT max(date_key) FROM dim_date") == int(
+        config.DATE_LAST.replace("-", "")
+    )
     row = con.execute(
         "SELECT iso_day_of_week, is_weekend, month_key FROM dim_date WHERE date_key = 20250105"
     ).fetchone()

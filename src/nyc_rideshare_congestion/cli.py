@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import re
 from collections.abc import Sequence
 from pathlib import Path
@@ -70,6 +71,9 @@ def build_parser() -> argparse.ArgumentParser:
     pnl.add_argument("--month", type=month_arg, action="append", help="only this month")
     sub.add_parser("prechecks", help="stop rules, pre-trend check and the check a year earlier")
     sub.add_parser("estimate", help="the main estimate, its checks and reports/estimate.json")
+    sub.add_parser("extended", help="the longer window, year over year (ADR 0009)")
+    sub.add_parser("site", help="build the static one-page site in site/ from the reports")
+    sub.add_parser("benchmark", help="time the transforms in DuckDB and PySpark on 3 months")
     return parser
 
 
@@ -191,6 +195,11 @@ def main(
 
         return demo.main()
     paths = config.Paths(args.root or Path.cwd())
+    if args.command == "site":
+        from nyc_rideshare_congestion import site  # needs no warehouse
+
+        print(f"wrote {site.build_site(paths, paths.root / 'docs' / 'img')}")
+        return config.EXIT_OK
     con = db.connect(paths.db, paths.tmp)
     try:
         db.run_schema(con)
@@ -206,9 +215,15 @@ def main(
             return run_check(args, paths, con)
         if args.command == "transform":
             return run_transform(con)
+        if args.command == "benchmark":  # pragma: no cover - needs the bench group and Java
+            from nyc_rideshare_congestion.pipeline import benchmark
+
+            report = benchmark.run_benchmark(con, paths)
+            print(json.dumps({k: report[k] for k in ("months", "all_tables_exact")}))
+            return config.EXIT_OK
         if args.command == "time-index":
             return run_time_index(paths, con)
-        if args.command in ("panel", "prechecks", "estimate"):
+        if args.command in ("panel", "prechecks", "estimate", "extended"):
             from nyc_rideshare_congestion.analysis import run as analysis
 
             return analysis.main(args.command, paths, con, getattr(args, "month", None))

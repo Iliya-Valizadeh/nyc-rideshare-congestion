@@ -201,7 +201,7 @@ def study(tmp_path: Path) -> Iterator[tuple[config.Paths, duckdb.DuckDBPyConnect
     boroughs = {z: "Manhattan" for z in (*g.treated, *g.control_manhattan, *g.buffer)}
     boroughs |= {z: "Brooklyn" for z in g.control_brooklyn} | {7: "Queens"}
     _zone_rows(c, boroughs)
-    dims.fill_dates(c, "2023-01-01", "2025-03-31")
+    dims.fill_dates(c, "2023-01-01", "2026-09-30")
     c.execute(
         """
         INSERT INTO fact_trip_hourly
@@ -217,7 +217,6 @@ def study(tmp_path: Path) -> Iterator[tuple[config.Paths, duckdb.DuckDBPyConnect
             UNION ALL SELECT unnest($c), false
         ) AS z,
         LATERAL (SELECT 20 + (d.date_key * 7 + z.zone * 13 + pl.platform_key) % 11 AS n)
-        WHERE d.date_key <= 20250331
         """,
         {"t": list(g.treated), "c": list(g.control)},
     )
@@ -232,7 +231,7 @@ def test_commands_run_end_to_end(
     monkeypatch.setattr(zones, "verify", lambda *a: {"checked": "in another test"})
     assert run.main("panel", paths, con, None) == config.EXIT_OK
     summary = json.loads((paths.reports / "panel_summary.json").read_text(encoding="utf-8"))
-    assert summary["months"] == 27 and summary["all_months_match_fact"]
+    assert summary["months"] == 45 and summary["all_months_match_fact"]
 
     # The fake warehouse has no load log, so the stop rules fail and nothing is estimated.
     assert run.main("prechecks", paths, con, None) == config.EXIT_FAILED
@@ -240,6 +239,11 @@ def test_commands_run_end_to_end(
     stopped = json.loads((paths.reports / "estimate.json").read_text(encoding="utf-8"))
     assert stopped["verdict"]["table_rows"] == ["stop_rule_fails"]
     assert "months_loaded" in stopped["failed_rules"]
+    assert run.main("extended", paths, con, None) == config.EXIT_FAILED
+    stopped = json.loads((paths.reports / "extended.json").read_text(encoding="utf-8"))
+    assert stopped["verdict"]["table_rows"] == ["stop_rule_fails"]
+    stops = json.loads((paths.reports / "extended_stop_rules.json").read_text(encoding="utf-8"))
+    assert stops["months"] == ["2023-01", "2026-09"]
 
     passing = {"result": "pass", "failed_rules": [], "pipeline_check_failures": []}
     monkeypatch.setattr(stop_rules, "run", lambda *a: passing)
@@ -249,8 +253,27 @@ def test_commands_run_end_to_end(
     assert out["fees_after_start"]["treated"]["fee_share"] == 1.0
     assert out["fees_after_start"]["control"]["fee_share"] == 0.0
     assert out["bootstrap"] == {"rounds": 2000, "seed": 20250105, "interval_level": 0.95}
+    assert run.main("extended", paths, con, None) == config.EXIT_OK
+    ext = json.loads((paths.reports / "extended.json").read_text(encoding="utf-8"))
+    assert ext["label"] == "amendment" and ext["last_day_loaded"] == "2026-09-30"
+    assert ext["year_over_year"]["days_kept"] == {"before": 362, "after": 361}
+    assert ext["second_fee_year"]["after"] == ["2026-01-05", "2026-09-30"]
+    assert ext["event_study_monthly"]["months"][0] == "2024-01"
+    assert len(ext["zone_changes"]) == len(PLAN["treated_zones"]) + len(
+        PLAN["control_zones_manhattan"]
+    ) + len(PLAN["control_zones_brooklyn"])
     for name in run.FIGURES.values():
         assert (paths.root / "docs" / "img" / name).stat().st_size > 0
+
+
+def test_extended_needs_the_panel_first(tmp_path: Path) -> None:
+    paths = config.Paths(tmp_path)
+    con = db.connect(paths.db, paths.tmp, memory_limit_mb=200)
+    db.run_schema(con)
+    con.execute((config.SQL_DIR / "analysis" / "01_panel_table.sql").read_text(encoding="utf-8"))
+    with pytest.raises(FileNotFoundError, match="nrc panel"):
+        run.run_extended(con, paths, PLAN)
+    con.close()
 
 
 def test_estimate_needs_the_stop_rules_first(tmp_path: Path) -> None:

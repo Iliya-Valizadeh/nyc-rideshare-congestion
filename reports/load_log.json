@@ -26,7 +26,25 @@
     "2024-12",
     "2025-01",
     "2025-02",
-    "2025-03"
+    "2025-03",
+    "2025-04",
+    "2025-05",
+    "2025-06",
+    "2025-07",
+    "2025-08",
+    "2025-09",
+    "2025-10",
+    "2025-11",
+    "2025-12",
+    "2026-01",
+    "2026-02",
+    "2026-03",
+    "2026-04",
+    "2026-05",
+    "2026-06",
+    "2026-07",
+    "2026-08",
+    "2026-09"
   ],
   "months_missing": [],
   "load_log": [
@@ -244,6 +262,150 @@
       "sha256": "671399467732b00653307525421bfc6004e6a45be1fadd5e4b8fa3d11da22043",
       "size_bytes": 501783767,
       "last_modified": "2025-05-21T15:28:05Z",
+      "status": "loaded"
+    },
+    {
+      "month": "2025-04",
+      "file_name": "fhvhv_tripdata_2025-04.parquet",
+      "sha256": "d1edcd63ba37e87e0c6fda58cfc12352c0aa9ad9ad88dd2992094bc1ecd1e3b1",
+      "size_bytes": 487219586,
+      "last_modified": "2025-06-25T14:51:04Z",
+      "status": "loaded"
+    },
+    {
+      "month": "2025-05",
+      "file_name": "fhvhv_tripdata_2025-05.parquet",
+      "sha256": "424be0dcc1248fd83dbf235805f2d475e19196ad64dc2e1d2e9c7b771851585a",
+      "size_bytes": 517386544,
+      "last_modified": "2025-06-25T15:51:27Z",
+      "status": "loaded"
+    },
+    {
+      "month": "2025-06",
+      "file_name": "fhvhv_tripdata_2025-06.parquet",
+      "sha256": "f26bbe980f037a15f47f40da4ad7102b7aaebe0c9a8f3c1f6d058c6652007c88",
+      "size_bytes": 490819474,
+      "last_modified": "2025-07-25T14:01:33Z",
+      "status": "loaded"
+    },
+    {
+      "month": "2025-07",
+      "file_name": "fhvhv_tripdata_2025-07.parquet",
+      "sha256": "cae4e3d120f9af1a7369dad915dfe9beadda914b08a38ee8c045a4d09f085712",
+      "size_bytes": 487222980,
+      "last_modified": "2025-08-21T16:21:54Z",
+      "status": "loaded"
+    },
+    {
+      "month": "2025-08",
+      "file_name": "fhvhv_tripdata_2025-08.parquet",
+      "sha256": "e2efc965d31bd10f23224f5e007b463d037c45fbdaa6ded23c5deab01ec8d3b7",
+      "size_bytes": 479574607,
+      "last_modified": "2025-09-24T14:17:30Z",
+      "status": "loaded"
+    },
+    {
+      "month": "2025-09",
+      "file_name": "fhvhv_tripdata_2025-09.parquet",
+      "sha256": "1744115e019e2f6e1e41214afb33f087a303620834c42021c642c5afca042d6f",
+      "size_bytes": 480851341,
+      "last_modified": "2025-10-23T15:54:44Z",
+      "status": "loaded"
+    },
+    {
+      "month": "2025-10",
+      "file_name": "fhvhv_tripdata_2025-10.parquet",
+      "sha256": "5610c7bcbe2aadd14761858eb7b94d3b01a2ee03d299c05f3575f72357f5b81a",
+      "size_bytes": 518486063,
+      "last_modified": "2025-11-25T15:26:03Z",
+      "status": "loaded"
+    },
+    {
+      "month": "2025-11",
+      "file_name": "fhvhv_tripdata_2025-11.parquet",
+      "sha256": "a17ebafe3b6b1927f9b1b4cfc9062a328867b79a871ce762bfb16a841024f1e0",
+      "size_bytes": 507485661,
+      "last_modified": "2025-12-19T15:50:06Z",
+      "status": "loaded"
+    },
+    {
+      "month": "2025-12",
+      "file_name": "fhvhv_tripdata_2025-12.parquet",
+      "sha256": "897e541b2a998df118dc5cc2b4182b74d14f6d0f2a950ef2bac3a8924ce6e95f",
+      "size_bytes": 535754793,
+      "last_modified": "2026-02-24T16:30:37Z",
+      "status": "loaded"
+    },
+    {
+      "month": "2026-01",
+      "file_name": "fhvhv_tripdata_2026-01.parquet",
+      "sha256": "d7cdc852912fd7864166448a93cb40d7d6b09f136057b10ae31e9bb53d59c6f2",
+      "size_bytes": 505868728,
+      "last_modified": "2026-02-24T17:46:21Z",
+      "status": "loaded"
+    },
+    {
+      "month": "2026-02",
+      "file_name": "fhvhv_tripdata_2026-02.parquet",
+      "sha256": "7f3c6737ed9a65884c9867ac2b8e05e358e56b42ecaf6d43f8009d40a9fce5c2",
+      "size_bytes": 476780037,
+      "last_modified": "2026-03-25T15:46:41Z",
+      "status": "loaded"
+    },
+    {
+      "month": "2026-03",
+      "file_name": "fhvhv_tripdata_2026-03.parquet",
+      "sha256": "0f63d67cb9253b5a818cc4a1b2ddaf3a79955a6bf31c7577c53ff97fa040a262",
+      "size_bytes": 532615621,
+      "last_modified": "2026-04-28T18:50:11Z",
+      "status": "loaded"
+    },
+    {
+      "month": "2026-04",
+      "file_name": "fhvhv_tripdata_2026-04.parquet",
+      "sha256": "15525aea9f82d55b885c6053414054e63f4c9abb3cdc44d78120a77d3aecc92b",
+      "size_bytes": 509865567,
+      "last_modified": "2026-05-21T14:34:30Z",
+      "status": "loaded"
+    },
+    {
+      "month": "2026-05",
+      "file_name": "fhvhv_tripdata_2026-05.parquet",
+      "sha256": "e2b633a5be2280da537b4138f5bcb198eb04a6d3c2ef6bf7bd647f5b2c995287",
+      "size_bytes": 537576484,
+      "last_modified": "2026-06-26T21:07:20Z",
+      "status": "loaded"
+    },
+    {
+      "month": "2026-06",
+      "file_name": "fhvhv_tripdata_2026-06.parquet",
+      "sha256": "300f8dccfae9025383deeec3c1daecf6c16653615dbdcfec8d77a76804314f48",
+      "size_bytes": 506800012,
+      "last_modified": "2026-09-17T14:43:53Z",
+      "status": "loaded"
+    },
+    {
+      "month": "2026-07",
+      "file_name": "fhvhv_tripdata_2026-07.parquet",
+      "sha256": "8da280d9d23813aae02a6e1d1d1caa8b96eb5e8d38efcbc9a570faf1e418f5a8",
+      "size_bytes": 511176663,
+      "last_modified": "2026-09-17T14:43:53Z",
+      "status": "loaded"
+    },
+    {
+      "month": "2026-08",
+      "file_name": "fhvhv_tripdata_2026-08.parquet",
+      "sha256": "0015770b14420035b9c7708091b765eb59d70f25cd7d663d2462194208a198f6",
+      "size_bytes": 502392134,
+      "last_modified": "2026-10-01T13:38:15Z",
+      "status": "loaded"
+    },
+    {
+      "month": "2026-09",
+      "file_name": "fhvhv_tripdata_2026-09.parquet",
+      "sha256": "b146f2cff09b004395b0fb22cea74e2e2ea7932982969949d859a6d6d9064376",
+      "size_bytes": 509720685,
+      "last_modified": "2026-10-29T13:56:04Z",
       "status": "loaded"
     }
   ],

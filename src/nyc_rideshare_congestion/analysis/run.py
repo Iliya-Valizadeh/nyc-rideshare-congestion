@@ -1,9 +1,11 @@
-"""`nrc panel`, `nrc prechecks` and `nrc estimate`: the Part 2 analysis, in that order.
+"""`nrc panel`, `nrc prechecks`, `nrc estimate` and `nrc extended`: the Part 2 analysis.
 
 `panel` writes reports/panel_summary.json. `prechecks` writes reports/stop_rules.json,
 reports/pretrend.json, reports/placebo.json and three charts in docs/img/. `estimate`
 writes reports/estimate.json and the headline chart. It refuses to run unless the
-stop rules in reports/stop_rules.json passed.
+stop rules in reports/stop_rules.json passed. `extended` is the longer window from
+ADR 0009: it writes reports/extended_stop_rules.json, then reports/extended.json and
+the monthly chart if those rules pass.
 """
 
 from __future__ import annotations
@@ -17,7 +19,7 @@ import duckdb
 
 from nyc_rideshare_congestion import config
 
-from . import estimate, figures, prechecks, stop_rules, zones
+from . import estimate, extended, figures, prechecks, stop_rules, zones
 from .bootstrap import zone_weights
 from .calendar import parse_dates
 from .panel import Cube, build_month, load_cube
@@ -29,6 +31,7 @@ FIGURES = {
     "gap": "pretrend_log_ratio.png",
     "placebo": "placebo_weekly.png",
     "headline": "event_study_weekly.png",
+    "extended": "event_study_monthly.png",
 }
 
 
@@ -161,6 +164,47 @@ def run_estimate(
     return out
 
 
+def run_extended(
+    con: duckdb.DuckDBPyConnection,
+    paths: config.Paths,
+    p: dict[str, Any],
+    img_dir: Path = IMG_DIR,
+) -> dict[str, Any]:
+    """The longer window (ADR 0009): its stop rules first, then the estimate."""
+    groups = zones.groups_from_params(p)
+    loaded = [
+        f"{int(k) // 100:04d}-{int(k) % 100:02d}"
+        for (k,) in con.execute(
+            "SELECT DISTINCT date_key // 100 FROM panel_zone_day ORDER BY 1"
+        ).fetchall()
+    ]
+    if not loaded:
+        raise FileNotFoundError("the panel is empty; run `nrc panel` first")
+    months = config.months(config.FIRST_MONTH, loaded[-1])
+    stops = stop_rules.run(con, extended.stop_rule_params(p), groups, paths, months)
+    stops["months"] = [months[0], months[-1]]
+    write_json(stops, paths.reports / "extended_stop_rules.json")
+    if stops["result"] != "pass":
+        out = estimate.stopped(stops)
+        out["adr"] = "docs/decisions/0009-deviation-longer-window.md"
+        write_json(out, paths.reports / "extended.json")
+        return out
+    first = date.fromisoformat(months[0] + "-01")
+    last = prechecks.month_days(months[-1])[-1]
+    cube = load_cube(con, groups, first, last)
+    out = extended.run_extended(cube, p, _weights(p))
+    b = p["bootstrap"]
+    out["bootstrap"] = {
+        "rounds": int(b["rounds"]),
+        "seed": int(b["seed"]),
+        "interval_level": float(b["interval_level"]),
+        "week_blocks": "seven-day blocks, same block numbers in every window",
+    }
+    write_json(out, paths.reports / "extended.json")
+    figures.plot_event_study_monthly(out["event_study_monthly"], img_dir / FIGURES["extended"])
+    return out
+
+
 def main(
     command: str, paths: config.Paths, con: duckdb.DuckDBPyConnection, months: list[str] | None
 ) -> int:
@@ -181,6 +225,9 @@ def main(
         result = run_prechecks(con, paths, p, img_dir)
         print(json.dumps(_round(result), indent=2))
         return config.EXIT_OK if result["stop_rules"] == "pass" else config.EXIT_FAILED
-    out = run_estimate(con, paths, p, img_dir)
+    if command == "extended":
+        out = run_extended(con, paths, p, img_dir)
+    else:
+        out = run_estimate(con, paths, p, img_dir)
     print(json.dumps(_round(out["verdict"]), indent=2))
     return config.EXIT_FAILED if "failed_rules" in out else config.EXIT_OK

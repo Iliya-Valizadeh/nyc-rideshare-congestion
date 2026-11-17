@@ -9,12 +9,12 @@ lower Manhattan. Did Uber and Lyft trips into that area change, compared with tr
 into other zones?
 
 <!-- headline-finding:start. Replace this paragraph with the Part 2 estimate, its interval and the zones it is compared with, once the analysis has run. Each number needs a CLAIMS.md row. -->
-What I found: trips into the toll zone fell 7.8% more than trips into the comparison
-zones. But one year earlier, with no toll, the same comparison fell 7.9% over the same
-months. So the plain number mixes the toll with the change from fall to winter. Once
-last year's change is taken out, what is left is close to zero. That is consistent with
-no change beyond the usual season. Still, the result is not clear: the data cannot rule
-out a change of a few percent either way.
+What I found: compared with the year before, trips into the toll zone fell 6.7% more
+than trips into the comparison zones in 2025. But in 2024, with no toll, the same
+comparison already showed a 5.4% fall. Trips into the zone had been slipping for a
+while. Once that earlier slide is taken out, what is left is a 1.4% fall, with a 95%
+interval from 2.7% lower to 0.2% higher. The data rule out a change larger than 3% in
+either direction. They cannot tell a small fall from no change at all.
 <!-- headline-finding:end -->
 
 ## Try it
@@ -65,26 +65,26 @@ To run the pipeline on the real data instead, see [Run it on the real data](#run
 
 ## Result
 
-The project has two parts. Part 1, the pipeline, is built and has loaded all 27
-monthly files, from January 2023 to March 2025. Part 2, the congestion pricing study,
-has its estimate and both checks. Its plan was written and committed before any
-outcome was computed. The memo on what a platform should do comes next.
+The project has three parts. Part 1, the pipeline, has loaded all 45 monthly
+files, from January 2023 to September 2026. Part 2 is the congestion pricing study as
+first planned, over one fall and winter. Part 3 repeats it over whole years, as a dated
+amendment to the plan. Each plan was committed before its outcomes were computed.
 
 ### Part 1: where every trip row went
 
 The table comes from `reports/load_summary.json`, written by `uv run nrc summary`. It
-adds up all 27 months.
+adds up all 45 months.
 
 | Step | Rows |
 |---|---|
-| Rows in the downloaded files | 532,242,474 |
+| Rows in the downloaded files | 904,724,544 |
 | Rows from other platforms (not Uber or Lyft), counted and left out | 0 |
-| Rows kept | 532,128,361 |
-| Rows quarantined | 114,113 |
-| Rows in the fact table | 242,369,412 |
+| Rows kept | 904,515,562 |
+| Rows quarantined | 208,982 |
+| Rows in the fact table | 407,762,234 |
 
 Kept rows plus quarantined rows equal the rows in the files, and the `nrc check`
-command tests that sum for every month. The quarantined rows are 0.0214% of all
+command tests that sum for every month. The quarantined rows are 0.0231% of all
 rows. Each one has a reason code. A row that breaks more than one rule gets the code
 of the first rule it breaks, in this order:
 
@@ -93,10 +93,10 @@ of the first rule it breaks, in this order:
 | 1 | `NULL_REQUIRED` | A column the fact table needs is empty | 0 |
 | 2 | `PICKUP_OUTSIDE_MONTH` | The pickup time is not in the file's month | 0 |
 | 3 | `UNKNOWN_ZONE` | The pickup or drop-off zone is not in the TLC zone list | 0 |
-| 4 | `NEGATIVE_FARE` | A fare or fee column is below zero | 90,092 |
+| 4 | `NEGATIVE_FARE` | A fare or fee column is below zero | 167,982 |
 | 5 | `NEGATIVE_DISTANCE` | The trip distance is below zero | 0 |
-| 6 | `IMPOSSIBLE_DURATION` | The trip time is zero or less, the drop-off is not after the pickup, or a length is over six hours | 19,982 |
-| 7 | `DUPLICATE_TRIP` | An exact copy of an earlier row in the same file that passed rules 1 to 6 | 4,039 |
+| 6 | `IMPOSSIBLE_DURATION` | The trip time is zero or less, the drop-off is not after the pickup, or a length is over six hours | 36,943 |
+| 7 | `DUPLICATE_TRIP` | An exact copy of an earlier row in the same file that passed rules 1 to 6 | 4,057 |
 
 The fact table has fewer than half as many rows as there are kept trips. That is by
 design. Its grain (what one row stands for) is one row per pickup date, pickup hour,
@@ -147,6 +147,42 @@ The two lines move together after week 0, so the drop at the start of the year
 happened in the year with no toll as well.
 <!-- headline-result:end -->
 
+### Part 3: whole years, a dated amendment
+
+Part 2's window was short, and its check one year earlier failed. So, before loading
+any month after March 2025, I added a dated amendment,
+[ADR 0009](docs/decisions/0009-deviation-longer-window.md). It compares full years:
+2025, the first year with the toll, against 2024, and runs the same check on 2024
+against 2023. Days are drawn in matching seven-day blocks, so a winter week is always
+set against a winter week. Intervals come from 2,000 bootstrap rounds by zone and by
+week, and each one below is the wider of the two. The command is `nrc extended`, which
+writes `reports/extended.json`.
+
+<!-- headline-result-longer:start -->
+- 2025 against 2024: trips per day into the zone fell 6.7% more than trips into the
+  comparison zones (interval 7.8% to 5.6% lower).
+- The same check a year earlier, 2024 against 2023, with no toll in either year:
+  5.4% lower (interval 6.4% to 4.5% lower). The check fails, so the plan leads with
+  the next line.
+- Headline, the [triple difference](docs/glossary.md#triple-difference): 1.4% lower,
+  with an interval from 2.7% lower to 0.2% higher. The plan's smallest effect of
+  interest is 3%. The interval holds zero and stays inside that line, so the plan's
+  wording applies: no change larger than 3% in either direction.
+- Exploratory, not a test: 2026 against 2025, when both years have the toll, gives
+  10.9% lower (interval 12.8% to 9.2% lower). The zone kept slipping after the toll's
+  first year.
+- Stop rules, run again on all 45 months: all pass.
+- Secondary outcomes (fares, trip time, the Lyft share, each platform alone) are in
+  `reports/extended.json`. Their checks a year earlier fail too, so none is a finding.
+
+![Monthly change in trips into the toll zone against the comparison zones, each month against the same month a year earlier](docs/img/event_study_monthly.png)
+
+What to notice: the grey points, from 2024, sit close to the 5.4% fall from the check a
+year earlier, although neither year had the toll. The orange points, the first toll
+year, sit only a little lower. The fall in early 2026 came when both years had the
+toll, so the toll's start does not explain it.
+<!-- headline-result-longer:end -->
+
 ## How I worked
 
 - Evaluation plan, written before any results: [docs/eval_plan.md](docs/eval_plan.md),
@@ -156,7 +192,9 @@ happened in the year with no toll as well.
   the choice of DuckDB, the data model, the load and quality rules, and the index test.
   [ADR 0008](docs/decisions/0008-analysis-details.md) records how the analysis code
   reads the few points the plan leaves open. It was committed before the estimate ran.
-  No deviation from the plan was needed.
+  One deviation: [ADR 0009](docs/decisions/0009-deviation-longer-window.md), the longer
+  window. It was written after Part 2's result was known and before any new month was
+  loaded.
 - Error analysis: not yet. It comes with the memo, the next step.
 - How ready it is for production, scored against Breck et al.'s checklist:
   [docs/ml_test_score.md](docs/ml_test_score.md).
@@ -262,7 +300,7 @@ definitions are in [sql/schema/](sql/schema/) and
 
 ### Run it on the real data
 
-The 27 monthly files take 13.05 GB. The download step refuses to start unless free
+The size of each of the 45 monthly files is in `reports/load_log.json`. The download step refuses to start unless free
 disk space is at least the file size plus 20%. The warehouse needs more space on top
 of that.
 
@@ -280,27 +318,32 @@ uv run nrc summary            # rewrites reports/load_log.json and reports/load_
 Ranked by how much each could change what the data says. The full list is in
 [docs/whats_weak.md](docs/whats_weak.md).
 
-1. The check one year earlier fails. From fall to winter, trips into the zone fall
-   7.9% against the comparison zones even with no toll. The headline therefore
-   rests on the triple difference. That number assumes the season gap is the same
-   every year, and the data hold only one earlier winter to test it.
-2. The pre-trend check passes by a small margin: a drift of 0.0139 log points, against a
+1. In both windows the check one year earlier fails, so both headlines rest on a
+   triple difference. It assumes the gap between the two groups would have moved the
+   same way without the toll as it did a year earlier. The data hold only one earlier
+   pair of years to test that.
+2. The longer window was chosen after Part 2's result was known. It is a dated
+   deviation, and Part 2 stays the primary result.
+3. Part 3's headline uses the wider of its two intervals, the one that draws zones, and
+   that interval holds zero. The narrower one, which draws whole weeks, sits just below
+   zero.
+4. The pre-trend check passes by a small margin: a drift of 0.0139 log points, against a
    line of 0.015. The slope's interval leaves out zero, so the two groups were already
    moving apart slowly.
-3. The interval that draws whole weeks is much wider than the one that draws zones.
+5. The interval that draws whole weeks is much wider than the one that draws zones.
    Shocks that hit every zone on the same days, such as weather, are a large part of
    the noise.
-4. The rules catch only values that cannot be true, such as negative fares or a
+6. The rules catch only values that cannot be true, such as negative fares or a
    drop-off before the pickup. Values that are possible but strange, such as a very
    long trip with a normal fare, are kept.
-5. The quarantine numbers describe the files as the TLC published them on the download
+7. The quarantine numbers describe the files as the TLC published them on the download
    dates in `reports/load_log.json`. If the TLC fixes a file later, a reload with
    `--backfill` is needed, and the numbers will change.
-6. Everything runs on one laptop in DuckDB, with a memory cap of 2 GB. On the full
+8. Everything runs on one laptop in DuckDB, with a memory cap of 2 GB. On the full
    fact table, building the timed index ran out of memory. The index was timed on a
    three-month slice instead, as [ADR 0007](docs/decisions/0007-transforms-check-and-index.md)
    records. Those timings are single-machine numbers.
-7. The tables have no foreign key clauses, because DuckDB foreign keys block the
+9. The tables have no foreign key clauses, because DuckDB foreign keys block the
    reload deletes. `nrc check` tests every fact key against its dimension instead, but the database itself does
    not stop an orphan key.
 
@@ -346,6 +389,7 @@ Ranked by how much each could change what the data says. The full list is in
 | `docs/` | Evaluation plan, decisions, glossary and the four kinds of docs |
 | `Makefile` | One command for each step: setup, lint, test, eval, demo |
 | `reports/` | Generated results, including metrics.json |
+| `site/` | The static one-page site, built by `nrc site` and not published |
 | `sql/` | Warehouse DDL (`schema/`), the load inserts (`load/`), the SQL transforms (`transforms/`) and the timed index (`index/`) |
 | `src/` | The package code |
 | `tests/` | Unit and data tests |

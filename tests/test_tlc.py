@@ -261,7 +261,7 @@ def test_cli_exit_codes(paths: config.Paths, capsys: pytest.CaptureFixture[str])
     assert "FAIL disk" in capsys.readouterr().out
     broken = FakeHttp({URL: b"x" * 100}, cut=5)
     assert cli.main([*root, "download", "--backfill", MONTH], broken, lambda _: PLENTY) == 1
-    for bad in ("2022-12", "2025-04", "24-12", "2024-1"):
+    for bad in ("2022-12", "2026-10", "24-12", "2024-1"):
         with pytest.raises(SystemExit) as err:
             cli.main([*root, "download", "--month", bad])
         assert err.value.code == 2
@@ -284,7 +284,11 @@ def test_download_order_matches_adr_0001() -> None:
     assert order[:6] == config.months("2024-10", "2025-03")
     assert order[6:12] == config.months("2023-10", "2024-03")
     assert sorted(order) == config.study_months()
-    assert len(order) == len(set(order)) == 27
+    assert len(order) == len(set(order)) == len(config.study_months())
+    # The plan's 27 months come first; the months ADR 0009 added follow in date order.
+    plan = config.months(config.FIRST_MONTH, config.PLAN_LAST_MONTH)
+    assert sorted(order[:27]) == plan and len(plan) == 27
+    assert order[27:] == sorted(order[27:])
 
 
 def test_sockets_are_blocked() -> None:

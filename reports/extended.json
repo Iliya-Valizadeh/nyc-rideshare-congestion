@@ -1,0 +1,1975 @@
+{
+  "adr": "docs/decisions/0009-deviation-longer-window.md",
+  "label": "amendment",
+  "primary_outcome": "trips_per_day_both_platforms",
+  "last_day_loaded": "2026-09-30",
+  "verdict": {
+    "table_row": "holds_zero_inside_smallest_effect",
+    "leads_with": "triple_difference",
+    "interval_used_as_percent": [
+      -0.027448,
+      0.001815
+    ],
+    "interval_leaves_out_zero": false,
+    "check_one_year_earlier": "fail",
+    "smallest_effect_of_interest": 0.03
+  },
+  "year_over_year": {
+    "before": [
+      "2024-01-05",
+      "2024-12-31"
+    ],
+    "after": [
+      "2025-01-05",
+      "2025-12-31"
+    ],
+    "days_kept": {
+      "before": 362,
+      "after": 361
+    },
+    "outcomes": {
+      "trips_per_day_both_platforms": {
+        "kind": "ratio",
+        "unit": "trips per day",
+        "primary": true,
+        "treated_before": 54046.649171,
+        "treated_after": 52127.869806,
+        "control_before": 190058.964088,
+        "control_after": 196534.265928,
+        "effect": -0.06728,
+        "se_zone": 0.00591,
+        "interval_zone": [
+          -0.077985,
+          -0.055608
+        ],
+        "interval_week": [
+          -0.076953,
+          -0.057856
+        ],
+        "interval_leaves_out_zero": true,
+        "effect_log": -0.06965
+      },
+      "trips_per_day_uber": {
+        "kind": "ratio",
+        "unit": "trips per day",
+        "primary": false,
+        "treated_before": 39626.093923,
+        "treated_after": 35709.33795,
+        "control_before": 140957.002762,
+        "control_after": 140261.554017,
+        "effect": -0.094375,
+        "se_zone": 0.007329,
+        "interval_zone": [
+          -0.10819,
+          -0.07943
+        ],
+        "interval_week": [
+          -0.106001,
+          -0.083179
+        ],
+        "interval_leaves_out_zero": true,
+        "effect_log": -0.09913
+      },
+      "trips_per_day_lyft": {
+        "kind": "ratio",
+        "unit": "trips per day",
+        "primary": false,
+        "treated_before": 14420.555249,
+        "treated_after": 16418.531856,
+        "control_before": 49101.961326,
+        "control_after": 56272.711911,
+        "effect": -0.006533,
+        "se_zone": 0.007186,
+        "interval_zone": [
+          -0.020312,
+          0.008024
+        ],
+        "interval_week": [
+          -0.024217,
+          0.01026
+        ],
+        "interval_leaves_out_zero": false,
+        "effect_log": -0.006555
+      },
+      "base_fare_per_trip": {
+        "kind": "level",
+        "unit": "dollars",
+        "primary": false,
+        "treated_before": 37.152315,
+        "treated_after": 39.502973,
+        "control_before": 18.867458,
+        "control_after": 18.884515,
+        "effect": 2.333602,
+        "se_zone": 0.124307,
+        "interval_zone": [
+          2.089735,
+          2.565747
+        ],
+        "interval_week": [
+          2.059637,
+          2.598122
+        ],
+        "interval_leaves_out_zero": true
+      },
+      "rider_price_per_trip": {
+        "kind": "level",
+        "unit": "dollars",
+        "primary": false,
+        "treated_before": 46.655868,
+        "treated_after": 50.740986,
+        "control_before": 21.522516,
+        "control_after": 21.46496,
+        "effect": 4.142674,
+        "se_zone": 0.160036,
+        "interval_zone": [
+          3.829984,
+          4.441954
+        ],
+        "interval_week": [
+          3.829009,
+          4.443688
+        ],
+        "interval_leaves_out_zero": true
+      },
+      "minutes_per_trip": {
+        "kind": "level",
+        "unit": "minutes",
+        "primary": false,
+        "treated_before": 29.207661,
+        "treated_after": 28.771148,
+        "control_before": 16.505015,
+        "control_after": 16.430068,
+        "effect": -0.361565,
+        "se_zone": 0.050306,
+        "interval_zone": [
+          -0.461638,
+          -0.265424
+        ],
+        "interval_week": [
+          -0.568206,
+          -0.172072
+        ],
+        "interval_leaves_out_zero": true
+      },
+      "minutes_per_mile": {
+        "kind": "level",
+        "unit": "minutes",
+        "primary": false,
+        "treated_before": 4.123411,
+        "treated_after": 4.056007,
+        "control_before": 4.793017,
+        "control_after": 4.882275,
+        "effect": -0.156662,
+        "se_zone": 0.008429,
+        "interval_zone": [
+          -0.173335,
+          -0.140336
+        ],
+        "interval_week": [
+          -0.177685,
+          -0.136447
+        ],
+        "interval_leaves_out_zero": true
+      },
+      "lyft_share": {
+        "kind": "level",
+        "unit": "percentage points",
+        "primary": false,
+        "treated_before": 26.681682,
+        "treated_after": 31.496648,
+        "control_before": 25.83512,
+        "control_after": 28.632519,
+        "effect": 2.017567,
+        "se_zone": 0.224774,
+        "interval_zone": [
+          1.569856,
+          2.450666
+        ],
+        "interval_week": [
+          1.580704,
+          2.447627
+        ],
+        "interval_leaves_out_zero": true
+      }
+    }
+  },
+  "check_one_year_earlier": {
+    "before": [
+      "2023-01-05",
+      "2023-12-31"
+    ],
+    "after": [
+      "2024-01-05",
+      "2024-12-31"
+    ],
+    "days_kept": {
+      "before": 361,
+      "after": 362
+    },
+    "outcomes": {
+      "trips_per_day_both_platforms": {
+        "kind": "ratio",
+        "unit": "trips per day",
+        "primary": true,
+        "treated_before": 54528.119114,
+        "treated_after": 54046.649171,
+        "control_before": 181357.257618,
+        "control_after": 190058.964088,
+        "effect": -0.05421,
+        "se_zone": 0.005024,
+        "interval_zone": [
+          -0.064054,
+          -0.044524
+        ],
+        "interval_week": [
+          -0.06121,
+          -0.047388
+        ],
+        "interval_leaves_out_zero": true,
+        "effect_log": -0.055734,
+        "size_line": 0.03,
+        "rule": "fails if the interval leaves out zero and |effect| >= 0.03",
+        "result": "fail"
+      },
+      "trips_per_day_uber": {
+        "kind": "ratio",
+        "unit": "trips per day",
+        "primary": false,
+        "treated_before": 39835.487535,
+        "treated_after": 39626.093923,
+        "control_before": 127462.141274,
+        "control_after": 140957.002762,
+        "effect": -0.100491,
+        "se_zone": 0.006401,
+        "interval_zone": [
+          -0.113335,
+          -0.087806
+        ],
+        "interval_week": [
+          -0.108972,
+          -0.09189
+        ],
+        "interval_leaves_out_zero": true,
+        "effect_log": -0.105906,
+        "size_line": 0.03,
+        "rule": "fails if the interval leaves out zero and |effect| >= 0.03",
+        "result": "fail"
+      },
+      "trips_per_day_lyft": {
+        "kind": "ratio",
+        "unit": "trips per day",
+        "primary": false,
+        "treated_before": 14692.631579,
+        "treated_after": 14420.555249,
+        "control_before": 53895.116343,
+        "control_after": 49101.961326,
+        "effect": 0.077291,
+        "se_zone": 0.012309,
+        "interval_zone": [
+          0.051888,
+          0.100821
+        ],
+        "interval_week": [
+          0.059873,
+          0.095773
+        ],
+        "interval_leaves_out_zero": true,
+        "effect_log": 0.074449,
+        "size_line": 0.03,
+        "rule": "fails if the interval leaves out zero and |effect| >= 0.03",
+        "result": "fail"
+      },
+      "base_fare_per_trip": {
+        "kind": "level",
+        "unit": "dollars",
+        "primary": false,
+        "treated_before": 33.767878,
+        "treated_after": 37.152315,
+        "control_before": 17.981713,
+        "control_after": 18.867458,
+        "effect": 2.498692,
+        "se_zone": 0.233106,
+        "interval_zone": [
+          2.073235,
+          2.975837
+        ],
+        "interval_week": [
+          2.228888,
+          2.764952
+        ],
+        "interval_leaves_out_zero": true,
+        "size_line": null,
+        "rule": "fails if the interval leaves out zero (the plan sets no size line)",
+        "result": "fail"
+      },
+      "rider_price_per_trip": {
+        "kind": "level",
+        "unit": "dollars",
+        "primary": false,
+        "treated_before": 42.761255,
+        "treated_after": 46.655868,
+        "control_before": 20.580586,
+        "control_after": 21.522516,
+        "effect": 2.952682,
+        "se_zone": 0.275068,
+        "interval_zone": [
+          2.446892,
+          3.514385
+        ],
+        "interval_week": [
+          2.635236,
+          3.268726
+        ],
+        "interval_leaves_out_zero": true,
+        "size_line": null,
+        "rule": "fails if the interval leaves out zero (the plan sets no size line)",
+        "result": "fail"
+      },
+      "minutes_per_trip": {
+        "kind": "level",
+        "unit": "minutes",
+        "primary": false,
+        "treated_before": 28.643753,
+        "treated_after": 29.207661,
+        "control_before": 16.282096,
+        "control_after": 16.505015,
+        "effect": 0.340988,
+        "se_zone": 0.081632,
+        "interval_zone": [
+          0.203321,
+          0.516164
+        ],
+        "interval_week": [
+          0.074097,
+          0.610113
+        ],
+        "interval_leaves_out_zero": true,
+        "size_line": null,
+        "rule": "fails if the interval leaves out zero (the plan sets no size line)",
+        "result": "fail"
+      },
+      "minutes_per_mile": {
+        "kind": "level",
+        "unit": "minutes",
+        "primary": false,
+        "treated_before": 4.083511,
+        "treated_after": 4.123411,
+        "control_before": 4.719011,
+        "control_after": 4.793017,
+        "effect": -0.034106,
+        "se_zone": 0.007049,
+        "interval_zone": [
+          -0.047578,
+          -0.019972
+        ],
+        "interval_week": [
+          -0.061002,
+          -0.008481
+        ],
+        "interval_leaves_out_zero": true,
+        "size_line": null,
+        "rule": "fails if the interval leaves out zero (the plan sets no size line)",
+        "result": "fail"
+      },
+      "lyft_share": {
+        "kind": "level",
+        "unit": "percentage points",
+        "primary": false,
+        "treated_before": 26.945055,
+        "treated_after": 26.681682,
+        "control_before": 29.717651,
+        "control_after": 25.83512,
+        "effect": 3.619158,
+        "se_zone": 0.292555,
+        "interval_zone": [
+          3.009882,
+          4.173933
+        ],
+        "interval_week": [
+          3.197289,
+          4.039643
+        ],
+        "interval_leaves_out_zero": true,
+        "size_line": null,
+        "rule": "fails if the interval leaves out zero (the plan sets no size line)",
+        "result": "fail"
+      }
+    }
+  },
+  "triple_difference": {
+    "trips_per_day_both_platforms": {
+      "effect": -0.013916,
+      "se_zone": 0.007583,
+      "interval_zone": [
+        -0.027832,
+        0.001813
+      ],
+      "interval_week": [
+        -0.028046,
+        -0.00025
+      ],
+      "interval_leaves_out_zero": false,
+      "scale": "log points",
+      "as_percent": -0.013819,
+      "interval_zone_as_percent": [
+        -0.027448,
+        0.001815
+      ],
+      "interval_week_as_percent": [
+        -0.027656,
+        -0.00025
+      ]
+    },
+    "trips_per_day_uber": {
+      "effect": 0.006776,
+      "se_zone": 0.010873,
+      "interval_zone": [
+        -0.01377,
+        0.028471
+      ],
+      "interval_week": [
+        -0.011931,
+        0.0247
+      ],
+      "interval_leaves_out_zero": false,
+      "scale": "log points",
+      "as_percent": 0.006799,
+      "interval_zone_as_percent": [
+        -0.013676,
+        0.02888
+      ],
+      "interval_week_as_percent": [
+        -0.01186,
+        0.025008
+      ]
+    },
+    "trips_per_day_lyft": {
+      "effect": -0.081004,
+      "se_zone": 0.013781,
+      "interval_zone": [
+        -0.10811,
+        -0.054155
+      ],
+      "interval_week": [
+        -0.103897,
+        -0.057872
+      ],
+      "interval_leaves_out_zero": true,
+      "scale": "log points",
+      "as_percent": -0.07781,
+      "interval_zone_as_percent": [
+        -0.102471,
+        -0.052715
+      ],
+      "interval_week_as_percent": [
+        -0.098682,
+        -0.056229
+      ]
+    },
+    "base_fare_per_trip": {
+      "effect": -0.16509,
+      "se_zone": 0.156443,
+      "interval_zone": [
+        -0.488156,
+        0.117183
+      ],
+      "interval_week": [
+        -0.57071,
+        0.243193
+      ],
+      "interval_leaves_out_zero": false,
+      "scale": "dollars"
+    },
+    "rider_price_per_trip": {
+      "effect": 1.189992,
+      "se_zone": 0.184248,
+      "interval_zone": [
+        0.810726,
+        1.526001
+      ],
+      "interval_week": [
+        0.716796,
+        1.669754
+      ],
+      "interval_leaves_out_zero": true,
+      "scale": "dollars"
+    },
+    "minutes_per_trip": {
+      "effect": -0.702552,
+      "se_zone": 0.103705,
+      "interval_zone": [
+        -0.922234,
+        -0.519072
+      ],
+      "interval_week": [
+        -1.158868,
+        -0.284695
+      ],
+      "interval_leaves_out_zero": true,
+      "scale": "minutes"
+    },
+    "minutes_per_mile": {
+      "effect": -0.122555,
+      "se_zone": 0.011276,
+      "interval_zone": [
+        -0.144364,
+        -0.100426
+      ],
+      "interval_week": [
+        -0.16226,
+        -0.081582
+      ],
+      "interval_leaves_out_zero": true,
+      "scale": "minutes"
+    },
+    "lyft_share": {
+      "effect": -1.601592,
+      "se_zone": 0.405104,
+      "interval_zone": [
+        -2.386208,
+        -0.803921
+      ],
+      "interval_week": [
+        -2.194904,
+        -0.967657
+      ],
+      "interval_leaves_out_zero": true,
+      "scale": "percentage points"
+    }
+  },
+  "second_fee_year": {
+    "before": [
+      "2025-01-05",
+      "2025-09-30"
+    ],
+    "after": [
+      "2026-01-05",
+      "2026-09-30"
+    ],
+    "days_kept": {
+      "before": 269,
+      "after": 269
+    },
+    "outcomes": {
+      "trips_per_day_both_platforms": {
+        "kind": "ratio",
+        "unit": "trips per day",
+        "primary": true,
+        "treated_before": 51807.275093,
+        "treated_after": 50277.598513,
+        "control_before": 192914.018587,
+        "control_after": 210068.773234,
+        "effect": -0.108778,
+        "se_zone": 0.006302,
+        "interval_zone": [
+          -0.121769,
+          -0.097252
+        ],
+        "interval_week": [
+          -0.127898,
+          -0.0916
+        ],
+        "interval_leaves_out_zero": true,
+        "effect_log": -0.115161
+      },
+      "trips_per_day_uber": {
+        "kind": "ratio",
+        "unit": "trips per day",
+        "primary": false,
+        "treated_before": 35495.769517,
+        "treated_after": 35992.907063,
+        "control_before": 137629.193309,
+        "control_after": 148817.509294,
+        "effect": -0.062229,
+        "se_zone": 0.006315,
+        "interval_zone": [
+          -0.074852,
+          -0.050002
+        ],
+        "interval_week": [
+          -0.08602,
+          -0.040507
+        ],
+        "interval_leaves_out_zero": true,
+        "effect_log": -0.064249
+      },
+      "trips_per_day_lyft": {
+        "kind": "ratio",
+        "unit": "trips per day",
+        "primary": false,
+        "treated_before": 16311.505576,
+        "treated_after": 14284.69145,
+        "control_before": 55284.825279,
+        "control_after": 61251.263941,
+        "effect": -0.209562,
+        "se_zone": 0.008197,
+        "interval_zone": [
+          -0.225933,
+          -0.193293
+        ],
+        "interval_week": [
+          -0.229037,
+          -0.188715
+        ],
+        "interval_leaves_out_zero": true,
+        "effect_log": -0.235168
+      },
+      "base_fare_per_trip": {
+        "kind": "level",
+        "unit": "dollars",
+        "primary": false,
+        "treated_before": 39.067511,
+        "treated_after": 42.089971,
+        "control_before": 19.005974,
+        "control_after": 19.361765,
+        "effect": 2.666669,
+        "se_zone": 0.152127,
+        "interval_zone": [
+          2.391499,
+          2.97091
+        ],
+        "interval_week": [
+          2.290497,
+          3.087759
+        ],
+        "interval_leaves_out_zero": true
+      },
+      "rider_price_per_trip": {
+        "kind": "level",
+        "unit": "dollars",
+        "primary": false,
+        "treated_before": 50.257596,
+        "treated_after": 53.846092,
+        "control_before": 21.604924,
+        "control_after": 21.960777,
+        "effect": 3.232643,
+        "se_zone": 0.20312,
+        "interval_zone": [
+          2.859797,
+          3.646143
+        ],
+        "interval_week": [
+          2.801791,
+          3.711367
+        ],
+        "interval_leaves_out_zero": true
+      },
+      "minutes_per_trip": {
+        "kind": "level",
+        "unit": "minutes",
+        "primary": false,
+        "treated_before": 28.313794,
+        "treated_after": 29.563427,
+        "control_before": 16.424098,
+        "control_after": 16.321692,
+        "effect": 1.352039,
+        "se_zone": 0.088136,
+        "interval_zone": [
+          1.187616,
+          1.529392
+        ],
+        "interval_week": [
+          1.108463,
+          1.590502
+        ],
+        "interval_leaves_out_zero": true
+      },
+      "minutes_per_mile": {
+        "kind": "level",
+        "unit": "minutes",
+        "primary": false,
+        "treated_before": 3.973822,
+        "treated_after": 4.149155,
+        "control_before": 4.841046,
+        "control_after": 5.004911,
+        "effect": 0.011468,
+        "se_zone": 0.008672,
+        "interval_zone": [
+          -0.00553,
+          0.027673
+        ],
+        "interval_week": [
+          -0.034736,
+          0.052529
+        ],
+        "interval_leaves_out_zero": false
+      },
+      "lyft_share": {
+        "kind": "level",
+        "unit": "percentage points",
+        "primary": false,
+        "treated_before": 31.484971,
+        "treated_after": 28.411642,
+        "control_before": 28.657754,
+        "control_after": 29.15772,
+        "effect": -3.573294,
+        "se_zone": 0.18914,
+        "interval_zone": [
+          -3.9361,
+          -3.21521
+        ],
+        "interval_week": [
+          -4.174657,
+          -2.943076
+        ],
+        "interval_leaves_out_zero": true
+      }
+    },
+    "label": "exploratory: both windows have the fee"
+  },
+  "event_study_monthly": {
+    "months_all": [
+      "2023-01",
+      "2023-02",
+      "2023-03",
+      "2023-04",
+      "2023-05",
+      "2023-06",
+      "2023-07",
+      "2023-08",
+      "2023-09",
+      "2023-10",
+      "2023-11",
+      "2023-12",
+      "2024-01",
+      "2024-02",
+      "2024-03",
+      "2024-04",
+      "2024-05",
+      "2024-06",
+      "2024-07",
+      "2024-08",
+      "2024-09",
+      "2024-10",
+      "2024-11",
+      "2024-12",
+      "2025-01",
+      "2025-02",
+      "2025-03",
+      "2025-04",
+      "2025-05",
+      "2025-06",
+      "2025-07",
+      "2025-08",
+      "2025-09",
+      "2025-10",
+      "2025-11",
+      "2025-12",
+      "2026-01",
+      "2026-02",
+      "2026-03",
+      "2026-04",
+      "2026-05",
+      "2026-06",
+      "2026-07",
+      "2026-08",
+      "2026-09"
+    ],
+    "log_ratio_all": [
+      -1.214186,
+      -1.206751,
+      -1.225218,
+      -1.179084,
+      -1.183921,
+      -1.197673,
+      -1.188952,
+      -1.205278,
+      -1.180372,
+      -1.170876,
+      -1.209332,
+      -1.269044,
+      -1.272129,
+      -1.261617,
+      -1.293068,
+      -1.240582,
+      -1.241968,
+      -1.248588,
+      -1.235809,
+      -1.264788,
+      -1.221777,
+      -1.21028,
+      -1.271304,
+      -1.334301,
+      -1.338325,
+      -1.322693,
+      -1.329747,
+      -1.288985,
+      -1.317985,
+      -1.328698,
+      -1.318601,
+      -1.342722,
+      -1.246478,
+      -1.270551,
+      -1.350545,
+      -1.46479,
+      -1.505008,
+      -1.515148,
+      -1.460277,
+      -1.381488,
+      -1.381852,
+      -1.43548,
+      -1.398233,
+      -1.444442,
+      -1.372378
+    ],
+    "treated_trips_per_day": [
+      50969.935484,
+      54754.571429,
+      55618.258065,
+      55570.233333,
+      55632.83871,
+      55463.033333,
+      52800.935484,
+      50261.83871,
+      57195.666667,
+      56708.741935,
+      54367.5,
+      53385.806452,
+      52181.935484,
+      55206.586207,
+      55777.580645,
+      55007.333333,
+      55681.032258,
+      56095.2,
+      51467.290323,
+      50505.774194,
+      54024.166667,
+      54632.677419,
+      54225.633333,
+      52458.16129,
+      52172.851852,
+      54523.142857,
+      51850.419355,
+      52799.4,
+      53600.225806,
+      51803.466667,
+      48968.258065,
+      47735.516129,
+      53198.966667,
+      55738.516129,
+      53367.7,
+      50099.322581,
+      47261.225806,
+      48995.428571,
+      50467.516129,
+      52469.133333,
+      53812.774194,
+      49814.8,
+      49181.354839,
+      47111.290323,
+      52454.966667
+    ],
+    "control_trips_per_day": [
+      171643.903226,
+      183023.035714,
+      189375.064516,
+      180680.8,
+      181761.451613,
+      183715.8,
+      173379.129032,
+      167758.258065,
+      186205.433333,
+      182875.258065,
+      182198.866667,
+      189917.258065,
+      186208.225806,
+      194941.448276,
+      203250.580645,
+      190194.833333,
+      192791.225806,
+      195515.3,
+      177107.258065,
+      178908.709677,
+      183315.366667,
+      183261.064516,
+      193341.4,
+      199201.580645,
+      198917.0,
+      204653.464286,
+      195999.032258,
+      191614.333333,
+      200244.322581,
+      195616.233333,
+      183052.516129,
+      182800.967742,
+      185029.866667,
+      198586.064516,
+      205974.133333,
+      216761.516129,
+      212873.612903,
+      222933.785714,
+      217371.354839,
+      208870.166667,
+      214296.903226,
+      209304.933333,
+      199088.16129,
+      199727.741935,
+      206920.233333
+    ],
+    "months": [
+      "2024-01",
+      "2024-02",
+      "2024-03",
+      "2024-04",
+      "2024-05",
+      "2024-06",
+      "2024-07",
+      "2024-08",
+      "2024-09",
+      "2024-10",
+      "2024-11",
+      "2024-12",
+      "2025-01",
+      "2025-02",
+      "2025-03",
+      "2025-04",
+      "2025-05",
+      "2025-06",
+      "2025-07",
+      "2025-08",
+      "2025-09",
+      "2025-10",
+      "2025-11",
+      "2025-12",
+      "2026-01",
+      "2026-02",
+      "2026-03",
+      "2026-04",
+      "2026-05",
+      "2026-06",
+      "2026-07",
+      "2026-08",
+      "2026-09"
+    ],
+    "fee_in_month": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "fee_in_month_a_year_earlier": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      false,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "change_from_a_year_earlier": [
+      -0.057943,
+      -0.054866,
+      -0.06785,
+      -0.061498,
+      -0.058047,
+      -0.050915,
+      -0.046857,
+      -0.05951,
+      -0.041404,
+      -0.039404,
+      -0.061972,
+      -0.065258,
+      -0.066196,
+      -0.061076,
+      -0.036679,
+      -0.048402,
+      -0.076017,
+      -0.080109,
+      -0.082792,
+      -0.077934,
+      -0.024702,
+      -0.060272,
+      -0.079241,
+      -0.130489,
+      -0.166683,
+      -0.192455,
+      -0.130531,
+      -0.092503,
+      -0.063867,
+      -0.106782,
+      -0.079632,
+      -0.10172,
+      -0.1259
+    ],
+    "band_low": [
+      -0.074957,
+      -0.06892,
+      -0.082775,
+      -0.081528,
+      -0.070594,
+      -0.071734,
+      -0.065359,
+      -0.0771,
+      -0.056903,
+      -0.055126,
+      -0.080318,
+      -0.079975,
+      -0.078618,
+      -0.074109,
+      -0.050104,
+      -0.062901,
+      -0.092079,
+      -0.097736,
+      -0.09845,
+      -0.093489,
+      -0.043288,
+      -0.076013,
+      -0.094243,
+      -0.14881,
+      -0.18515,
+      -0.21324,
+      -0.14701,
+      -0.107108,
+      -0.080755,
+      -0.125261,
+      -0.097983,
+      -0.121565,
+      -0.142859
+    ],
+    "band_high": [
+      -0.041078,
+      -0.04059,
+      -0.053939,
+      -0.042262,
+      -0.044942,
+      -0.033128,
+      -0.029292,
+      -0.042498,
+      -0.027787,
+      -0.024565,
+      -0.044996,
+      -0.050546,
+      -0.054104,
+      -0.048368,
+      -0.022808,
+      -0.03378,
+      -0.057792,
+      -0.06147,
+      -0.065653,
+      -0.061758,
+      -0.005912,
+      -0.044115,
+      -0.06305,
+      -0.111149,
+      -0.147651,
+      -0.17154,
+      -0.114418,
+      -0.078553,
+      -0.0486,
+      -0.090389,
+      -0.062716,
+      -0.083254,
+      -0.109476
+    ]
+  },
+  "zone_changes": [
+    {
+      "zone": 4,
+      "group": "treated",
+      "trips_per_day_before": 657.256906,
+      "trips_per_day_after": 605.144044,
+      "change_vs_control_log": -0.116111
+    },
+    {
+      "zone": 12,
+      "group": "treated",
+      "trips_per_day_before": 21.342541,
+      "trips_per_day_after": 21.130194,
+      "change_vs_control_log": -0.043502
+    },
+    {
+      "zone": 13,
+      "group": "treated",
+      "trips_per_day_before": 752.392265,
+      "trips_per_day_after": 749.135734,
+      "change_vs_control_log": -0.03784
+    },
+    {
+      "zone": 45,
+      "group": "treated",
+      "trips_per_day_before": 577.350829,
+      "trips_per_day_after": 570.130194,
+      "change_vs_control_log": -0.046088
+    },
+    {
+      "zone": 48,
+      "group": "treated",
+      "trips_per_day_before": 2284.798343,
+      "trips_per_day_after": 2123.540166,
+      "change_vs_control_log": -0.106696
+    },
+    {
+      "zone": 50,
+      "group": "treated",
+      "trips_per_day_before": 1260.331492,
+      "trips_per_day_after": 1153.855956,
+      "change_vs_control_log": -0.121768
+    },
+    {
+      "zone": 68,
+      "group": "treated",
+      "trips_per_day_before": 2459.179558,
+      "trips_per_day_after": 2386.34072,
+      "change_vs_control_log": -0.063569
+    },
+    {
+      "zone": 79,
+      "group": "treated",
+      "trips_per_day_before": 2228.505525,
+      "trips_per_day_after": 2084.047091,
+      "change_vs_control_log": -0.100522
+    },
+    {
+      "zone": 87,
+      "group": "treated",
+      "trips_per_day_before": 1330.201657,
+      "trips_per_day_after": 1333.916898,
+      "change_vs_control_log": -0.030713
+    },
+    {
+      "zone": 88,
+      "group": "treated",
+      "trips_per_day_before": 616.165746,
+      "trips_per_day_after": 615.33795,
+      "change_vs_control_log": -0.034847
+    },
+    {
+      "zone": 90,
+      "group": "treated",
+      "trips_per_day_before": 1115.044199,
+      "trips_per_day_after": 1055.285319,
+      "change_vs_control_log": -0.088585
+    },
+    {
+      "zone": 100,
+      "group": "treated",
+      "trips_per_day_before": 1239.59116,
+      "trips_per_day_after": 1172.614958,
+      "change_vs_control_log": -0.089048
+    },
+    {
+      "zone": 107,
+      "group": "treated",
+      "trips_per_day_before": 1522.563536,
+      "trips_per_day_after": 1428.914127,
+      "change_vs_control_log": -0.096983
+    },
+    {
+      "zone": 113,
+      "group": "treated",
+      "trips_per_day_before": 970.709945,
+      "trips_per_day_after": 915.085873,
+      "change_vs_control_log": -0.092512
+    },
+    {
+      "zone": 114,
+      "group": "treated",
+      "trips_per_day_before": 943.773481,
+      "trips_per_day_after": 893.393352,
+      "change_vs_control_log": -0.088362
+    },
+    {
+      "zone": 125,
+      "group": "treated",
+      "trips_per_day_before": 585.825967,
+      "trips_per_day_after": 644.711911,
+      "change_vs_control_log": 0.062278
+    },
+    {
+      "zone": 137,
+      "group": "treated",
+      "trips_per_day_before": 1543.486188,
+      "trips_per_day_after": 1503.537396,
+      "change_vs_control_log": -0.059725
+    },
+    {
+      "zone": 144,
+      "group": "treated",
+      "trips_per_day_before": 1202.146409,
+      "trips_per_day_after": 1188.578947,
+      "change_vs_control_log": -0.044853
+    },
+    {
+      "zone": 148,
+      "group": "treated",
+      "trips_per_day_before": 2001.207182,
+      "trips_per_day_after": 1987.66759,
+      "change_vs_control_log": -0.040291
+    },
+    {
+      "zone": 158,
+      "group": "treated",
+      "trips_per_day_before": 822.422652,
+      "trips_per_day_after": 783.199446,
+      "change_vs_control_log": -0.082369
+    },
+    {
+      "zone": 161,
+      "group": "treated",
+      "trips_per_day_before": 3030.334254,
+      "trips_per_day_after": 2997.880886,
+      "change_vs_control_log": -0.04427
+    },
+    {
+      "zone": 162,
+      "group": "treated",
+      "trips_per_day_before": 2510.533149,
+      "trips_per_day_after": 2494.518006,
+      "change_vs_control_log": -0.039902
+    },
+    {
+      "zone": 163,
+      "group": "treated",
+      "trips_per_day_before": 2047.665746,
+      "trips_per_day_after": 2026.285319,
+      "change_vs_control_log": -0.043999
+    },
+    {
+      "zone": 164,
+      "group": "treated",
+      "trips_per_day_before": 2083.276243,
+      "trips_per_day_after": 2008.975069,
+      "change_vs_control_log": -0.06982
+    },
+    {
+      "zone": 170,
+      "group": "treated",
+      "trips_per_day_before": 2069.762431,
+      "trips_per_day_after": 1968.196676,
+      "change_vs_control_log": -0.083819
+    },
+    {
+      "zone": 186,
+      "group": "treated",
+      "trips_per_day_before": 1798.632597,
+      "trips_per_day_after": 1604.506925,
+      "change_vs_control_log": -0.147713
+    },
+    {
+      "zone": 209,
+      "group": "treated",
+      "trips_per_day_before": 516.629834,
+      "trips_per_day_after": 494.440443,
+      "change_vs_control_log": -0.077402
+    },
+    {
+      "zone": 211,
+      "group": "treated",
+      "trips_per_day_before": 914.950276,
+      "trips_per_day_after": 907.919668,
+      "change_vs_control_log": -0.041216
+    },
+    {
+      "zone": 224,
+      "group": "treated",
+      "trips_per_day_before": 424.243094,
+      "trips_per_day_after": 387.440443,
+      "change_vs_control_log": -0.124247
+    },
+    {
+      "zone": 229,
+      "group": "treated",
+      "trips_per_day_before": 1448.966851,
+      "trips_per_day_after": 1356.855956,
+      "change_vs_control_log": -0.099183
+    },
+    {
+      "zone": 230,
+      "group": "treated",
+      "trips_per_day_before": 2973.740331,
+      "trips_per_day_after": 2846.412742,
+      "change_vs_control_log": -0.077263
+    },
+    {
+      "zone": 231,
+      "group": "treated",
+      "trips_per_day_before": 1846.59116,
+      "trips_per_day_after": 1844.229917,
+      "change_vs_control_log": -0.034782
+    },
+    {
+      "zone": 232,
+      "group": "treated",
+      "trips_per_day_before": 1024.88674,
+      "trips_per_day_after": 994.709141,
+      "change_vs_control_log": -0.063389
+    },
+    {
+      "zone": 233,
+      "group": "treated",
+      "trips_per_day_before": 1358.621547,
+      "trips_per_day_after": 1277.044321,
+      "change_vs_control_log": -0.095425
+    },
+    {
+      "zone": 234,
+      "group": "treated",
+      "trips_per_day_before": 1791.417127,
+      "trips_per_day_after": 1805.722992,
+      "change_vs_control_log": -0.025548
+    },
+    {
+      "zone": 246,
+      "group": "treated",
+      "trips_per_day_before": 1988.944751,
+      "trips_per_day_after": 1882.576177,
+      "change_vs_control_log": -0.088466
+    },
+    {
+      "zone": 249,
+      "group": "treated",
+      "trips_per_day_before": 1202.856354,
+      "trips_per_day_after": 1129.307479,
+      "change_vs_control_log": -0.096597
+    },
+    {
+      "zone": 261,
+      "group": "treated",
+      "trips_per_day_before": 880.301105,
+      "trips_per_day_after": 885.279778,
+      "change_vs_control_log": -0.027863
+    },
+    {
+      "zone": 11,
+      "group": "control",
+      "trips_per_day_before": 645.157459,
+      "trips_per_day_after": 713.476454,
+      "change_vs_control_log": 0.067153
+    },
+    {
+      "zone": 14,
+      "group": "control",
+      "trips_per_day_before": 3171.248619,
+      "trips_per_day_after": 3405.65374,
+      "change_vs_control_log": 0.037809
+    },
+    {
+      "zone": 17,
+      "group": "control",
+      "trips_per_day_before": 4781.977901,
+      "trips_per_day_after": 4799.055402,
+      "change_vs_control_log": -0.029938
+    },
+    {
+      "zone": 21,
+      "group": "control",
+      "trips_per_day_before": 1491.975138,
+      "trips_per_day_after": 1642.778393,
+      "change_vs_control_log": 0.062786
+    },
+    {
+      "zone": 22,
+      "group": "control",
+      "trips_per_day_before": 1956.458564,
+      "trips_per_day_after": 2160.936288,
+      "change_vs_control_log": 0.065903
+    },
+    {
+      "zone": 24,
+      "group": "control",
+      "trips_per_day_before": 608.640884,
+      "trips_per_day_after": 608.891967,
+      "change_vs_control_log": -0.03309
+    },
+    {
+      "zone": 25,
+      "group": "control",
+      "trips_per_day_before": 2626.975138,
+      "trips_per_day_after": 2660.900277,
+      "change_vs_control_log": -0.020671
+    },
+    {
+      "zone": 26,
+      "group": "control",
+      "trips_per_day_before": 3195.190608,
+      "trips_per_day_after": 3337.684211,
+      "change_vs_control_log": 0.010128
+    },
+    {
+      "zone": 29,
+      "group": "control",
+      "trips_per_day_before": 1229.256906,
+      "trips_per_day_after": 1381.33518,
+      "change_vs_control_log": 0.083138
+    },
+    {
+      "zone": 33,
+      "group": "control",
+      "trips_per_day_before": 1991.292818,
+      "trips_per_day_after": 2063.506925,
+      "change_vs_control_log": 0.00212
+    },
+    {
+      "zone": 34,
+      "group": "control",
+      "trips_per_day_before": 580.867403,
+      "trips_per_day_after": 516.894737,
+      "change_vs_control_log": -0.150186
+    },
+    {
+      "zone": 35,
+      "group": "control",
+      "trips_per_day_before": 3500.953039,
+      "trips_per_day_after": 3645.614958,
+      "change_vs_control_log": 0.006987
+    },
+    {
+      "zone": 36,
+      "group": "control",
+      "trips_per_day_before": 4361.110497,
+      "trips_per_day_after": 4476.252078,
+      "change_vs_control_log": -0.007443
+    },
+    {
+      "zone": 37,
+      "group": "control",
+      "trips_per_day_before": 6028.450276,
+      "trips_per_day_after": 6305.817175,
+      "change_vs_control_log": 0.01148
+    },
+    {
+      "zone": 39,
+      "group": "control",
+      "trips_per_day_before": 4432.002762,
+      "trips_per_day_after": 4658.698061,
+      "change_vs_control_log": 0.016382
+    },
+    {
+      "zone": 40,
+      "group": "control",
+      "trips_per_day_before": 1133.21547,
+      "trips_per_day_after": 1175.246537,
+      "change_vs_control_log": 0.002916
+    },
+    {
+      "zone": 41,
+      "group": "control",
+      "trips_per_day_before": 3174.842541,
+      "trips_per_day_after": 3269.842105,
+      "change_vs_control_log": -0.004019
+    },
+    {
+      "zone": 42,
+      "group": "control",
+      "trips_per_day_before": 4533.60221,
+      "trips_per_day_after": 4590.299169,
+      "change_vs_control_log": -0.021074
+    },
+    {
+      "zone": 49,
+      "group": "control",
+      "trips_per_day_before": 3236.218232,
+      "trips_per_day_after": 3273.448753,
+      "change_vs_control_log": -0.022064
+    },
+    {
+      "zone": 52,
+      "group": "control",
+      "trips_per_day_before": 656.389503,
+      "trips_per_day_after": 685.465374,
+      "change_vs_control_log": 0.009841
+    },
+    {
+      "zone": 54,
+      "group": "control",
+      "trips_per_day_before": 280.480663,
+      "trips_per_day_after": 290.897507,
+      "change_vs_control_log": 0.002964
+    },
+    {
+      "zone": 55,
+      "group": "control",
+      "trips_per_day_before": 1679.400552,
+      "trips_per_day_after": 1821.096953,
+      "change_vs_control_log": 0.0475
+    },
+    {
+      "zone": 61,
+      "group": "control",
+      "trips_per_day_before": 8017.325967,
+      "trips_per_day_after": 8254.304709,
+      "change_vs_control_log": -0.004373
+    },
+    {
+      "zone": 62,
+      "group": "control",
+      "trips_per_day_before": 2117.176796,
+      "trips_per_day_after": 2218.457064,
+      "change_vs_control_log": 0.013226
+    },
+    {
+      "zone": 63,
+      "group": "control",
+      "trips_per_day_before": 1871.939227,
+      "trips_per_day_after": 1959.138504,
+      "change_vs_control_log": 0.012027
+    },
+    {
+      "zone": 65,
+      "group": "control",
+      "trips_per_day_before": 1997.287293,
+      "trips_per_day_after": 2020.65374,
+      "change_vs_control_log": -0.021871
+    },
+    {
+      "zone": 66,
+      "group": "control",
+      "trips_per_day_before": 1271.11326,
+      "trips_per_day_after": 1352.141274,
+      "change_vs_control_log": 0.028294
+    },
+    {
+      "zone": 67,
+      "group": "control",
+      "trips_per_day_before": 1045.066298,
+      "trips_per_day_after": 1127.171745,
+      "change_vs_control_log": 0.042129
+    },
+    {
+      "zone": 71,
+      "group": "control",
+      "trips_per_day_before": 2668.243094,
+      "trips_per_day_after": 2698.648199,
+      "change_vs_control_log": -0.022172
+    },
+    {
+      "zone": 72,
+      "group": "control",
+      "trips_per_day_before": 3027.994475,
+      "trips_per_day_after": 3111.33795,
+      "change_vs_control_log": -0.00635
+    },
+    {
+      "zone": 74,
+      "group": "control",
+      "trips_per_day_before": 3772.845304,
+      "trips_per_day_after": 3843.878116,
+      "change_vs_control_log": -0.01485
+    },
+    {
+      "zone": 75,
+      "group": "control",
+      "trips_per_day_before": 3262.58011,
+      "trips_per_day_after": 3236.911357,
+      "change_vs_control_log": -0.041401
+    },
+    {
+      "zone": 76,
+      "group": "control",
+      "trips_per_day_before": 6796.01105,
+      "trips_per_day_after": 7163.916898,
+      "change_vs_control_log": 0.019219
+    },
+    {
+      "zone": 77,
+      "group": "control",
+      "trips_per_day_before": 1796.524862,
+      "trips_per_day_after": 1841.728532,
+      "change_vs_control_log": -0.008652
+    },
+    {
+      "zone": 80,
+      "group": "control",
+      "trips_per_day_before": 3949.135359,
+      "trips_per_day_after": 3970.554017,
+      "change_vs_control_log": -0.028093
+    },
+    {
+      "zone": 85,
+      "group": "control",
+      "trips_per_day_before": 1873.455801,
+      "trips_per_day_after": 1951.689751,
+      "change_vs_control_log": 0.007408
+    },
+    {
+      "zone": 89,
+      "group": "control",
+      "trips_per_day_before": 4828.058011,
+      "trips_per_day_after": 5024.781163,
+      "change_vs_control_log": 0.006435
+    },
+    {
+      "zone": 91,
+      "group": "control",
+      "trips_per_day_before": 2852.718232,
+      "trips_per_day_after": 2952.307479,
+      "change_vs_control_log": 0.000812
+    },
+    {
+      "zone": 97,
+      "group": "control",
+      "trips_per_day_before": 3283.132597,
+      "trips_per_day_after": 3299.188366,
+      "change_vs_control_log": -0.028624
+    },
+    {
+      "zone": 106,
+      "group": "control",
+      "trips_per_day_before": 1031.679558,
+      "trips_per_day_after": 1167.894737,
+      "change_vs_control_log": 0.090512
+    },
+    {
+      "zone": 108,
+      "group": "control",
+      "trips_per_day_before": 849.516575,
+      "trips_per_day_after": 925.030471,
+      "change_vs_control_log": 0.051657
+    },
+    {
+      "zone": 111,
+      "group": "control",
+      "trips_per_day_before": 24.792818,
+      "trips_per_day_after": 25.121884,
+      "change_vs_control_log": -0.020317
+    },
+    {
+      "zone": 112,
+      "group": "control",
+      "trips_per_day_before": 4453.309392,
+      "trips_per_day_after": 4664.545706,
+      "change_vs_control_log": 0.012841
+    },
+    {
+      "zone": 116,
+      "group": "control",
+      "trips_per_day_before": 2311.110497,
+      "trips_per_day_after": 2355.783934,
+      "change_vs_control_log": -0.014357
+    },
+    {
+      "zone": 120,
+      "group": "control",
+      "trips_per_day_before": 79.723757,
+      "trips_per_day_after": 73.864266,
+      "change_vs_control_log": -0.109841
+    },
+    {
+      "zone": 123,
+      "group": "control",
+      "trips_per_day_before": 1777.922652,
+      "trips_per_day_after": 1950.831025,
+      "change_vs_control_log": 0.059307
+    },
+    {
+      "zone": 127,
+      "group": "control",
+      "trips_per_day_before": 2059.433702,
+      "trips_per_day_after": 2144.980609,
+      "change_vs_control_log": 0.007197
+    },
+    {
+      "zone": 128,
+      "group": "control",
+      "trips_per_day_before": 202.312155,
+      "trips_per_day_after": 213.468144,
+      "change_vs_control_log": 0.020173
+    },
+    {
+      "zone": 133,
+      "group": "control",
+      "trips_per_day_before": 1126.776243,
+      "trips_per_day_after": 1159.0,
+      "change_vs_control_log": -0.005306
+    },
+    {
+      "zone": 149,
+      "group": "control",
+      "trips_per_day_before": 1425.541436,
+      "trips_per_day_after": 1549.066482,
+      "change_vs_control_log": 0.049598
+    },
+    {
+      "zone": 150,
+      "group": "control",
+      "trips_per_day_before": 744.635359,
+      "trips_per_day_after": 784.99446,
+      "change_vs_control_log": 0.01928
+    },
+    {
+      "zone": 151,
+      "group": "control",
+      "trips_per_day_before": 1223.248619,
+      "trips_per_day_after": 1200.246537,
+      "change_vs_control_log": -0.052486
+    },
+    {
+      "zone": 152,
+      "group": "control",
+      "trips_per_day_before": 1250.533149,
+      "trips_per_day_after": 1262.470914,
+      "change_vs_control_log": -0.024002
+    },
+    {
+      "zone": 153,
+      "group": "control",
+      "trips_per_day_before": 475.143646,
+      "trips_per_day_after": 489.919668,
+      "change_vs_control_log": -0.002878
+    },
+    {
+      "zone": 154,
+      "group": "control",
+      "trips_per_day_before": 95.740331,
+      "trips_per_day_after": 70.022161,
+      "change_vs_control_log": -0.34633
+    },
+    {
+      "zone": 155,
+      "group": "control",
+      "trips_per_day_before": 1797.668508,
+      "trips_per_day_after": 1857.966759,
+      "change_vs_control_log": -0.00051
+    },
+    {
+      "zone": 165,
+      "group": "control",
+      "trips_per_day_before": 1756.046961,
+      "trips_per_day_after": 1852.451524,
+      "change_vs_control_log": 0.019942
+    },
+    {
+      "zone": 166,
+      "group": "control",
+      "trips_per_day_before": 2260.116022,
+      "trips_per_day_after": 2332.481994,
+      "change_vs_control_log": -0.001986
+    },
+    {
+      "zone": 177,
+      "group": "control",
+      "trips_per_day_before": 2537.348066,
+      "trips_per_day_after": 2596.01108,
+      "change_vs_control_log": -0.010646
+    },
+    {
+      "zone": 178,
+      "group": "control",
+      "trips_per_day_before": 567.831492,
+      "trips_per_day_after": 595.163435,
+      "change_vs_control_log": 0.013509
+    },
+    {
+      "zone": 181,
+      "group": "control",
+      "trips_per_day_before": 5216.69337,
+      "trips_per_day_after": 5432.207756,
+      "change_vs_control_log": 0.006979
+    },
+    {
+      "zone": 188,
+      "group": "control",
+      "trips_per_day_before": 4640.555249,
+      "trips_per_day_after": 4831.512465,
+      "change_vs_control_log": 0.006823
+    },
+    {
+      "zone": 189,
+      "group": "control",
+      "trips_per_day_before": 1975.895028,
+      "trips_per_day_after": 2031.382271,
+      "change_vs_control_log": -0.005807
+    },
+    {
+      "zone": 190,
+      "group": "control",
+      "trips_per_day_before": 487.370166,
+      "trips_per_day_after": 474.65097,
+      "change_vs_control_log": -0.059947
+    },
+    {
+      "zone": 194,
+      "group": "control",
+      "trips_per_day_before": 203.046961,
+      "trips_per_day_after": 217.603878,
+      "change_vs_control_log": 0.035737
+    },
+    {
+      "zone": 195,
+      "group": "control",
+      "trips_per_day_before": 1032.486188,
+      "trips_per_day_after": 1138.99446,
+      "change_vs_control_log": 0.064674
+    },
+    {
+      "zone": 202,
+      "group": "control",
+      "trips_per_day_before": 335.734807,
+      "trips_per_day_after": 329.01662,
+      "change_vs_control_log": -0.053716
+    },
+    {
+      "zone": 210,
+      "group": "control",
+      "trips_per_day_before": 1887.455801,
+      "trips_per_day_after": 2043.883657,
+      "change_vs_control_log": 0.04612
+    },
+    {
+      "zone": 217,
+      "group": "control",
+      "trips_per_day_before": 1035.867403,
+      "trips_per_day_after": 1104.637119,
+      "change_vs_control_log": 0.030775
+    },
+    {
+      "zone": 222,
+      "group": "control",
+      "trips_per_day_before": 713.406077,
+      "trips_per_day_after": 772.130194,
+      "change_vs_control_log": 0.0456
+    },
+    {
+      "zone": 225,
+      "group": "control",
+      "trips_per_day_before": 4729.593923,
+      "trips_per_day_after": 4807.65651,
+      "change_vs_control_log": -0.017132
+    },
+    {
+      "zone": 227,
+      "group": "control",
+      "trips_per_day_before": 1504.519337,
+      "trips_per_day_after": 1648.761773,
+      "change_vs_control_log": 0.058049
+    },
+    {
+      "zone": 228,
+      "group": "control",
+      "trips_per_day_before": 2913.513812,
+      "trips_per_day_after": 3137.936288,
+      "change_vs_control_log": 0.040703
+    },
+    {
+      "zone": 236,
+      "group": "control",
+      "trips_per_day_before": 2697.524862,
+      "trips_per_day_after": 2666.889197,
+      "change_vs_control_log": -0.044924
+    },
+    {
+      "zone": 238,
+      "group": "control",
+      "trips_per_day_before": 2006.005525,
+      "trips_per_day_after": 1971.224377,
+      "change_vs_control_log": -0.050993
+    },
+    {
+      "zone": 239,
+      "group": "control",
+      "trips_per_day_before": 2208.187845,
+      "trips_per_day_after": 2150.534626,
+      "change_vs_control_log": -0.059958
+    },
+    {
+      "zone": 243,
+      "group": "control",
+      "trips_per_day_before": 2709.441989,
+      "trips_per_day_after": 2752.404432,
+      "change_vs_control_log": -0.01777
+    },
+    {
+      "zone": 244,
+      "group": "control",
+      "trips_per_day_before": 4190.179558,
+      "trips_per_day_after": 4205.844875,
+      "change_vs_control_log": -0.029771
+    },
+    {
+      "zone": 255,
+      "group": "control",
+      "trips_per_day_before": 4394.008287,
+      "trips_per_day_after": 4469.33795,
+      "change_vs_control_log": -0.016504
+    },
+    {
+      "zone": 256,
+      "group": "control",
+      "trips_per_day_before": 3626.941989,
+      "trips_per_day_after": 3730.357341,
+      "change_vs_control_log": -0.005388
+    },
+    {
+      "zone": 257,
+      "group": "control",
+      "trips_per_day_before": 872.11326,
+      "trips_per_day_after": 917.060942,
+      "change_vs_control_log": 0.016752
+    },
+    {
+      "zone": 262,
+      "group": "control",
+      "trips_per_day_before": 1108.279006,
+      "trips_per_day_after": 1105.01108,
+      "change_vs_control_log": -0.036455
+    },
+    {
+      "zone": 263,
+      "group": "control",
+      "trips_per_day_before": 1793.39779,
+      "trips_per_day_after": 1813.310249,
+      "change_vs_control_log": -0.02246
+    }
+  ],
+  "bootstrap": {
+    "rounds": 2000,
+    "seed": 20250105,
+    "interval_level": 0.95,
+    "week_blocks": "seven-day blocks, same block numbers in every window"
+  }
+}

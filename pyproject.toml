@@ -19,6 +19,12 @@ dependencies = [
 nrc = "nyc_rideshare_congestion.cli:main"
 
 [dependency-groups]
+bench = [
+    "psutil>=6.0",
+    # Spark 4 needs the JDK module jdk.incubator.vector, which the only Java runtime on
+    # the benchmark laptop does not ship. Spark 3.5 runs on Java 21 without it.
+    "pyspark>=3.5.3,<4",
+]
 dev = [
     "mypy>=1.10",
     "pre-commit>=3.7",
@@ -57,4 +63,9 @@ files = ["src", "tests"]
 [[tool.mypy.overrides]]
 # shapely and pyshp ship no type hints; only zones.py uses them.
 module = ["shapely", "shapely.*", "shapefile"]
+ignore_missing_imports = true
+
+[[tool.mypy.overrides]]
+# The optional `bench` group (PySpark, psutil) is not installed in CI.
+module = ["pyspark", "pyspark.*", "psutil"]
 ignore_missing_imports = true
