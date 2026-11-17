@@ -70,6 +70,7 @@ def build_parser() -> argparse.ArgumentParser:
     pnl.add_argument("--month", type=month_arg, action="append", help="only this month")
     sub.add_parser("prechecks", help="stop rules, pre-trend check and the check a year earlier")
     sub.add_parser("estimate", help="the main estimate, its checks and reports/estimate.json")
+    sub.add_parser("extended", help="the longer window, year over year (ADR 0009)")
     return parser
 
 
@@ -208,7 +209,7 @@ def main(
             return run_transform(con)
         if args.command == "time-index":
             return run_time_index(paths, con)
-        if args.command in ("panel", "prechecks", "estimate"):
+        if args.command in ("panel", "prechecks", "estimate", "extended"):
             from nyc_rideshare_congestion.analysis import run as analysis
 
             return analysis.main(args.command, paths, con, getattr(args, "month", None))

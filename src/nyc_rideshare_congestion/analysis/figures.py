@@ -185,3 +185,45 @@ def plot_event_study(event: dict[str, Any], path: Path) -> Path:
     ax.set_xlabel("Weeks from the week the after window starts", color=INK_SECONDARY, fontsize=9)
     ax.legend(frameon=False, fontsize=9, loc="lower left")
     return _save(fig, path)
+
+
+def plot_event_study_monthly(event: dict[str, Any], path: Path) -> Path:
+    """ADR 0009: the monthly log ratio minus its value twelve months earlier.
+
+    Three stretches are marked: no fee in either year, a fee year against a year with
+    no fee, and two fee years. Each is also named in the legend, so color is never the
+    only way to tell them apart.
+    """
+    months = event["months"]
+    x = _month_dates(months)
+    y = np.array(event["change_from_a_year_earlier"])
+    lo, hi = np.array(event["band_low"]), np.array(event["band_high"])
+    fee = np.array(event["fee_in_month"])
+    fee_before = np.array(event["fee_in_month_a_year_earlier"])
+    parts = [
+        (~fee, MUTED, "o", "No fee in either year"),
+        (fee & ~fee_before, SERIES_2, "s", "Fee year against a year with no fee"),
+        (fee & fee_before, SERIES_1, "^", "Fee in both years"),
+    ]
+    fig, ax = _frame(
+        "Trips into the fee zone against control zones: change from the same month a year earlier"
+    )
+    ax.axhline(0.0, color=AXIS, linewidth=1)
+    ax.fill_between(x, lo, hi, color=GRID, linewidth=0, label="95% interval, zones resampled")
+    ax.plot(x, y, color=INK_SECONDARY, linewidth=1)
+    for mask, color, marker, label in parts:
+        if mask.any():
+            ax.plot(
+                x[mask],
+                y[mask],
+                linestyle="none",
+                marker=marker,
+                markersize=6,
+                color=color,
+                label=label,
+            )
+    ax.axvline(_num([date(2025, 1, 5)])[0], color=INK_SECONDARY, linewidth=1, linestyle="--")
+    ax.set_ylabel("change in log(treated / control)", color=INK_SECONDARY, fontsize=9)
+    _date_axis(ax)
+    ax.legend(frameon=False, fontsize=9, loc="best")
+    return _save(fig, path)
