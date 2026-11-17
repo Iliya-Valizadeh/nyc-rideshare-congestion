@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 import re
 from collections.abc import Sequence
 from pathlib import Path
@@ -72,6 +73,7 @@ def build_parser() -> argparse.ArgumentParser:
     sub.add_parser("estimate", help="the main estimate, its checks and reports/estimate.json")
     sub.add_parser("extended", help="the longer window, year over year (ADR 0009)")
     sub.add_parser("site", help="build the static one-page site in site/ from the reports")
+    sub.add_parser("benchmark", help="time the transforms in DuckDB and PySpark on 3 months")
     return parser
 
 
@@ -213,6 +215,12 @@ def main(
             return run_check(args, paths, con)
         if args.command == "transform":
             return run_transform(con)
+        if args.command == "benchmark":  # pragma: no cover - needs the bench group and Java
+            from nyc_rideshare_congestion.pipeline import benchmark
+
+            report = benchmark.run_benchmark(con, paths)
+            print(json.dumps({k: report[k] for k in ("months", "all_tables_exact")}))
+            return config.EXIT_OK
         if args.command == "time-index":
             return run_time_index(paths, con)
         if args.command in ("panel", "prechecks", "estimate", "extended"):
